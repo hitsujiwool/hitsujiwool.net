@@ -1,0 +1,1462 @@
+{
+  "createdAt": "2025-11-02T02:04:42.152Z",
+  "updatedAt": "2025-11-02T14:39:37.993Z",
+  "tags": [
+    "scribble"
+  ],
+  "data": {
+    "type": "root",
+    "children": [
+      {
+        "type": "yaml",
+        "value": "tags:\n  - scribble",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 4,
+            "column": 4,
+            "offset": 26
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "こういう手元のメモを公開していきたい。",
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1,
+                "offset": 27
+              },
+              "end": {
+                "line": 5,
+                "column": 20,
+                "offset": 46
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1,
+            "offset": 27
+          },
+          "end": {
+            "line": 5,
+            "column": 20,
+            "offset": 46
+          }
+        }
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": true,
+        "children": [
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://baku89.com/morion",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "https://baku89.com/morion",
+                        "position": {
+                          "start": {
+                            "line": 7,
+                            "column": 3,
+                            "offset": 50
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 28,
+                            "offset": 75
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 3,
+                        "offset": 50
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 28,
+                        "offset": 75
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 7,
+                    "column": 3,
+                    "offset": 50
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 28,
+                    "offset": 75
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1,
+                "offset": 48
+              },
+              "end": {
+                "line": 7,
+                "column": 28,
+                "offset": 75
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://x.com/chocoschools/status/1976966016027836507a",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "https://x.com/chocoschools/status/1976966016027836507a",
+                        "position": {
+                          "start": {
+                            "line": 8,
+                            "column": 3,
+                            "offset": 78
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 57,
+                            "offset": 132
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 8,
+                        "column": 3,
+                        "offset": 78
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 57,
+                        "offset": 132
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 8,
+                    "column": 3,
+                    "offset": 78
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 57,
+                    "offset": 132
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 8,
+                "column": 1,
+                "offset": 76
+              },
+              "end": {
+                "line": 8,
+                "column": 57,
+                "offset": 132
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "避けたい & 変えたい事態",
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 3,
+                        "offset": 136
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 16,
+                        "offset": 149
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 10,
+                    "column": 3,
+                    "offset": 136
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 16,
+                    "offset": 149
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "何かのプラットフォームの管理画面にログインして原稿を書く",
+                            "position": {
+                              "start": {
+                                "line": 11,
+                                "column": 4,
+                                "offset": 153
+                              },
+                              "end": {
+                                "line": 11,
+                                "column": 32,
+                                "offset": 181
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 11,
+                            "column": 4,
+                            "offset": 153
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 32,
+                            "offset": 181
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "ウェブでもネイティブでも本質的には変わらない",
+                                    "position": {
+                                      "start": {
+                                        "line": 12,
+                                        "column": 5,
+                                        "offset": 186
+                                      },
+                                      "end": {
+                                        "line": 12,
+                                        "column": 27,
+                                        "offset": 208
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 12,
+                                    "column": 5,
+                                    "offset": 186
+                                  },
+                                  "end": {
+                                    "line": 12,
+                                    "column": 27,
+                                    "offset": 208
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 12,
+                                "column": 3,
+                                "offset": 184
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 27,
+                                "offset": 208
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 12,
+                            "column": 3,
+                            "offset": 184
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 27,
+                            "offset": 208
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 2,
+                        "offset": 151
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 27,
+                        "offset": 208
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "手元でメモを書くとは別のツールやフォーマットを使って書く",
+                            "position": {
+                              "start": {
+                                "line": 13,
+                                "column": 4,
+                                "offset": 212
+                              },
+                              "end": {
+                                "line": 13,
+                                "column": 32,
+                                "offset": 240
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 13,
+                            "column": 4,
+                            "offset": 212
+                          },
+                          "end": {
+                            "line": 13,
+                            "column": 32,
+                            "offset": 240
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 2,
+                        "offset": 210
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 32,
+                        "offset": 240
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "公開可能な場所（典型的にはリモートのサーバ）にアップロードすることで公開される",
+                            "position": {
+                              "start": {
+                                "line": 14,
+                                "column": 4,
+                                "offset": 244
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 43,
+                                "offset": 283
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 14,
+                            "column": 4,
+                            "offset": 244
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 43,
+                            "offset": 283
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 2,
+                        "offset": 242
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 43,
+                        "offset": 283
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 11,
+                    "column": 2,
+                    "offset": 151
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 43,
+                    "offset": 283
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 10,
+                "column": 1,
+                "offset": 134
+              },
+              "end": {
+                "line": 14,
+                "column": 43,
+                "offset": 283
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "公開しても良いというフラグ・しるしが、そのまま公開状態を切り替える",
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 3,
+                        "offset": 286
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 36,
+                        "offset": 319
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 15,
+                    "column": 3,
+                    "offset": 286
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 36,
+                    "offset": 319
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 15,
+                "column": 1,
+                "offset": 284
+              },
+              "end": {
+                "line": 15,
+                "column": 36,
+                "offset": 319
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "デフォルトは公開で、必要に応じて非公開という極端な設計もあり",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 3,
+                        "offset": 322
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 33,
+                        "offset": 352
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 16,
+                    "column": 3,
+                    "offset": 322
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 33,
+                    "offset": 352
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 16,
+                "column": 1,
+                "offset": 320
+              },
+              "end": {
+                "line": 16,
+                "column": 33,
+                "offset": 352
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Cloudflare tunnel",
+                        "position": {
+                          "start": {
+                            "line": 17,
+                            "column": 4,
+                            "offset": 356
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 21,
+                            "offset": 373
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 3,
+                        "offset": 355
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 111,
+                        "offset": 463
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "  や ",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 111,
+                        "offset": 463
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 115,
+                        "offset": 467
+                      }
+                    }
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://tailscale.com/kb/1223/funnel",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "Tailscale Funnel",
+                        "position": {
+                          "start": {
+                            "line": 17,
+                            "column": 116,
+                            "offset": 468
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 132,
+                            "offset": 484
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 115,
+                        "offset": 467
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 171,
+                        "offset": 523
+                      }
+                    }
+                  },
+                  {
+                    "type": "text",
+                    "value": "  はかなり近い",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 171,
+                        "offset": 523
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 179,
+                        "offset": 531
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 17,
+                    "column": 3,
+                    "offset": 355
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 179,
+                    "offset": 531
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1,
+                "offset": 353
+              },
+              "end": {
+                "line": 17,
+                "column": 179,
+                "offset": 531
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ローカルの環境が「うっかり」インターネットに開示される感覚",
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 3,
+                        "offset": 534
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 32,
+                        "offset": 563
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 18,
+                    "column": 3,
+                    "offset": 534
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 32,
+                    "offset": 563
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 18,
+                "column": 1,
+                "offset": 532
+              },
+              "end": {
+                "line": 18,
+                "column": 32,
+                "offset": 563
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "P2P とはすこし違いそう",
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 3,
+                        "offset": 566
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 16,
+                        "offset": 579
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 19,
+                    "column": 3,
+                    "offset": 566
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 16,
+                    "offset": 579
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "自己開示はそれ自体が非対称な関係で、これは書き手の負うべき「責任」",
+                            "position": {
+                              "start": {
+                                "line": 20,
+                                "column": 4,
+                                "offset": 583
+                              },
+                              "end": {
+                                "line": 20,
+                                "column": 37,
+                                "offset": 616
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 20,
+                            "column": 4,
+                            "offset": 583
+                          },
+                          "end": {
+                            "line": 20,
+                            "column": 37,
+                            "offset": 616
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 20,
+                        "column": 2,
+                        "offset": 581
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 37,
+                        "offset": 616
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "そういえば「うっかり」「責任」といえば中動態？　もう一度調べ直す必要がありそう",
+                            "position": {
+                              "start": {
+                                "line": 21,
+                                "column": 4,
+                                "offset": 620
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 43,
+                                "offset": 659
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 21,
+                            "column": 4,
+                            "offset": 620
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 43,
+                            "offset": 659
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 2,
+                        "offset": 618
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 43,
+                        "offset": 659
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 20,
+                    "column": 2,
+                    "offset": 581
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 43,
+                    "offset": 659
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 19,
+                "column": 1,
+                "offset": 564
+              },
+              "end": {
+                "line": 21,
+                "column": 43,
+                "offset": 659
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1,
+            "offset": 48
+          },
+          "end": {
+            "line": 21,
+            "column": 43,
+            "offset": 659
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "ブログシステムの役割",
+            "position": {
+              "start": {
+                "line": 23,
+                "column": 1,
+                "offset": 661
+              },
+              "end": {
+                "line": 23,
+                "column": 11,
+                "offset": 671
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 23,
+            "column": 1,
+            "offset": 661
+          },
+          "end": {
+            "line": 23,
+            "column": 11,
+            "offset": 671
+          }
+        }
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": false,
+        "children": [
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "SSG",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 3,
+                        "offset": 675
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 6,
+                        "offset": 678
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 25,
+                    "column": 3,
+                    "offset": 675
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 7,
+                    "offset": 679
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 25,
+                "column": 1,
+                "offset": 673
+              },
+              "end": {
+                "line": 25,
+                "column": 7,
+                "offset": 679
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "「スタイルと構造の分離」に改めて立ち戻る",
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 3,
+                        "offset": 682
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 23,
+                        "offset": 702
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 26,
+                    "column": 3,
+                    "offset": 682
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 23,
+                    "offset": 702
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ほげ",
+                            "position": {
+                              "start": {
+                                "line": 27,
+                                "column": 4,
+                                "offset": 706
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 6,
+                                "offset": 708
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 27,
+                            "column": 4,
+                            "offset": 706
+                          },
+                          "end": {
+                            "line": 27,
+                            "column": 6,
+                            "offset": 708
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 27,
+                        "column": 2,
+                        "offset": 704
+                      },
+                      "end": {
+                        "line": 27,
+                        "column": 6,
+                        "offset": 708
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 27,
+                    "column": 2,
+                    "offset": 704
+                  },
+                  "end": {
+                    "line": 27,
+                    "column": 6,
+                    "offset": 708
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 26,
+                "column": 1,
+                "offset": 680
+              },
+              "end": {
+                "line": 27,
+                "column": 6,
+                "offset": 708
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ビルドシステムの役割はテキストデータの構造化",
+                    "position": {
+                      "start": {
+                        "line": 28,
+                        "column": 3,
+                        "offset": 711
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 25,
+                        "offset": 733
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 28,
+                    "column": 3,
+                    "offset": 711
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 25,
+                    "offset": 733
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "構造化＝テキスト間のネットワーク",
+                            "position": {
+                              "start": {
+                                "line": 29,
+                                "column": 4,
+                                "offset": 737
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 20,
+                                "offset": 753
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 29,
+                            "column": 4,
+                            "offset": 737
+                          },
+                          "end": {
+                            "line": 29,
+                            "column": 20,
+                            "offset": 753
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 29,
+                        "column": 2,
+                        "offset": 735
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 20,
+                        "offset": 753
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 29,
+                    "column": 2,
+                    "offset": 735
+                  },
+                  "end": {
+                    "line": 29,
+                    "column": 20,
+                    "offset": 753
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 28,
+                "column": 1,
+                "offset": 709
+              },
+              "end": {
+                "line": 29,
+                "column": 20,
+                "offset": 753
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "構造を与えること、",
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 3,
+                        "offset": 756
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 12,
+                        "offset": 765
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 30,
+                    "column": 3,
+                    "offset": 756
+                  },
+                  "end": {
+                    "line": 30,
+                    "column": 12,
+                    "offset": 765
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 30,
+                "column": 1,
+                "offset": 754
+              },
+              "end": {
+                "line": 30,
+                "column": 12,
+                "offset": 765
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "サイトの構造は共通で、",
+                    "position": {
+                      "start": {
+                        "line": 31,
+                        "column": 3,
+                        "offset": 768
+                      },
+                      "end": {
+                        "line": 31,
+                        "column": 14,
+                        "offset": 779
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 31,
+                    "column": 3,
+                    "offset": 768
+                  },
+                  "end": {
+                    "line": 31,
+                    "column": 14,
+                    "offset": 779
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 31,
+                "column": 1,
+                "offset": 766
+              },
+              "end": {
+                "line": 31,
+                "column": 14,
+                "offset": 779
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 25,
+            "column": 1,
+            "offset": 673
+          },
+          "end": {
+            "line": 31,
+            "column": 14,
+            "offset": 779
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 32,
+        "column": 2,
+        "offset": 781
+      }
+    }
+  }
+}

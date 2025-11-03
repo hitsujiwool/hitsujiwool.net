@@ -1,0 +1,45 @@
+{
+  "createdAt": "2025-11-02T13:06:52.581Z",
+  "updatedAt": "2025-11-02T13:08:19.823Z",
+  "tags": [
+    "scribble"
+  ],
+  "data": {
+    "type": "root",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "obsidianTag",
+            "value": "scribble"
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 10,
+            "offset": 9
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 2,
+        "column": 1,
+        "offset": 10
+      }
+    }
+  }
+}

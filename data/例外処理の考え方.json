@@ -1,0 +1,3782 @@
+{
+  "createdAt": "2025-10-29T23:15:12.599Z",
+  "updatedAt": "2025-11-02T14:38:33.880Z",
+  "tags": [
+    "scribble"
+  ],
+  "data": {
+    "type": "root",
+    "children": [
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "obsidianTag",
+            "value": "scribble"
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 1,
+            "column": 11,
+            "offset": 10
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "仕事で作っているウェブサービスのエラー処理の方針を見直す必要に迫られて、例外設計の考え方をおさらいしている。",
+            "position": {
+              "start": {
+                "line": 3,
+                "column": 2,
+                "offset": 13
+              },
+              "end": {
+                "line": 3,
+                "column": 56,
+                "offset": 67
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 3,
+            "column": 2,
+            "offset": 13
+          },
+          "end": {
+            "line": 3,
+            "column": 56,
+            "offset": 67
+          }
+        }
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": true,
+        "children": [
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "知識の出発点としての",
+                    "position": {
+                      "start": {
+                        "line": 5,
+                        "column": 3,
+                        "offset": 71
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 13,
+                        "offset": 81
+                      }
+                    }
+                  },
+                  {
+                    "type": "link",
+                    "title": null,
+                    "url": "https://xn--97-273ae6a4irb6e2hsoiozc2g4b8082p.com/%E3%82%A8%E3%83%83%E3%82%BB%E3%82%A4/%E6%8A%80%E8%A1%93%E7%9A%84%E4%BE%8B%E5%A4%96%E3%81%A8%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E4%BE%8B%E5%A4%96%E3%82%92%E6%98%8E%E7%A2%BA%E3%81%AB%E5%8C%BA%E5%88%A5%E3%81%99%E3%82%8B/",
+                    "children": [
+                      {
+                        "type": "text",
+                        "value": "「ビジネス例外」と「技術的例外」",
+                        "position": {
+                          "start": {
+                            "line": 5,
+                            "column": 14,
+                            "offset": 82
+                          },
+                          "end": {
+                            "line": 5,
+                            "column": 30,
+                            "offset": 98
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 5,
+                        "column": 13,
+                        "offset": 81
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 301,
+                        "offset": 369
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 5,
+                    "column": 3,
+                    "offset": 71
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 301,
+                    "offset": 369
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "そもそも類語がたくさんある",
+                            "position": {
+                              "start": {
+                                "line": 6,
+                                "column": 4,
+                                "offset": 373
+                              },
+                              "end": {
+                                "line": 6,
+                                "column": 17,
+                                "offset": 386
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 6,
+                            "column": 4,
+                            "offset": 373
+                          },
+                          "end": {
+                            "line": 6,
+                            "column": 17,
+                            "offset": 386
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "ビジネス例外・業務例外・アプリケーション例外",
+                                    "position": {
+                                      "start": {
+                                        "line": 7,
+                                        "column": 5,
+                                        "offset": 391
+                                      },
+                                      "end": {
+                                        "line": 7,
+                                        "column": 27,
+                                        "offset": 413
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 7,
+                                    "column": 5,
+                                    "offset": 391
+                                  },
+                                  "end": {
+                                    "line": 7,
+                                    "column": 27,
+                                    "offset": 413
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 7,
+                                "column": 3,
+                                "offset": 389
+                              },
+                              "end": {
+                                "line": 7,
+                                "column": 27,
+                                "offset": 413
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "技術的例外・システム例外",
+                                    "position": {
+                                      "start": {
+                                        "line": 8,
+                                        "column": 5,
+                                        "offset": 418
+                                      },
+                                      "end": {
+                                        "line": 8,
+                                        "column": 17,
+                                        "offset": 430
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 8,
+                                    "column": 5,
+                                    "offset": 418
+                                  },
+                                  "end": {
+                                    "line": 8,
+                                    "column": 17,
+                                    "offset": 430
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 8,
+                                "column": 3,
+                                "offset": 416
+                              },
+                              "end": {
+                                "line": 8,
+                                "column": 17,
+                                "offset": 430
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 7,
+                            "column": 3,
+                            "offset": 389
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 17,
+                            "offset": 430
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 6,
+                        "column": 2,
+                        "offset": 371
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 17,
+                        "offset": 430
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": ".NET には ApplicationException とその他の System Exception という区分がある",
+                            "position": {
+                              "start": {
+                                "line": 9,
+                                "column": 4,
+                                "offset": 434
+                              },
+                              "end": {
+                                "line": 9,
+                                "column": 64,
+                                "offset": 494
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 9,
+                            "column": 4,
+                            "offset": 434
+                          },
+                          "end": {
+                            "line": 9,
+                            "column": 64,
+                            "offset": 494
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "link",
+                                    "title": null,
+                                    "url": "https://learn.microsoft.com/ja-jp/dotnet/api/system",
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "value": "https://learn.microsoft.com/ja-jp/dotnet/api/system",
+                                        "position": {
+                                          "start": {
+                                            "line": 10,
+                                            "column": 5,
+                                            "offset": 499
+                                          },
+                                          "end": {
+                                            "line": 10,
+                                            "column": 56,
+                                            "offset": 550
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 10,
+                                        "column": 5,
+                                        "offset": 499
+                                      },
+                                      "end": {
+                                        "line": 10,
+                                        "column": 56,
+                                        "offset": 550
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 10,
+                                    "column": 5,
+                                    "offset": 499
+                                  },
+                                  "end": {
+                                    "line": 10,
+                                    "column": 56,
+                                    "offset": 550
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 10,
+                                "column": 3,
+                                "offset": 497
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 56,
+                                "offset": 550
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "link",
+                                    "title": null,
+                                    "url": "https://www.geeksforgeeks.org/c-sharp/difference-between-system-level-exception-and-application-level-exception-in-c-sharp/",
+                                    "children": [
+                                      {
+                                        "type": "text",
+                                        "value": "https://www.geeksforgeeks.org/c-sharp/difference-between-system-level-exception-and-application-level-exception-in-c-sharp/",
+                                        "position": {
+                                          "start": {
+                                            "line": 11,
+                                            "column": 5,
+                                            "offset": 555
+                                          },
+                                          "end": {
+                                            "line": 11,
+                                            "column": 128,
+                                            "offset": 678
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 11,
+                                        "column": 5,
+                                        "offset": 555
+                                      },
+                                      "end": {
+                                        "line": 11,
+                                        "column": 128,
+                                        "offset": 678
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 11,
+                                    "column": 5,
+                                    "offset": 555
+                                  },
+                                  "end": {
+                                    "line": 11,
+                                    "column": 128,
+                                    "offset": 678
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 11,
+                                "column": 3,
+                                "offset": 553
+                              },
+                              "end": {
+                                "line": 11,
+                                "column": 128,
+                                "offset": 678
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 10,
+                            "column": 3,
+                            "offset": 497
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 128,
+                            "offset": 678
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 9,
+                        "column": 2,
+                        "offset": 432
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 128,
+                        "offset": 678
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 6,
+                    "column": 2,
+                    "offset": 371
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 128,
+                    "offset": 678
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 5,
+                "column": 1,
+                "offset": 69
+              },
+              "end": {
+                "line": 11,
+                "column": 128,
+                "offset": 678
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "基礎知識としてのビジネス例外と技術例外という区別",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 3,
+                        "offset": 683
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 27,
+                        "offset": 707
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 13,
+                    "column": 3,
+                    "offset": 683
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 27,
+                    "offset": 707
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "link",
+                            "title": null,
+                            "url": "https://qiita.com/jnchito/items/3ef95ea144ed15df3637",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "https://qiita.com/jnchito/items/3ef95ea144ed15df3637",
+                                "position": {
+                                  "start": {
+                                    "line": 14,
+                                    "column": 4,
+                                    "offset": 711
+                                  },
+                                  "end": {
+                                    "line": 14,
+                                    "column": 56,
+                                    "offset": 763
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 14,
+                                "column": 4,
+                                "offset": 711
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 56,
+                                "offset": 763
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 14,
+                            "column": 4,
+                            "offset": 711
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 56,
+                            "offset": 763
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "コントローラと直下のモデルやサービスとの関係という意味では納得感あり",
+                                    "position": {
+                                      "start": {
+                                        "line": 15,
+                                        "column": 5,
+                                        "offset": 768
+                                      },
+                                      "end": {
+                                        "line": 15,
+                                        "column": 39,
+                                        "offset": 802
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 15,
+                                    "column": 5,
+                                    "offset": 768
+                                  },
+                                  "end": {
+                                    "line": 15,
+                                    "column": 39,
+                                    "offset": 802
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 15,
+                                "column": 3,
+                                "offset": 766
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 39,
+                                "offset": 802
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 15,
+                            "column": 3,
+                            "offset": 766
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 39,
+                            "offset": 802
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 2,
+                        "offset": 709
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 39,
+                        "offset": 802
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 14,
+                    "column": 2,
+                    "offset": 709
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 39,
+                    "offset": 802
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 13,
+                "column": 1,
+                "offset": 681
+              },
+              "end": {
+                "line": 15,
+                "column": 39,
+                "offset": 802
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ビジネス例外とは、その内容に応じて処理や表示を変えたい例外",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 3,
+                        "offset": 805
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 32,
+                        "offset": 834
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 16,
+                    "column": 3,
+                    "offset": 805
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 32,
+                    "offset": 834
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "そもそもユースケースの範囲内である",
+                            "position": {
+                              "start": {
+                                "line": 17,
+                                "column": 4,
+                                "offset": 838
+                              },
+                              "end": {
+                                "line": 17,
+                                "column": 21,
+                                "offset": 855
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 17,
+                            "column": 4,
+                            "offset": 838
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 21,
+                            "offset": 855
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 2,
+                        "offset": 836
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 21,
+                        "offset": 855
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "フォームのバリデーションエラー",
+                            "position": {
+                              "start": {
+                                "line": 18,
+                                "column": 4,
+                                "offset": 859
+                              },
+                              "end": {
+                                "line": 18,
+                                "column": 19,
+                                "offset": 874
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 18,
+                            "column": 4,
+                            "offset": 859
+                          },
+                          "end": {
+                            "line": 18,
+                            "column": 19,
+                            "offset": 874
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 2,
+                        "offset": 857
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 19,
+                        "offset": 874
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "エラー画面に理由を出したい",
+                            "position": {
+                              "start": {
+                                "line": 19,
+                                "column": 4,
+                                "offset": 878
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 17,
+                                "offset": 891
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 19,
+                            "column": 4,
+                            "offset": 878
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 17,
+                            "offset": 891
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 2,
+                        "offset": 876
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 17,
+                        "offset": 891
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "冒頭資料では「お前が悪い、ちゃんとやり直せ」",
+                            "position": {
+                              "start": {
+                                "line": 20,
+                                "column": 4,
+                                "offset": 895
+                              },
+                              "end": {
+                                "line": 20,
+                                "column": 26,
+                                "offset": 917
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 20,
+                            "column": 4,
+                            "offset": 895
+                          },
+                          "end": {
+                            "line": 20,
+                            "column": 26,
+                            "offset": 917
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 20,
+                        "column": 2,
+                        "offset": 893
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 26,
+                        "offset": 917
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 17,
+                    "column": 2,
+                    "offset": 836
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 26,
+                    "offset": 917
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 16,
+                "column": 1,
+                "offset": 803
+              },
+              "end": {
+                "line": 20,
+                "column": 26,
+                "offset": 917
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ビジネス例外は列挙可能である",
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 3,
+                        "offset": 920
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 17,
+                        "offset": 934
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 21,
+                    "column": 3,
+                    "offset": 920
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 17,
+                    "offset": 934
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "わたし（モジュール）がこのエラーについてはケアしますという宣言",
+                            "position": {
+                              "start": {
+                                "line": 22,
+                                "column": 4,
+                                "offset": 938
+                              },
+                              "end": {
+                                "line": 22,
+                                "column": 35,
+                                "offset": 969
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 22,
+                            "column": 4,
+                            "offset": 938
+                          },
+                          "end": {
+                            "line": 22,
+                            "column": 35,
+                            "offset": 969
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 2,
+                        "offset": 936
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 35,
+                        "offset": 969
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "というか、そもそも列挙できないとモジュールの呼び出し側が処理を分岐できない",
+                            "position": {
+                              "start": {
+                                "line": 23,
+                                "column": 4,
+                                "offset": 973
+                              },
+                              "end": {
+                                "line": 23,
+                                "column": 41,
+                                "offset": 1010
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 23,
+                            "column": 4,
+                            "offset": 973
+                          },
+                          "end": {
+                            "line": 23,
+                            "column": 41,
+                            "offset": 1010
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 23,
+                        "column": 2,
+                        "offset": 971
+                      },
+                      "end": {
+                        "line": 23,
+                        "column": 41,
+                        "offset": 1010
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "方法としては ErrorCode を Enum として定義する、生じうる Error を列挙するのがよさそう",
+                            "position": {
+                              "start": {
+                                "line": 24,
+                                "column": 4,
+                                "offset": 1014
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 58,
+                                "offset": 1068
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 24,
+                            "column": 4,
+                            "offset": 1014
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 58,
+                            "offset": 1068
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 24,
+                        "column": 2,
+                        "offset": 1012
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 58,
+                        "offset": 1068
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 22,
+                    "column": 2,
+                    "offset": 936
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 58,
+                    "offset": 1068
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 21,
+                "column": 1,
+                "offset": 918
+              },
+              "end": {
+                "line": 24,
+                "column": 58,
+                "offset": 1068
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "技術例外は、業務フローを妨げる「リスク」と言い換えられる",
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 3,
+                        "offset": 1071
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 31,
+                        "offset": 1099
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 25,
+                    "column": 3,
+                    "offset": 1071
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 31,
+                    "offset": 1099
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "普通は起きないし起きてほしくないけど、起きるかもしれない状況",
+                            "position": {
+                              "start": {
+                                "line": 26,
+                                "column": 4,
+                                "offset": 1103
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 34,
+                                "offset": 1133
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 26,
+                            "column": 4,
+                            "offset": 1103
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 34,
+                            "offset": 1133
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 2,
+                        "offset": 1101
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 34,
+                        "offset": 1133
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "開発者のデバッグレベルで理由を識別する必要があるが、処理のフローには無関係",
+                            "position": {
+                              "start": {
+                                "line": 27,
+                                "column": 4,
+                                "offset": 1137
+                              },
+                              "end": {
+                                "line": 27,
+                                "column": 41,
+                                "offset": 1174
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 27,
+                            "column": 4,
+                            "offset": 1137
+                          },
+                          "end": {
+                            "line": 27,
+                            "column": 41,
+                            "offset": 1174
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 27,
+                        "column": 2,
+                        "offset": 1135
+                      },
+                      "end": {
+                        "line": 27,
+                        "column": 41,
+                        "offset": 1174
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "無関係というか、起きてしまったらどうしようもない",
+                            "position": {
+                              "start": {
+                                "line": 28,
+                                "column": 4,
+                                "offset": 1178
+                              },
+                              "end": {
+                                "line": 28,
+                                "column": 28,
+                                "offset": 1202
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 28,
+                            "column": 4,
+                            "offset": 1178
+                          },
+                          "end": {
+                            "line": 28,
+                            "column": 28,
+                            "offset": 1202
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 28,
+                        "column": 2,
+                        "offset": 1176
+                      },
+                      "end": {
+                        "line": 28,
+                        "column": 28,
+                        "offset": 1202
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 26,
+                    "column": 2,
+                    "offset": 1101
+                  },
+                  "end": {
+                    "line": 28,
+                    "column": 28,
+                    "offset": 1202
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 25,
+                "column": 1,
+                "offset": 1069
+              },
+              "end": {
+                "line": 28,
+                "column": 28,
+                "offset": 1202
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ビジネス例外は例外をスローしない（try/catch を使わない）よう実装すると、ビジネス例外とそれ以外の例外の区別をつけやすい",
+                    "position": {
+                      "start": {
+                        "line": 29,
+                        "column": 3,
+                        "offset": 1205
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 67,
+                        "offset": 1269
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 29,
+                    "column": 3,
+                    "offset": 1205
+                  },
+                  "end": {
+                    "line": 29,
+                    "column": 67,
+                    "offset": 1269
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "例外がスローされる＝自身の責務ではコントロール不能な予想外の事態の発生、という風にふるまうのはきわめて直感的",
+                            "position": {
+                              "start": {
+                                "line": 30,
+                                "column": 4,
+                                "offset": 1273
+                              },
+                              "end": {
+                                "line": 30,
+                                "column": 58,
+                                "offset": 1327
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 30,
+                            "column": 4,
+                            "offset": 1273
+                          },
+                          "end": {
+                            "line": 30,
+                            "column": 58,
+                            "offset": 1327
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 2,
+                        "offset": 1271
+                      },
+                      "end": {
+                        "line": 30,
+                        "column": 58,
+                        "offset": 1327
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "真逆のアンチパターンは、ビジネス例外の分岐のために try/catch が必要になるケース",
+                            "position": {
+                              "start": {
+                                "line": 31,
+                                "column": 4,
+                                "offset": 1331
+                              },
+                              "end": {
+                                "line": 31,
+                                "column": 49,
+                                "offset": 1376
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 31,
+                            "column": 4,
+                            "offset": 1331
+                          },
+                          "end": {
+                            "line": 31,
+                            "column": 49,
+                            "offset": 1376
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "例：zod で入力値のバリデーションに safeParse ではなく parse を使う",
+                                    "position": {
+                                      "start": {
+                                        "line": 32,
+                                        "column": 5,
+                                        "offset": 1381
+                                      },
+                                      "end": {
+                                        "line": 32,
+                                        "column": 49,
+                                        "offset": 1425
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 32,
+                                    "column": 5,
+                                    "offset": 1381
+                                  },
+                                  "end": {
+                                    "line": 32,
+                                    "column": 49,
+                                    "offset": 1425
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 32,
+                                "column": 3,
+                                "offset": 1379
+                              },
+                              "end": {
+                                "line": 32,
+                                "column": 49,
+                                "offset": 1425
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 32,
+                            "column": 3,
+                            "offset": 1379
+                          },
+                          "end": {
+                            "line": 32,
+                            "column": 49,
+                            "offset": 1425
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 31,
+                        "column": 2,
+                        "offset": 1329
+                      },
+                      "end": {
+                        "line": 32,
+                        "column": 49,
+                        "offset": 1425
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 30,
+                    "column": 2,
+                    "offset": 1271
+                  },
+                  "end": {
+                    "line": 32,
+                    "column": 49,
+                    "offset": 1425
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 29,
+                "column": 1,
+                "offset": 1203
+              },
+              "end": {
+                "line": 32,
+                "column": 49,
+                "offset": 1425
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "フレームワークのエラーハンドリング機構に一括処理させたい場合は、アプリケーションのレイヤで受け取ったビジネス例外を明示的にスローするのもあり",
+                    "position": {
+                      "start": {
+                        "line": 33,
+                        "column": 3,
+                        "offset": 1428
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 73,
+                        "offset": 1498
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 33,
+                    "column": 3,
+                    "offset": 1428
+                  },
+                  "end": {
+                    "line": 33,
+                    "column": 73,
+                    "offset": 1498
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Remix の throw new Response() とか",
+                            "position": {
+                              "start": {
+                                "line": 34,
+                                "column": 4,
+                                "offset": 1502
+                              },
+                              "end": {
+                                "line": 34,
+                                "column": 35,
+                                "offset": 1533
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 34,
+                            "column": 4,
+                            "offset": 1502
+                          },
+                          "end": {
+                            "line": 34,
+                            "column": 35,
+                            "offset": 1533
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 34,
+                        "column": 2,
+                        "offset": 1500
+                      },
+                      "end": {
+                        "line": 34,
+                        "column": 35,
+                        "offset": 1533
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "典型的には ErrorCode を元に適切なエラーをスローする",
+                            "position": {
+                              "start": {
+                                "line": 35,
+                                "column": 4,
+                                "offset": 1537
+                              },
+                              "end": {
+                                "line": 35,
+                                "column": 35,
+                                "offset": 1568
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 35,
+                            "column": 4,
+                            "offset": 1537
+                          },
+                          "end": {
+                            "line": 35,
+                            "column": 35,
+                            "offset": 1568
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 35,
+                        "column": 2,
+                        "offset": 1535
+                      },
+                      "end": {
+                        "line": 35,
+                        "column": 35,
+                        "offset": 1568
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 34,
+                    "column": 2,
+                    "offset": 1500
+                  },
+                  "end": {
+                    "line": 35,
+                    "column": 35,
+                    "offset": 1568
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 33,
+                "column": 1,
+                "offset": 1426
+              },
+              "end": {
+                "line": 35,
+                "column": 35,
+                "offset": 1568
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ビジネス例外と技術例外の境界はドメインによって変わりうる",
+                    "position": {
+                      "start": {
+                        "line": 36,
+                        "column": 3,
+                        "offset": 1571
+                      },
+                      "end": {
+                        "line": 36,
+                        "column": 31,
+                        "offset": 1599
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 36,
+                    "column": 3,
+                    "offset": 1571
+                  },
+                  "end": {
+                    "line": 36,
+                    "column": 31,
+                    "offset": 1599
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ネットワークエラーを敢えて表示した方がよいケースもある",
+                            "position": {
+                              "start": {
+                                "line": 37,
+                                "column": 4,
+                                "offset": 1603
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 31,
+                                "offset": 1630
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 37,
+                            "column": 4,
+                            "offset": 1603
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 31,
+                            "offset": 1630
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 37,
+                        "column": 2,
+                        "offset": 1601
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 31,
+                        "offset": 1630
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "同一アプリケーションのレイヤによっても変わりうる",
+                            "position": {
+                              "start": {
+                                "line": 38,
+                                "column": 4,
+                                "offset": 1634
+                              },
+                              "end": {
+                                "line": 38,
+                                "column": 28,
+                                "offset": 1658
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 38,
+                            "column": 4,
+                            "offset": 1634
+                          },
+                          "end": {
+                            "line": 38,
+                            "column": 28,
+                            "offset": 1658
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 38,
+                        "column": 2,
+                        "offset": 1632
+                      },
+                      "end": {
+                        "line": 38,
+                        "column": 28,
+                        "offset": 1658
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 37,
+                    "column": 2,
+                    "offset": 1601
+                  },
+                  "end": {
+                    "line": 38,
+                    "column": 28,
+                    "offset": 1658
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 36,
+                "column": 1,
+                "offset": 1569
+              },
+              "end": {
+                "line": 38,
+                "column": 28,
+                "offset": 1658
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "上記区別とは別に、そもそもロジック上起きるはずがない例外（エラー）がある",
+                    "position": {
+                      "start": {
+                        "line": 39,
+                        "column": 3,
+                        "offset": 1661
+                      },
+                      "end": {
+                        "line": 39,
+                        "column": 39,
+                        "offset": 1697
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 39,
+                    "column": 3,
+                    "offset": 1661
+                  },
+                  "end": {
+                    "line": 39,
+                    "column": 39,
+                    "offset": 1697
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "要は 500 エラー（モニタリングして継続的に発生を最小化すべき）",
+                            "position": {
+                              "start": {
+                                "line": 40,
+                                "column": 4,
+                                "offset": 1701
+                              },
+                              "end": {
+                                "line": 40,
+                                "column": 37,
+                                "offset": 1734
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 40,
+                            "column": 4,
+                            "offset": 1701
+                          },
+                          "end": {
+                            "line": 40,
+                            "column": 37,
+                            "offset": 1734
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 40,
+                        "column": 2,
+                        "offset": 1699
+                      },
+                      "end": {
+                        "line": 40,
+                        "column": 37,
+                        "offset": 1734
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "不適切なタイミングでのドメインロジックの呼び出し",
+                            "position": {
+                              "start": {
+                                "line": 41,
+                                "column": 4,
+                                "offset": 1738
+                              },
+                              "end": {
+                                "line": 41,
+                                "column": 28,
+                                "offset": 1762
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 41,
+                            "column": 4,
+                            "offset": 1738
+                          },
+                          "end": {
+                            "line": 41,
+                            "column": 28,
+                            "offset": 1762
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "これは DomainError としてスローべき",
+                                    "position": {
+                                      "start": {
+                                        "line": 42,
+                                        "column": 5,
+                                        "offset": 1767
+                                      },
+                                      "end": {
+                                        "line": 42,
+                                        "column": 29,
+                                        "offset": 1791
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 42,
+                                    "column": 5,
+                                    "offset": 1767
+                                  },
+                                  "end": {
+                                    "line": 42,
+                                    "column": 29,
+                                    "offset": 1791
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 42,
+                                "column": 3,
+                                "offset": 1765
+                              },
+                              "end": {
+                                "line": 42,
+                                "column": 29,
+                                "offset": 1791
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "「ビジネス例外」と勘違いしがち",
+                                    "position": {
+                                      "start": {
+                                        "line": 43,
+                                        "column": 5,
+                                        "offset": 1796
+                                      },
+                                      "end": {
+                                        "line": 43,
+                                        "column": 20,
+                                        "offset": 1811
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 43,
+                                    "column": 5,
+                                    "offset": 1796
+                                  },
+                                  "end": {
+                                    "line": 43,
+                                    "column": 20,
+                                    "offset": 1811
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 43,
+                                "column": 3,
+                                "offset": 1794
+                              },
+                              "end": {
+                                "line": 43,
+                                "column": 20,
+                                "offset": 1811
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 42,
+                            "column": 3,
+                            "offset": 1765
+                          },
+                          "end": {
+                            "line": 43,
+                            "column": 20,
+                            "offset": 1811
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 41,
+                        "column": 2,
+                        "offset": 1736
+                      },
+                      "end": {
+                        "line": 43,
+                        "column": 20,
+                        "offset": 1811
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "制御フローの誤り",
+                            "position": {
+                              "start": {
+                                "line": 44,
+                                "column": 4,
+                                "offset": 1815
+                              },
+                              "end": {
+                                "line": 44,
+                                "column": 12,
+                                "offset": 1823
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 44,
+                            "column": 4,
+                            "offset": 1815
+                          },
+                          "end": {
+                            "line": 44,
+                            "column": 12,
+                            "offset": 1823
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "正しく実装されていれば Unreachable なコード",
+                                    "position": {
+                                      "start": {
+                                        "line": 45,
+                                        "column": 5,
+                                        "offset": 1828
+                                      },
+                                      "end": {
+                                        "line": 45,
+                                        "column": 33,
+                                        "offset": 1856
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 45,
+                                    "column": 5,
+                                    "offset": 1828
+                                  },
+                                  "end": {
+                                    "line": 45,
+                                    "column": 33,
+                                    "offset": 1856
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 45,
+                                "column": 3,
+                                "offset": 1826
+                              },
+                              "end": {
+                                "line": 45,
+                                "column": 33,
+                                "offset": 1856
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "これも UnreachableError としてスローすべき",
+                                    "position": {
+                                      "start": {
+                                        "line": 46,
+                                        "column": 5,
+                                        "offset": 1861
+                                      },
+                                      "end": {
+                                        "line": 46,
+                                        "column": 35,
+                                        "offset": 1891
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 46,
+                                    "column": 5,
+                                    "offset": 1861
+                                  },
+                                  "end": {
+                                    "line": 46,
+                                    "column": 35,
+                                    "offset": 1891
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 46,
+                                "column": 3,
+                                "offset": 1859
+                              },
+                              "end": {
+                                "line": 46,
+                                "column": 35,
+                                "offset": 1891
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 45,
+                            "column": 3,
+                            "offset": 1826
+                          },
+                          "end": {
+                            "line": 46,
+                            "column": 35,
+                            "offset": 1891
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 44,
+                        "column": 2,
+                        "offset": 1813
+                      },
+                      "end": {
+                        "line": 46,
+                        "column": 35,
+                        "offset": 1891
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "この領域は適切に型を書けば守れることも多い",
+                            "position": {
+                              "start": {
+                                "line": 47,
+                                "column": 4,
+                                "offset": 1895
+                              },
+                              "end": {
+                                "line": 47,
+                                "column": 25,
+                                "offset": 1916
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 47,
+                            "column": 4,
+                            "offset": 1895
+                          },
+                          "end": {
+                            "line": 47,
+                            "column": 25,
+                            "offset": 1916
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 47,
+                        "column": 2,
+                        "offset": 1893
+                      },
+                      "end": {
+                        "line": 47,
+                        "column": 25,
+                        "offset": 1916
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 40,
+                    "column": 2,
+                    "offset": 1699
+                  },
+                  "end": {
+                    "line": 47,
+                    "column": 25,
+                    "offset": 1916
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 39,
+                "column": 1,
+                "offset": 1659
+              },
+              "end": {
+                "line": 47,
+                "column": 25,
+                "offset": 1916
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "アプリケーションとライブラリで例外設計の考え方は変わる",
+                    "position": {
+                      "start": {
+                        "line": 48,
+                        "column": 3,
+                        "offset": 1919
+                      },
+                      "end": {
+                        "line": 48,
+                        "column": 30,
+                        "offset": 1946
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 48,
+                    "column": 3,
+                    "offset": 1919
+                  },
+                  "end": {
+                    "line": 48,
+                    "column": 30,
+                    "offset": 1946
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ライブラリは「どう使われるかわからない」",
+                            "position": {
+                              "start": {
+                                "line": 49,
+                                "column": 4,
+                                "offset": 1950
+                              },
+                              "end": {
+                                "line": 49,
+                                "column": 24,
+                                "offset": 1970
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 49,
+                            "column": 4,
+                            "offset": 1950
+                          },
+                          "end": {
+                            "line": 49,
+                            "column": 24,
+                            "offset": 1970
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 49,
+                        "column": 2,
+                        "offset": 1948
+                      },
+                      "end": {
+                        "line": 49,
+                        "column": 24,
+                        "offset": 1970
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "例外は「わたしはこの解像度までならエラーを識別できます」という宣言",
+                            "position": {
+                              "start": {
+                                "line": 50,
+                                "column": 4,
+                                "offset": 1974
+                              },
+                              "end": {
+                                "line": 50,
+                                "column": 37,
+                                "offset": 2007
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 50,
+                            "column": 4,
+                            "offset": 1974
+                          },
+                          "end": {
+                            "line": 50,
+                            "column": 37,
+                            "offset": 2007
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 50,
+                        "column": 2,
+                        "offset": 1972
+                      },
+                      "end": {
+                        "line": 50,
+                        "column": 37,
+                        "offset": 2007
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Result でも throw でもよいが、何かしら呼び出し側で code や reason を分岐できる必要がある",
+                            "position": {
+                              "start": {
+                                "line": 51,
+                                "column": 4,
+                                "offset": 2011
+                              },
+                              "end": {
+                                "line": 51,
+                                "column": 62,
+                                "offset": 2069
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 51,
+                            "column": 4,
+                            "offset": 2011
+                          },
+                          "end": {
+                            "line": 51,
+                            "column": 62,
+                            "offset": 2069
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 51,
+                        "column": 2,
+                        "offset": 2009
+                      },
+                      "end": {
+                        "line": 51,
+                        "column": 62,
+                        "offset": 2069
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "モジュールは「アプリケーションの全体の責務分担の 1 つ」",
+                            "position": {
+                              "start": {
+                                "line": 52,
+                                "column": 4,
+                                "offset": 2073
+                              },
+                              "end": {
+                                "line": 52,
+                                "column": 33,
+                                "offset": 2102
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 52,
+                            "column": 4,
+                            "offset": 2073
+                          },
+                          "end": {
+                            "line": 52,
+                            "column": 33,
+                            "offset": 2102
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 52,
+                        "column": 2,
+                        "offset": 2071
+                      },
+                      "end": {
+                        "line": 52,
+                        "column": 33,
+                        "offset": 2102
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "そのモジュールがどこまでの解像度でエラーを識別するかは、むしろ呼び出し側の要請に拠る",
+                            "position": {
+                              "start": {
+                                "line": 53,
+                                "column": 4,
+                                "offset": 2106
+                              },
+                              "end": {
+                                "line": 53,
+                                "column": 46,
+                                "offset": 2148
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 53,
+                            "column": 4,
+                            "offset": 2106
+                          },
+                          "end": {
+                            "line": 53,
+                            "column": 46,
+                            "offset": 2148
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 53,
+                        "column": 2,
+                        "offset": 2104
+                      },
+                      "end": {
+                        "line": 53,
+                        "column": 46,
+                        "offset": 2148
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 49,
+                    "column": 2,
+                    "offset": 1948
+                  },
+                  "end": {
+                    "line": 53,
+                    "column": 46,
+                    "offset": 2148
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 48,
+                "column": 1,
+                "offset": 1917
+              },
+              "end": {
+                "line": 53,
+                "column": 46,
+                "offset": 2148
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "例外のスローという仕組みが、そもそもある種のホワイトリスト的な考え方",
+                    "position": {
+                      "start": {
+                        "line": 54,
+                        "column": 3,
+                        "offset": 2151
+                      },
+                      "end": {
+                        "line": 54,
+                        "column": 37,
+                        "offset": 2185
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 54,
+                    "column": 3,
+                    "offset": 2151
+                  },
+                  "end": {
+                    "line": 54,
+                    "column": 37,
+                    "offset": 2185
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "自分が責任を持てる領域のみスローをやめて適切に処理するところから始める",
+                            "position": {
+                              "start": {
+                                "line": 55,
+                                "column": 4,
+                                "offset": 2189
+                              },
+                              "end": {
+                                "line": 55,
+                                "column": 39,
+                                "offset": 2224
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 55,
+                            "column": 4,
+                            "offset": 2189
+                          },
+                          "end": {
+                            "line": 55,
+                            "column": 39,
+                            "offset": 2224
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 55,
+                        "column": 2,
+                        "offset": 2187
+                      },
+                      "end": {
+                        "line": 55,
+                        "column": 39,
+                        "offset": 2224
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "それ以外はクラッシュさせる（クラッシュ寸前まで貫通させる）のがむしろ見通しが良い",
+                            "position": {
+                              "start": {
+                                "line": 56,
+                                "column": 4,
+                                "offset": 2228
+                              },
+                              "end": {
+                                "line": 56,
+                                "column": 44,
+                                "offset": 2268
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 56,
+                            "column": 4,
+                            "offset": 2228
+                          },
+                          "end": {
+                            "line": 56,
+                            "column": 44,
+                            "offset": 2268
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 56,
+                        "column": 2,
+                        "offset": 2226
+                      },
+                      "end": {
+                        "line": 56,
+                        "column": 44,
+                        "offset": 2268
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "必要に応じてその領域を拡大していけばよい",
+                            "position": {
+                              "start": {
+                                "line": 57,
+                                "column": 4,
+                                "offset": 2272
+                              },
+                              "end": {
+                                "line": 57,
+                                "column": 24,
+                                "offset": 2292
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 57,
+                            "column": 4,
+                            "offset": 2272
+                          },
+                          "end": {
+                            "line": 57,
+                            "column": 24,
+                            "offset": 2292
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 57,
+                        "column": 2,
+                        "offset": 2270
+                      },
+                      "end": {
+                        "line": 57,
+                        "column": 24,
+                        "offset": 2292
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "この原理を理解しておけば、とりあえず全体を try/catch で囲んでレイヤリングをする、というアンチパターンを防げる",
+                            "position": {
+                              "start": {
+                                "line": 58,
+                                "column": 4,
+                                "offset": 2296
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 64,
+                                "offset": 2356
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 58,
+                            "column": 4,
+                            "offset": 2296
+                          },
+                          "end": {
+                            "line": 58,
+                            "column": 64,
+                            "offset": 2356
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 58,
+                        "column": 2,
+                        "offset": 2294
+                      },
+                      "end": {
+                        "line": 58,
+                        "column": 64,
+                        "offset": 2356
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 55,
+                    "column": 2,
+                    "offset": 2187
+                  },
+                  "end": {
+                    "line": 58,
+                    "column": 64,
+                    "offset": 2356
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 54,
+                "column": 1,
+                "offset": 2149
+              },
+              "end": {
+                "line": 58,
+                "column": 64,
+                "offset": 2356
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "一番上位のレイヤでは全体を try/catch で囲んだ方がよさそうだが、これもケースバイケース",
+                    "position": {
+                      "start": {
+                        "line": 59,
+                        "column": 3,
+                        "offset": 2359
+                      },
+                      "end": {
+                        "line": 59,
+                        "column": 51,
+                        "offset": 2407
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 59,
+                    "column": 3,
+                    "offset": 2359
+                  },
+                  "end": {
+                    "line": 59,
+                    "column": 51,
+                    "offset": 2407
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "サーバなど長時間動くプロセスがクラッシュするのはまずい",
+                            "position": {
+                              "start": {
+                                "line": 60,
+                                "column": 4,
+                                "offset": 2411
+                              },
+                              "end": {
+                                "line": 60,
+                                "column": 31,
+                                "offset": 2438
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 60,
+                            "column": 4,
+                            "offset": 2411
+                          },
+                          "end": {
+                            "line": 60,
+                            "column": 31,
+                            "offset": 2438
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "フレームワークを使っているならたいてい拾ってくれる",
+                                    "position": {
+                                      "start": {
+                                        "line": 61,
+                                        "column": 5,
+                                        "offset": 2443
+                                      },
+                                      "end": {
+                                        "line": 61,
+                                        "column": 30,
+                                        "offset": 2468
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 61,
+                                    "column": 5,
+                                    "offset": 2443
+                                  },
+                                  "end": {
+                                    "line": 61,
+                                    "column": 30,
+                                    "offset": 2468
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 61,
+                                "column": 3,
+                                "offset": 2441
+                              },
+                              "end": {
+                                "line": 61,
+                                "column": 30,
+                                "offset": 2468
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 61,
+                            "column": 3,
+                            "offset": 2441
+                          },
+                          "end": {
+                            "line": 61,
+                            "column": 30,
+                            "offset": 2468
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 60,
+                        "column": 2,
+                        "offset": 2409
+                      },
+                      "end": {
+                        "line": 61,
+                        "column": 30,
+                        "offset": 2468
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "サーバレス関数の場合はそのままクラッシュさせてもよいかもしれない",
+                            "position": {
+                              "start": {
+                                "line": 62,
+                                "column": 4,
+                                "offset": 2472
+                              },
+                              "end": {
+                                "line": 62,
+                                "column": 36,
+                                "offset": 2504
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 62,
+                            "column": 4,
+                            "offset": 2472
+                          },
+                          "end": {
+                            "line": 62,
+                            "column": 36,
+                            "offset": 2504
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "ただしプラットフォーム側のリトライ機構に乗せたくない場合は捕捉するのもあり",
+                                    "position": {
+                                      "start": {
+                                        "line": 63,
+                                        "column": 5,
+                                        "offset": 2509
+                                      },
+                                      "end": {
+                                        "line": 63,
+                                        "column": 42,
+                                        "offset": 2546
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 63,
+                                    "column": 5,
+                                    "offset": 2509
+                                  },
+                                  "end": {
+                                    "line": 63,
+                                    "column": 42,
+                                    "offset": 2546
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 63,
+                                "column": 3,
+                                "offset": 2507
+                              },
+                              "end": {
+                                "line": 63,
+                                "column": 42,
+                                "offset": 2546
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 63,
+                            "column": 3,
+                            "offset": 2507
+                          },
+                          "end": {
+                            "line": 63,
+                            "column": 42,
+                            "offset": 2546
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 62,
+                        "column": 2,
+                        "offset": 2470
+                      },
+                      "end": {
+                        "line": 63,
+                        "column": 42,
+                        "offset": 2546
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "バッチ処理の場合は必ず捕捉してログを取ったりしたい",
+                            "position": {
+                              "start": {
+                                "line": 64,
+                                "column": 4,
+                                "offset": 2550
+                              },
+                              "end": {
+                                "line": 64,
+                                "column": 29,
+                                "offset": 2575
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 64,
+                            "column": 4,
+                            "offset": 2550
+                          },
+                          "end": {
+                            "line": 64,
+                            "column": 29,
+                            "offset": 2575
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 64,
+                        "column": 2,
+                        "offset": 2548
+                      },
+                      "end": {
+                        "line": 64,
+                        "column": 29,
+                        "offset": 2575
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 60,
+                    "column": 2,
+                    "offset": 2409
+                  },
+                  "end": {
+                    "line": 64,
+                    "column": 29,
+                    "offset": 2575
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 59,
+                "column": 1,
+                "offset": 2357
+              },
+              "end": {
+                "line": 64,
+                "column": 29,
+                "offset": 2575
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "そもそも「ビジネス例外」と「技術例外」という区分自体が、アプリケーションの例外設計のための考え方であるとも言える",
+                    "position": {
+                      "start": {
+                        "line": 65,
+                        "column": 3,
+                        "offset": 2578
+                      },
+                      "end": {
+                        "line": 65,
+                        "column": 59,
+                        "offset": 2634
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 65,
+                    "column": 3,
+                    "offset": 2578
+                  },
+                  "end": {
+                    "line": 65,
+                    "column": 59,
+                    "offset": 2634
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ライブラリはアプリケーションではないので、ビジネス例外を Result にせず、全部例外としてスローしておく方がよいケースもある",
+                            "position": {
+                              "start": {
+                                "line": 66,
+                                "column": 4,
+                                "offset": 2638
+                              },
+                              "end": {
+                                "line": 66,
+                                "column": 68,
+                                "offset": 2702
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 66,
+                            "column": 4,
+                            "offset": 2638
+                          },
+                          "end": {
+                            "line": 66,
+                            "column": 68,
+                            "offset": 2702
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 66,
+                        "column": 2,
+                        "offset": 2636
+                      },
+                      "end": {
+                        "line": 66,
+                        "column": 68,
+                        "offset": 2702
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 66,
+                    "column": 2,
+                    "offset": 2636
+                  },
+                  "end": {
+                    "line": 66,
+                    "column": 68,
+                    "offset": 2702
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 65,
+                "column": 1,
+                "offset": 2576
+              },
+              "end": {
+                "line": 66,
+                "column": 68,
+                "offset": 2702
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 5,
+            "column": 1,
+            "offset": 69
+          },
+          "end": {
+            "line": 66,
+            "column": 68,
+            "offset": 2702
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 67,
+        "column": 1,
+        "offset": 2703
+      }
+    }
+  }
+}
