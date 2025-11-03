@@ -1,3 +1,3 @@
 export const toString = (date: Date) => {
-  return date.toLocaleDateString('ja-JP')
-}
+  return date.toLocaleDateString('ja-JP');
+};

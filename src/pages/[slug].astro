@@ -1,25 +1,34 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import { toHast } from 'mdast-util-to-hast';
+import type { Element, ElementContent } from 'hast';
 import { toHtml } from 'hast-util-to-html';
 import type { ListItem } from 'mdast';
-import { toString } from '../lib/date.ts';
 import type { State } from 'mdast-util-to-hast';
-import type { Element, ElementContent } from 'hast';
+import { toHast } from 'mdast-util-to-hast';
 import { z } from 'zod';
+import Layout from '../layouts/Layout.astro';
+import { toString } from '../lib/date.ts';
 
 export async function getStaticPaths() {
   const nodeDataSchema = z.object({
     title: z.string(),
     content: z.any(),
     createdAt: z.string().nullable(),
-    updatedAt: z.string().nullable(),
+    updatedAt: z.string().nullable()
   });
   const modules = import.meta.glob('/data/*.json', { eager: true });
   const posts = Object.entries(modules).map(([path, data]) => {
-    const slug = (path.split('/') .at(-1) || '').replace(/\.json$/, '');
+    const slug = (path.split('/').at(-1) || '').replace(/\.json$/, '');
     const nodeData = nodeDataSchema.parse(data);
-    return { params: { slug }, props: { slug, title: nodeData.title, content: nodeData.content, createdAt: nodeData.createdAt, updatedAt: nodeData.updatedAt } };
+    return {
+      params: { slug },
+      props: {
+        slug,
+        title: nodeData.title,
+        content: nodeData.content,
+        createdAt: nodeData.createdAt,
+        updatedAt: nodeData.updatedAt
+      }
+    };
   });
   return posts;
 }
@@ -29,7 +38,9 @@ const { slug, title, content, createdAt, updatedAt } = Astro.props;
 // 記事の最初の段落をdescriptionとして使用
 const getDescription = (content: any): string => {
   if (content?.children) {
-    const firstParagraph = content.children.find((child: any) => child.type === 'paragraph');
+    const firstParagraph = content.children.find(
+      (child: any) => child.type === 'paragraph'
+    );
     if (firstParagraph?.children) {
       return firstParagraph.children
         .filter((child: any) => child.type === 'text')
@@ -76,11 +87,20 @@ const handlers = {
 const hast = toHast(content, { handlers });
 const html = toHtml(hast);
 ---
+
 <style>
+  .article-container {
+    container-type: inline-size;
+
+    ul {
+      padding-left: 2rem;
+    }
+  }
+
   article {
     display: grid;
     grid-template-columns: 180px 1fr;
-    grid-template-areas: "meta body";
+    grid-template-areas: 'meta body';
     gap: 24px;
     margin-top: 16px;
     h1 {
@@ -91,12 +111,12 @@ const html = toHtml(hast);
   .article-content {
     grid-area: body;
   }
+
   footer {
     position: sticky;
     top: 56px;
     height: max-content;
     grid-area: meta;
-    padding: 0 8px;
     dl {
       text-align: right;
       margin: 0;
@@ -106,30 +126,60 @@ const html = toHtml(hast);
       row-gap: 4px;
     }
     dt {
-      font-size: small;
+      font-size: smaller;
     }
     dd {
       margin: 0;
     }
   }
+
+  @container (max-width: 840px) {
+    article {
+      grid-template-columns: none;
+      grid-template-rows: auto;
+      grid-template-areas: 'meta' 'body';
+      row-gap: 4px;
+      margin: 8px;
+    }
+
+    footer {
+      position: initial;
+      dl {
+        font-size: smaller;
+        flex-direction: row;
+        justify-content: flex-end;
+        column-gap: 16px;
+      }
+    }
+  }
 </style>
 <Layout title={title} description={getDescription(content)}>
-  <article>
-    <div class="article-content">
-      <h1>{title}</h1>
-      <div set:html={html} />
-    </div>
-    <footer>
-      <dl>
-        <div>
-          <dt>Created</dt>
-          <dd><time datetime={createdAt}>{createdAt ? toString(new Date(createdAt)): '-'}</time></dd>
-        </div>
-        <div>
-          <dt>Updated</dt>
-          <dd><time datetime={updatedAt}>{updatedAt ? toString(new Date(updatedAt)) : '-'}</time></dd>
-        </div>
-      </dl>
-    </footer>
-  </article>
+  <div class="article-container">
+    <article>
+      <div class="article-content">
+        <h1>{title}</h1>
+        <div set:html={html} />
+      </div>
+      <footer>
+        <dl>
+          <div>
+            <dt>Created</dt>
+            <dd>
+              <time datetime={createdAt}
+                >{createdAt ? toString(new Date(createdAt)) : '-'}</time
+              >
+            </dd>
+          </div>
+          <div>
+            <dt>Updated</dt>
+            <dd>
+              <time datetime={updatedAt}
+                >{updatedAt ? toString(new Date(updatedAt)) : '-'}</time
+              >
+            </dd>
+          </div>
+        </dl>
+      </footer>
+    </article>
+  </div>
 </Layout>
