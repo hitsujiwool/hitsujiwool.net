@@ -10,6 +10,7 @@ import { z } from 'zod';
 
 export async function getStaticPaths() {
   const nodeDataSchema = z.object({
+    title: z.string(),
     content: z.any(),
     createdAt: z.string().nullable(),
     updatedAt: z.string().nullable(),
@@ -18,12 +19,27 @@ export async function getStaticPaths() {
   const posts = Object.entries(modules).map(([path, data]) => {
     const slug = (path.split('/') .at(-1) || '').replace(/\.json$/, '');
     const nodeData = nodeDataSchema.parse(data);
-    return { params: { slug}, props: { slug, title: slug, content: nodeData.content, createdAt: nodeData.createdAt, updatedAt: nodeData.updatedAt } };
+    return { params: { slug }, props: { slug, title: nodeData.title, content: nodeData.content, createdAt: nodeData.createdAt, updatedAt: nodeData.updatedAt } };
   });
   return posts;
 }
 
-const { title, content, createdAt, updatedAt } = Astro.props;
+const { slug, title, content, createdAt, updatedAt } = Astro.props;
+
+// 記事の最初の段落をdescriptionとして使用
+const getDescription = (content: any): string => {
+  if (content?.children) {
+    const firstParagraph = content.children.find((child: any) => child.type === 'paragraph');
+    if (firstParagraph?.children) {
+      return firstParagraph.children
+        .filter((child: any) => child.type === 'text')
+        .map((child: any) => child.value)
+        .join('')
+        .slice(0, 160);
+    }
+  }
+  return title;
+};
 
 // カスタムハンドラー: listItem 内の paragraph を unwrap
 const handlers = {
@@ -97,7 +113,7 @@ const html = toHtml(hast);
     }
   }
 </style>
-<Layout>
+<Layout title={title} description={getDescription(content)}>
   <article>
     <div class="article-content">
       <h1>{title}</h1>
