@@ -1,11 +1,35 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import { toString } from '../lib/date.ts';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+interface PageData {
+  slug: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
+const modules = import.meta.glob('/data/*.json', { eager: true });
+const pages: PageData[] = Object.entries(modules)
+  .map(([path, data]: [string, any]) => {
+    const slug = path.split('/').pop()?.replace('.json', '') || '';
+    return {
+      slug,
+      createdAt: data.createdAt,
+      updatedAt: data.updatedAt
+    };
+  })
+  .sort((a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime());
 ---
 
 <Layout>
-	<Welcome />
+  <ul>
+    {pages.map(page => (
+      <li>
+        <a href={`/${page.slug}`} data-astro-prefetch>{page.slug}</a>
+        <time datetime={page.createdAt}>
+          {toString(new Date(page.createdAt))}
+        </time>
+      </li>
+    ))}
+  </ul>
 </Layout>

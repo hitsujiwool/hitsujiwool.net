@@ -1,0 +1,112 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { toHast } from 'mdast-util-to-hast';
+import { toHtml } from 'hast-util-to-html';
+import type { ListItem } from 'mdast';
+import { toString } from '../lib/date.ts';
+import type { State } from 'mdast-util-to-hast';
+import type { Element, ElementContent } from 'hast';
+
+export async function getStaticPaths() {
+  const modules = import.meta.glob('/data/*.json', { eager: true });
+  const posts = Object.entries(modules).map(([path, data]) => {
+    const slug = (path.split('/') .at(-1) || '').replace(/\.json$/, '');
+    return { params: { slug}, props: { slug, title: slug, content: data.data, createdAt: data.createdAt, updatedAt: data.updatedAt  } };
+  });
+  return posts;
+}
+
+const { slug, title, content, createdAt, updatedAt } = Astro.props;
+
+// カスタムハンドラー: listItem 内の paragraph を unwrap
+const handlers = {
+  listItem(state: State, node: ListItem): Element {
+    const children = node.children || [];
+    const result: ElementContent[] = [];
+
+    children.forEach((child) => {
+      if (child.type === 'paragraph') {
+        // paragraph の中身だけを取り出す
+        const converted = state.all(child);
+        result.push(...converted);
+      } else {
+        const converted = state.one(child, node);
+        if (converted) {
+          if (Array.isArray(converted)) {
+            result.push(...converted);
+          } else {
+            result.push(converted);
+          }
+        }
+      }
+    });
+
+    return {
+      type: 'element',
+      tagName: 'li',
+      properties: {},
+      children: result
+    };
+  }
+};
+
+const hast = toHast(content, { handlers });
+const html = toHtml(hast);
+---
+<style>
+  article {
+    display: grid;
+    grid-template-columns: 180px 1fr;
+    grid-template-areas: "meta body";
+    gap: 24px;
+    margin-top: 16px;
+    h1 {
+      margin: 0;
+      font-size: x-large;
+    }
+  }
+  .article-content {
+    grid-area: body;
+  }
+  footer {
+    position: sticky;
+    top: 56px;
+    height: max-content;
+    grid-area: meta;
+    padding: 0 8px;
+    dl {
+      text-align: right;
+      margin: 0;
+      color: #555555;
+      display: flex;
+      flex-direction: column;
+      row-gap: 4px;
+    }
+    dt {
+      font-size: small;
+    }
+    dd {
+      margin: 0;
+    }
+  }
+</style>
+<Layout>
+  <article>
+    <div class="article-content">
+      <h1>{title}</h1>
+      <div set:html={html} />
+    </div>
+    <footer>
+      <dl>
+        <div>
+          <dt>Created</dt>
+          <dd><time datetime={createdAt}>{toString(new Date(createdAt))}</time></dd>
+        </div>
+        <div>
+          <dt>Updated</dt>
+          <dd><time datetime={updatedAt}>{toString(new Date(updatedAt))}</time></dd>
+        </div>
+      </dl>
+    </footer>
+  </article>
+</Layout>
