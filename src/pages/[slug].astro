@@ -6,17 +6,24 @@ import type { ListItem } from 'mdast';
 import { toString } from '../lib/date.ts';
 import type { State } from 'mdast-util-to-hast';
 import type { Element, ElementContent } from 'hast';
+import { z } from 'zod';
 
 export async function getStaticPaths() {
+  const nodeDataSchema = z.object({
+    content: z.any(),
+    createdAt: z.string().nullable(),
+    updatedAt: z.string().nullable(),
+  });
   const modules = import.meta.glob('/data/*.json', { eager: true });
   const posts = Object.entries(modules).map(([path, data]) => {
     const slug = (path.split('/') .at(-1) || '').replace(/\.json$/, '');
-    return { params: { slug}, props: { slug, title: slug, content: data.data, createdAt: data.createdAt, updatedAt: data.updatedAt  } };
+    const nodeData = nodeDataSchema.parse(data);
+    return { params: { slug}, props: { slug, title: slug, content: nodeData.content, createdAt: nodeData.createdAt, updatedAt: nodeData.updatedAt } };
   });
   return posts;
 }
 
-const { slug, title, content, createdAt, updatedAt } = Astro.props;
+const { title, content, createdAt, updatedAt } = Astro.props;
 
 // カスタムハンドラー: listItem 内の paragraph を unwrap
 const handlers = {
@@ -100,11 +107,11 @@ const html = toHtml(hast);
       <dl>
         <div>
           <dt>Created</dt>
-          <dd><time datetime={createdAt}>{toString(new Date(createdAt))}</time></dd>
+          <dd><time datetime={createdAt}>{createdAt ? toString(new Date(createdAt)): '-'}</time></dd>
         </div>
         <div>
           <dt>Updated</dt>
-          <dd><time datetime={updatedAt}>{toString(new Date(updatedAt))}</time></dd>
+          <dd><time datetime={updatedAt}>{updatedAt ? toString(new Date(updatedAt)) : '-'}</time></dd>
         </div>
       </dl>
     </footer>

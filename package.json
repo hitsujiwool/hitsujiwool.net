@@ -12,7 +12,8 @@
     "@astrojs/cloudflare": "^12.6.10",
     "astro": "^5.15.3",
     "hast-util-to-html": "^9.0.5",
-    "mdast-util-to-hast": "^13.2.0"
+    "mdast-util-to-hast": "^13.2.0",
+    "zod": "^3.25.76"
   },
   "devDependencies": {
     "wrangler": "^4.45.3"

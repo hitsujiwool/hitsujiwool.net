@@ -1,10 +1,12 @@
 {
+  "title": "自然な自己開示を促すブログシステムを作りたい",
+  "source": "---\ntags:\n  - scribble\n---\n- いいなと思ったきっかけ。\n\t- https://baku89.com/morion\n\t- https://x.com/chocoschools/status/1976966016027836507a\n- 避けたい & 変えたい事態\n\t- 何かのプラットフォームの管理画面にログインして原稿を書く\n\t\t- ウェブでもネイティブでも本質的には変わらない\n\t- 手元でメモを書くとは別のツールやフォーマットを使って書く\n\t- 公開可能な場所（典型的にはリモートのサーバ）にアップロードすることで公開される\n- 公開しても良いというフラグ・しるしが、そのまま公開状態を切り替える\n- デフォルトは公開で、必要に応じて非公開という極端な設計もあり\n- [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)  や [Tailscale Funnel](https://tailscale.com/kb/1223/funnel)  はかなり近い\n- ローカルの環境が「うっかり」インターネットに開示される感覚\n- P2P とはすこし違いそう\n\t- 自己開示はそれ自体が非対称な関係で、これは書き手の負うべき「責任」\n\t- そういえば「うっかり」「責任」といえば中動態？　もう一度調べ直す必要がありそう\n",
   "createdAt": "2025-11-02T02:04:42.152Z",
-  "updatedAt": "2025-11-02T14:39:37.993Z",
+  "updatedAt": "2025-11-03T05:56:37.400Z",
   "tags": [
     "scribble"
   ],
-  "data": {
+  "content": {
     "type": "root",
     "children": [
       {
@@ -24,11 +26,212 @@
         }
       },
       {
-        "type": "paragraph",
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": false,
         "children": [
           {
-            "type": "text",
-            "value": "こういう手元のメモを公開していきたい。",
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "いいなと思ったきっかけ。",
+                    "position": {
+                      "start": {
+                        "line": 5,
+                        "column": 3,
+                        "offset": 29
+                      },
+                      "end": {
+                        "line": 5,
+                        "column": 15,
+                        "offset": 41
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 5,
+                    "column": 3,
+                    "offset": 29
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 15,
+                    "offset": 41
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "link",
+                            "title": null,
+                            "url": "https://baku89.com/morion",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "https://baku89.com/morion",
+                                "position": {
+                                  "start": {
+                                    "line": 6,
+                                    "column": 4,
+                                    "offset": 45
+                                  },
+                                  "end": {
+                                    "line": 6,
+                                    "column": 29,
+                                    "offset": 70
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 6,
+                                "column": 4,
+                                "offset": 45
+                              },
+                              "end": {
+                                "line": 6,
+                                "column": 29,
+                                "offset": 70
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 6,
+                            "column": 4,
+                            "offset": 45
+                          },
+                          "end": {
+                            "line": 6,
+                            "column": 29,
+                            "offset": 70
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 6,
+                        "column": 2,
+                        "offset": 43
+                      },
+                      "end": {
+                        "line": 6,
+                        "column": 29,
+                        "offset": 70
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "link",
+                            "title": null,
+                            "url": "https://x.com/chocoschools/status/1976966016027836507a",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "https://x.com/chocoschools/status/1976966016027836507a",
+                                "position": {
+                                  "start": {
+                                    "line": 7,
+                                    "column": 4,
+                                    "offset": 74
+                                  },
+                                  "end": {
+                                    "line": 7,
+                                    "column": 58,
+                                    "offset": 128
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 7,
+                                "column": 4,
+                                "offset": 74
+                              },
+                              "end": {
+                                "line": 7,
+                                "column": 58,
+                                "offset": 128
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 7,
+                            "column": 4,
+                            "offset": 74
+                          },
+                          "end": {
+                            "line": 7,
+                            "column": 58,
+                            "offset": 128
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 2,
+                        "offset": 72
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 58,
+                        "offset": 128
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 6,
+                    "column": 2,
+                    "offset": 43
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 58,
+                    "offset": 128
+                  }
+                }
+              }
+            ],
             "position": {
               "start": {
                 "line": 5,
@@ -36,171 +239,9 @@
                 "offset": 27
               },
               "end": {
-                "line": 5,
-                "column": 20,
-                "offset": 46
-              }
-            }
-          }
-        ],
-        "position": {
-          "start": {
-            "line": 5,
-            "column": 1,
-            "offset": 27
-          },
-          "end": {
-            "line": 5,
-            "column": 20,
-            "offset": 46
-          }
-        }
-      },
-      {
-        "type": "list",
-        "ordered": false,
-        "start": null,
-        "spread": true,
-        "children": [
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "https://baku89.com/morion",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "https://baku89.com/morion",
-                        "position": {
-                          "start": {
-                            "line": 7,
-                            "column": 3,
-                            "offset": 50
-                          },
-                          "end": {
-                            "line": 7,
-                            "column": 28,
-                            "offset": 75
-                          }
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 7,
-                        "column": 3,
-                        "offset": 50
-                      },
-                      "end": {
-                        "line": 7,
-                        "column": 28,
-                        "offset": 75
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 7,
-                    "column": 3,
-                    "offset": 50
-                  },
-                  "end": {
-                    "line": 7,
-                    "column": 28,
-                    "offset": 75
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
                 "line": 7,
-                "column": 1,
-                "offset": 48
-              },
-              "end": {
-                "line": 7,
-                "column": 28,
-                "offset": 75
-              }
-            }
-          },
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "link",
-                    "title": null,
-                    "url": "https://x.com/chocoschools/status/1976966016027836507a",
-                    "children": [
-                      {
-                        "type": "text",
-                        "value": "https://x.com/chocoschools/status/1976966016027836507a",
-                        "position": {
-                          "start": {
-                            "line": 8,
-                            "column": 3,
-                            "offset": 78
-                          },
-                          "end": {
-                            "line": 8,
-                            "column": 57,
-                            "offset": 132
-                          }
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 8,
-                        "column": 3,
-                        "offset": 78
-                      },
-                      "end": {
-                        "line": 8,
-                        "column": 57,
-                        "offset": 132
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 8,
-                    "column": 3,
-                    "offset": 78
-                  },
-                  "end": {
-                    "line": 8,
-                    "column": 57,
-                    "offset": 132
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 8,
-                "column": 1,
-                "offset": 76
-              },
-              "end": {
-                "line": 8,
-                "column": 57,
-                "offset": 132
+                "column": 58,
+                "offset": 128
               }
             }
           },
@@ -217,28 +258,28 @@
                     "value": "避けたい & 変えたい事態",
                     "position": {
                       "start": {
-                        "line": 10,
+                        "line": 8,
                         "column": 3,
-                        "offset": 136
+                        "offset": 131
                       },
                       "end": {
-                        "line": 10,
+                        "line": 8,
                         "column": 16,
-                        "offset": 149
+                        "offset": 144
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 10,
+                    "line": 8,
                     "column": 3,
-                    "offset": 136
+                    "offset": 131
                   },
                   "end": {
-                    "line": 10,
+                    "line": 8,
                     "column": 16,
-                    "offset": 149
+                    "offset": 144
                   }
                 }
               },
@@ -261,28 +302,28 @@
                             "value": "何かのプラットフォームの管理画面にログインして原稿を書く",
                             "position": {
                               "start": {
-                                "line": 11,
+                                "line": 9,
                                 "column": 4,
-                                "offset": 153
+                                "offset": 148
                               },
                               "end": {
-                                "line": 11,
+                                "line": 9,
                                 "column": 32,
-                                "offset": 181
+                                "offset": 176
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 11,
+                            "line": 9,
                             "column": 4,
-                            "offset": 153
+                            "offset": 148
                           },
                           "end": {
-                            "line": 11,
+                            "line": 9,
                             "column": 32,
-                            "offset": 181
+                            "offset": 176
                           }
                         }
                       },
@@ -305,70 +346,70 @@
                                     "value": "ウェブでもネイティブでも本質的には変わらない",
                                     "position": {
                                       "start": {
-                                        "line": 12,
+                                        "line": 10,
                                         "column": 5,
-                                        "offset": 186
+                                        "offset": 181
                                       },
                                       "end": {
-                                        "line": 12,
+                                        "line": 10,
                                         "column": 27,
-                                        "offset": 208
+                                        "offset": 203
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 12,
+                                    "line": 10,
                                     "column": 5,
-                                    "offset": 186
+                                    "offset": 181
                                   },
                                   "end": {
-                                    "line": 12,
+                                    "line": 10,
                                     "column": 27,
-                                    "offset": 208
+                                    "offset": 203
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 12,
+                                "line": 10,
                                 "column": 3,
-                                "offset": 184
+                                "offset": 179
                               },
                               "end": {
-                                "line": 12,
+                                "line": 10,
                                 "column": 27,
-                                "offset": 208
+                                "offset": 203
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 12,
+                            "line": 10,
                             "column": 3,
-                            "offset": 184
+                            "offset": 179
                           },
                           "end": {
-                            "line": 12,
+                            "line": 10,
                             "column": 27,
-                            "offset": 208
+                            "offset": 203
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 11,
+                        "line": 9,
                         "column": 2,
-                        "offset": 151
+                        "offset": 146
                       },
                       "end": {
-                        "line": 12,
+                        "line": 10,
                         "column": 27,
-                        "offset": 208
+                        "offset": 203
                       }
                     }
                   },
@@ -385,42 +426,42 @@
                             "value": "手元でメモを書くとは別のツールやフォーマットを使って書く",
                             "position": {
                               "start": {
-                                "line": 13,
+                                "line": 11,
                                 "column": 4,
-                                "offset": 212
+                                "offset": 207
                               },
                               "end": {
-                                "line": 13,
+                                "line": 11,
                                 "column": 32,
-                                "offset": 240
+                                "offset": 235
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 13,
+                            "line": 11,
                             "column": 4,
-                            "offset": 212
+                            "offset": 207
                           },
                           "end": {
-                            "line": 13,
+                            "line": 11,
                             "column": 32,
-                            "offset": 240
+                            "offset": 235
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 13,
+                        "line": 11,
                         "column": 2,
-                        "offset": 210
+                        "offset": 205
                       },
                       "end": {
-                        "line": 13,
+                        "line": 11,
                         "column": 32,
-                        "offset": 240
+                        "offset": 235
                       }
                     }
                   },
@@ -437,70 +478,70 @@
                             "value": "公開可能な場所（典型的にはリモートのサーバ）にアップロードすることで公開される",
                             "position": {
                               "start": {
-                                "line": 14,
+                                "line": 12,
                                 "column": 4,
-                                "offset": 244
+                                "offset": 239
                               },
                               "end": {
-                                "line": 14,
+                                "line": 12,
                                 "column": 43,
-                                "offset": 283
+                                "offset": 278
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 14,
+                            "line": 12,
                             "column": 4,
-                            "offset": 244
+                            "offset": 239
                           },
                           "end": {
-                            "line": 14,
+                            "line": 12,
                             "column": 43,
-                            "offset": 283
+                            "offset": 278
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 14,
+                        "line": 12,
                         "column": 2,
-                        "offset": 242
+                        "offset": 237
                       },
                       "end": {
-                        "line": 14,
+                        "line": 12,
                         "column": 43,
-                        "offset": 283
+                        "offset": 278
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 11,
+                    "line": 9,
                     "column": 2,
-                    "offset": 151
+                    "offset": 146
                   },
                   "end": {
-                    "line": 14,
+                    "line": 12,
                     "column": 43,
-                    "offset": 283
+                    "offset": 278
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 10,
+                "line": 8,
                 "column": 1,
-                "offset": 134
+                "offset": 129
               },
               "end": {
-                "line": 14,
+                "line": 12,
                 "column": 43,
-                "offset": 283
+                "offset": 278
               }
             }
           },
@@ -517,42 +558,42 @@
                     "value": "公開しても良いというフラグ・しるしが、そのまま公開状態を切り替える",
                     "position": {
                       "start": {
-                        "line": 15,
+                        "line": 13,
                         "column": 3,
-                        "offset": 286
+                        "offset": 281
                       },
                       "end": {
-                        "line": 15,
+                        "line": 13,
                         "column": 36,
-                        "offset": 319
+                        "offset": 314
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 15,
+                    "line": 13,
                     "column": 3,
-                    "offset": 286
+                    "offset": 281
                   },
                   "end": {
-                    "line": 15,
+                    "line": 13,
                     "column": 36,
-                    "offset": 319
+                    "offset": 314
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 15,
+                "line": 13,
                 "column": 1,
-                "offset": 284
+                "offset": 279
               },
               "end": {
-                "line": 15,
+                "line": 13,
                 "column": 36,
-                "offset": 319
+                "offset": 314
               }
             }
           },
@@ -569,42 +610,42 @@
                     "value": "デフォルトは公開で、必要に応じて非公開という極端な設計もあり",
                     "position": {
                       "start": {
-                        "line": 16,
+                        "line": 14,
                         "column": 3,
-                        "offset": 322
+                        "offset": 317
                       },
                       "end": {
-                        "line": 16,
+                        "line": 14,
                         "column": 33,
-                        "offset": 352
+                        "offset": 347
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 16,
+                    "line": 14,
                     "column": 3,
-                    "offset": 322
+                    "offset": 317
                   },
                   "end": {
-                    "line": 16,
+                    "line": 14,
                     "column": 33,
-                    "offset": 352
+                    "offset": 347
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 16,
+                "line": 14,
                 "column": 1,
-                "offset": 320
+                "offset": 315
               },
               "end": {
-                "line": 16,
+                "line": 14,
                 "column": 33,
-                "offset": 352
+                "offset": 347
               }
             }
           },
@@ -626,28 +667,28 @@
                         "value": "Cloudflare tunnel",
                         "position": {
                           "start": {
-                            "line": 17,
+                            "line": 15,
                             "column": 4,
-                            "offset": 356
+                            "offset": 351
                           },
                           "end": {
-                            "line": 17,
+                            "line": 15,
                             "column": 21,
-                            "offset": 373
+                            "offset": 368
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 17,
+                        "line": 15,
                         "column": 3,
-                        "offset": 355
+                        "offset": 350
                       },
                       "end": {
-                        "line": 17,
+                        "line": 15,
                         "column": 111,
-                        "offset": 463
+                        "offset": 458
                       }
                     }
                   },
@@ -656,14 +697,14 @@
                     "value": "  や ",
                     "position": {
                       "start": {
-                        "line": 17,
+                        "line": 15,
                         "column": 111,
-                        "offset": 463
+                        "offset": 458
                       },
                       "end": {
-                        "line": 17,
+                        "line": 15,
                         "column": 115,
-                        "offset": 467
+                        "offset": 462
                       }
                     }
                   },
@@ -677,28 +718,28 @@
                         "value": "Tailscale Funnel",
                         "position": {
                           "start": {
-                            "line": 17,
+                            "line": 15,
                             "column": 116,
-                            "offset": 468
+                            "offset": 463
                           },
                           "end": {
-                            "line": 17,
+                            "line": 15,
                             "column": 132,
-                            "offset": 484
+                            "offset": 479
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 17,
+                        "line": 15,
                         "column": 115,
-                        "offset": 467
+                        "offset": 462
                       },
                       "end": {
-                        "line": 17,
+                        "line": 15,
                         "column": 171,
-                        "offset": 523
+                        "offset": 518
                       }
                     }
                   },
@@ -707,42 +748,42 @@
                     "value": "  はかなり近い",
                     "position": {
                       "start": {
-                        "line": 17,
+                        "line": 15,
                         "column": 171,
-                        "offset": 523
+                        "offset": 518
                       },
                       "end": {
-                        "line": 17,
+                        "line": 15,
                         "column": 179,
-                        "offset": 531
+                        "offset": 526
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 17,
+                    "line": 15,
                     "column": 3,
-                    "offset": 355
+                    "offset": 350
                   },
                   "end": {
-                    "line": 17,
+                    "line": 15,
                     "column": 179,
-                    "offset": 531
+                    "offset": 526
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 17,
+                "line": 15,
                 "column": 1,
-                "offset": 353
+                "offset": 348
               },
               "end": {
-                "line": 17,
+                "line": 15,
                 "column": 179,
-                "offset": 531
+                "offset": 526
               }
             }
           },
@@ -759,42 +800,42 @@
                     "value": "ローカルの環境が「うっかり」インターネットに開示される感覚",
                     "position": {
                       "start": {
-                        "line": 18,
+                        "line": 16,
                         "column": 3,
-                        "offset": 534
+                        "offset": 529
                       },
                       "end": {
-                        "line": 18,
+                        "line": 16,
                         "column": 32,
-                        "offset": 563
+                        "offset": 558
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 18,
+                    "line": 16,
                     "column": 3,
-                    "offset": 534
+                    "offset": 529
                   },
                   "end": {
-                    "line": 18,
+                    "line": 16,
                     "column": 32,
-                    "offset": 563
+                    "offset": 558
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 18,
+                "line": 16,
                 "column": 1,
-                "offset": 532
+                "offset": 527
               },
               "end": {
-                "line": 18,
+                "line": 16,
                 "column": 32,
-                "offset": 563
+                "offset": 558
               }
             }
           },
@@ -811,28 +852,28 @@
                     "value": "P2P とはすこし違いそう",
                     "position": {
                       "start": {
-                        "line": 19,
+                        "line": 17,
                         "column": 3,
-                        "offset": 566
+                        "offset": 561
                       },
                       "end": {
-                        "line": 19,
+                        "line": 17,
                         "column": 16,
-                        "offset": 579
+                        "offset": 574
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 19,
+                    "line": 17,
                     "column": 3,
-                    "offset": 566
+                    "offset": 561
                   },
                   "end": {
-                    "line": 19,
+                    "line": 17,
                     "column": 16,
-                    "offset": 579
+                    "offset": 574
                   }
                 }
               },
@@ -855,42 +896,42 @@
                             "value": "自己開示はそれ自体が非対称な関係で、これは書き手の負うべき「責任」",
                             "position": {
                               "start": {
-                                "line": 20,
+                                "line": 18,
                                 "column": 4,
-                                "offset": 583
+                                "offset": 578
                               },
                               "end": {
-                                "line": 20,
+                                "line": 18,
                                 "column": 37,
-                                "offset": 616
+                                "offset": 611
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 20,
+                            "line": 18,
                             "column": 4,
-                            "offset": 583
+                            "offset": 578
                           },
                           "end": {
-                            "line": 20,
+                            "line": 18,
                             "column": 37,
-                            "offset": 616
+                            "offset": 611
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 20,
+                        "line": 18,
                         "column": 2,
-                        "offset": 581
+                        "offset": 576
                       },
                       "end": {
-                        "line": 20,
+                        "line": 18,
                         "column": 37,
-                        "offset": 616
+                        "offset": 611
                       }
                     }
                   },
@@ -907,541 +948,84 @@
                             "value": "そういえば「うっかり」「責任」といえば中動態？　もう一度調べ直す必要がありそう",
                             "position": {
                               "start": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 4,
-                                "offset": 620
+                                "offset": 615
                               },
                               "end": {
-                                "line": 21,
+                                "line": 19,
                                 "column": 43,
-                                "offset": 659
+                                "offset": 654
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 21,
+                            "line": 19,
                             "column": 4,
-                            "offset": 620
+                            "offset": 615
                           },
                           "end": {
-                            "line": 21,
+                            "line": 19,
                             "column": 43,
-                            "offset": 659
+                            "offset": 654
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 21,
+                        "line": 19,
                         "column": 2,
-                        "offset": 618
+                        "offset": 613
                       },
                       "end": {
-                        "line": 21,
+                        "line": 19,
                         "column": 43,
-                        "offset": 659
+                        "offset": 654
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 20,
+                    "line": 18,
                     "column": 2,
-                    "offset": 581
+                    "offset": 576
                   },
                   "end": {
-                    "line": 21,
+                    "line": 19,
                     "column": 43,
-                    "offset": 659
+                    "offset": 654
                   }
                 }
               }
             ],
             "position": {
               "start": {
+                "line": 17,
+                "column": 1,
+                "offset": 559
+              },
+              "end": {
                 "line": 19,
-                "column": 1,
-                "offset": 564
-              },
-              "end": {
-                "line": 21,
                 "column": 43,
-                "offset": 659
+                "offset": 654
               }
             }
           }
         ],
         "position": {
           "start": {
-            "line": 7,
+            "line": 5,
             "column": 1,
-            "offset": 48
+            "offset": 27
           },
           "end": {
-            "line": 21,
+            "line": 19,
             "column": 43,
-            "offset": 659
-          }
-        }
-      },
-      {
-        "type": "paragraph",
-        "children": [
-          {
-            "type": "text",
-            "value": "ブログシステムの役割",
-            "position": {
-              "start": {
-                "line": 23,
-                "column": 1,
-                "offset": 661
-              },
-              "end": {
-                "line": 23,
-                "column": 11,
-                "offset": 671
-              }
-            }
-          }
-        ],
-        "position": {
-          "start": {
-            "line": 23,
-            "column": 1,
-            "offset": 661
-          },
-          "end": {
-            "line": 23,
-            "column": 11,
-            "offset": 671
-          }
-        }
-      },
-      {
-        "type": "list",
-        "ordered": false,
-        "start": null,
-        "spread": false,
-        "children": [
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "SSG",
-                    "position": {
-                      "start": {
-                        "line": 25,
-                        "column": 3,
-                        "offset": 675
-                      },
-                      "end": {
-                        "line": 25,
-                        "column": 6,
-                        "offset": 678
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 25,
-                    "column": 3,
-                    "offset": 675
-                  },
-                  "end": {
-                    "line": 25,
-                    "column": 7,
-                    "offset": 679
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 25,
-                "column": 1,
-                "offset": 673
-              },
-              "end": {
-                "line": 25,
-                "column": 7,
-                "offset": 679
-              }
-            }
-          },
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "「スタイルと構造の分離」に改めて立ち戻る",
-                    "position": {
-                      "start": {
-                        "line": 26,
-                        "column": 3,
-                        "offset": 682
-                      },
-                      "end": {
-                        "line": 26,
-                        "column": 23,
-                        "offset": 702
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 26,
-                    "column": 3,
-                    "offset": 682
-                  },
-                  "end": {
-                    "line": 26,
-                    "column": 23,
-                    "offset": 702
-                  }
-                }
-              },
-              {
-                "type": "list",
-                "ordered": false,
-                "start": null,
-                "spread": false,
-                "children": [
-                  {
-                    "type": "listItem",
-                    "spread": false,
-                    "checked": null,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "ほげ",
-                            "position": {
-                              "start": {
-                                "line": 27,
-                                "column": 4,
-                                "offset": 706
-                              },
-                              "end": {
-                                "line": 27,
-                                "column": 6,
-                                "offset": 708
-                              }
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 27,
-                            "column": 4,
-                            "offset": 706
-                          },
-                          "end": {
-                            "line": 27,
-                            "column": 6,
-                            "offset": 708
-                          }
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 27,
-                        "column": 2,
-                        "offset": 704
-                      },
-                      "end": {
-                        "line": 27,
-                        "column": 6,
-                        "offset": 708
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 27,
-                    "column": 2,
-                    "offset": 704
-                  },
-                  "end": {
-                    "line": 27,
-                    "column": 6,
-                    "offset": 708
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 26,
-                "column": 1,
-                "offset": 680
-              },
-              "end": {
-                "line": 27,
-                "column": 6,
-                "offset": 708
-              }
-            }
-          },
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "ビルドシステムの役割はテキストデータの構造化",
-                    "position": {
-                      "start": {
-                        "line": 28,
-                        "column": 3,
-                        "offset": 711
-                      },
-                      "end": {
-                        "line": 28,
-                        "column": 25,
-                        "offset": 733
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 28,
-                    "column": 3,
-                    "offset": 711
-                  },
-                  "end": {
-                    "line": 28,
-                    "column": 25,
-                    "offset": 733
-                  }
-                }
-              },
-              {
-                "type": "list",
-                "ordered": false,
-                "start": null,
-                "spread": false,
-                "children": [
-                  {
-                    "type": "listItem",
-                    "spread": false,
-                    "checked": null,
-                    "children": [
-                      {
-                        "type": "paragraph",
-                        "children": [
-                          {
-                            "type": "text",
-                            "value": "構造化＝テキスト間のネットワーク",
-                            "position": {
-                              "start": {
-                                "line": 29,
-                                "column": 4,
-                                "offset": 737
-                              },
-                              "end": {
-                                "line": 29,
-                                "column": 20,
-                                "offset": 753
-                              }
-                            }
-                          }
-                        ],
-                        "position": {
-                          "start": {
-                            "line": 29,
-                            "column": 4,
-                            "offset": 737
-                          },
-                          "end": {
-                            "line": 29,
-                            "column": 20,
-                            "offset": 753
-                          }
-                        }
-                      }
-                    ],
-                    "position": {
-                      "start": {
-                        "line": 29,
-                        "column": 2,
-                        "offset": 735
-                      },
-                      "end": {
-                        "line": 29,
-                        "column": 20,
-                        "offset": 753
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 29,
-                    "column": 2,
-                    "offset": 735
-                  },
-                  "end": {
-                    "line": 29,
-                    "column": 20,
-                    "offset": 753
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 28,
-                "column": 1,
-                "offset": 709
-              },
-              "end": {
-                "line": 29,
-                "column": 20,
-                "offset": 753
-              }
-            }
-          },
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "構造を与えること、",
-                    "position": {
-                      "start": {
-                        "line": 30,
-                        "column": 3,
-                        "offset": 756
-                      },
-                      "end": {
-                        "line": 30,
-                        "column": 12,
-                        "offset": 765
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 30,
-                    "column": 3,
-                    "offset": 756
-                  },
-                  "end": {
-                    "line": 30,
-                    "column": 12,
-                    "offset": 765
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 30,
-                "column": 1,
-                "offset": 754
-              },
-              "end": {
-                "line": 30,
-                "column": 12,
-                "offset": 765
-              }
-            }
-          },
-          {
-            "type": "listItem",
-            "spread": false,
-            "checked": null,
-            "children": [
-              {
-                "type": "paragraph",
-                "children": [
-                  {
-                    "type": "text",
-                    "value": "サイトの構造は共通で、",
-                    "position": {
-                      "start": {
-                        "line": 31,
-                        "column": 3,
-                        "offset": 768
-                      },
-                      "end": {
-                        "line": 31,
-                        "column": 14,
-                        "offset": 779
-                      }
-                    }
-                  }
-                ],
-                "position": {
-                  "start": {
-                    "line": 31,
-                    "column": 3,
-                    "offset": 768
-                  },
-                  "end": {
-                    "line": 31,
-                    "column": 14,
-                    "offset": 779
-                  }
-                }
-              }
-            ],
-            "position": {
-              "start": {
-                "line": 31,
-                "column": 1,
-                "offset": 766
-              },
-              "end": {
-                "line": 31,
-                "column": 14,
-                "offset": 779
-              }
-            }
-          }
-        ],
-        "position": {
-          "start": {
-            "line": 25,
-            "column": 1,
-            "offset": 673
-          },
-          "end": {
-            "line": 31,
-            "column": 14,
-            "offset": 779
+            "offset": 654
           }
         }
       }
@@ -1453,9 +1037,9 @@
         "offset": 0
       },
       "end": {
-        "line": 32,
-        "column": 2,
-        "offset": 781
+        "line": 20,
+        "column": 1,
+        "offset": 655
       }
     }
   }
