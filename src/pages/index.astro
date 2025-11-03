@@ -31,9 +31,8 @@ const pages = Object.entries(modules)
     {
       pages.map((page) => (
         <li>
-          <a href={`/${page.slug}`} data-astro-prefetch>
-            {page.title}
-          </a>
+          {/* prettier-ignore */}
+          <a href={`/${page.slug}`} data-astro-prefetch>{page.title}</a>
           {page.createdAt && (
             <time datetime={page.createdAt}>
               {toString(new Date(page.createdAt))}
