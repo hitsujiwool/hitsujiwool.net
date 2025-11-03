@@ -2,20 +2,14 @@
 interface Props {
   title?: string;
   description?: string;
-  image?: string;
-  url?: string;
 }
 
 const {
-  title = "hitsujiwool's writings — mostly scribbles",
-  description = "hitsujiwool's personal writings and notes",
-  image = "/favicon.svg",
-  url = Astro.url.href
+  title,
+  description,
 } = Astro.props;
 
-const fullTitle = title === "hitsujiwool's writings — mostly scribbles"
-  ? title
-  : `${title} — hitsujiwool's writings`;
+const fullTitle = `${title ? `${title} | ` : '' }hitsujiwool's writings`;
 ---
 <!doctype html>
 <html lang="en">
@@ -28,21 +22,19 @@ const fullTitle = title === "hitsujiwool's writings — mostly scribbles"
     <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Zen+Old+Mincho&family=Zen+Kaku+Gothic+New&display=swap" rel="stylesheet">
 		<meta name="generator" content={Astro.generator} />
 		<title>{fullTitle}</title>
-		<meta name="description" content={description} />
+		{description && <meta name="description" content={description} />}
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
-		<meta property="og:url" content={url} />
+		<meta property="og:url" content={Astro.url.href} />
 		<meta property="og:title" content={fullTitle} />
-		<meta property="og:description" content={description} />
-		<meta property="og:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
+		{description && <meta property="og:description" content={description} />}
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary" />
-		<meta property="twitter:url" content={url} />
+		<meta property="twitter:url" content={Astro.url.href} />
 		<meta property="twitter:title" content={fullTitle} />
-		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={new URL(image, Astro.site || Astro.url.origin).href} />
+		{description && <meta property="twitter:description" content={description} />}
 	</head>
 	<body>
 		<header>
