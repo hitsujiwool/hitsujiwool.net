@@ -3,7 +3,9 @@
   "source": "---\ntags:\n  - scribble\n---\n- いいなと思ったきっかけ。\n\t- https://baku89.com/morion\n\t- https://x.com/chocoschools/status/1976966016027836507a\n- 避けたい & 変えたい事態\n\t- 何かのプラットフォームの管理画面にログインして原稿を書く\n\t\t- ウェブでもネイティブでも本質的には変わらない\n\t- 手元でメモを書くとは別のツールやフォーマットを使って書く\n\t- 公開可能な場所（典型的にはリモートのサーバ）にアップロードすることで公開される\n- 公開しても良いというフラグ・しるしが、そのまま公開状態を切り替える\n- デフォルトは公開で、必要に応じて非公開という極端な設計もあり\n- [Cloudflare tunnel](https://developers.cloudflare.com/cloudflare-one/networks/connectors/cloudflare-tunnel/)  や [Tailscale Funnel](https://tailscale.com/kb/1223/funnel)  はかなり近い\n- ローカルの環境が「うっかり」インターネットに開示される感覚\n- P2P とはすこし違いそう\n\t- 自己開示はそれ自体が非対称な関係で、これは書き手の負うべき「責任」\n\t- そういえば「うっかり」「責任」といえば中動態？　もう一度調べ直す必要がありそう\n",
   "createdAt": "2025-11-02T02:04:42.152Z",
   "updatedAt": "2025-11-03T05:56:37.400Z",
-  "tags": ["scribble"],
+  "tags": [
+    "scribble"
+  ],
   "content": {
     "type": "root",
     "children": [
