@@ -1,0 +1,590 @@
+{
+  "title": "「もの」のマネジメント",
+  "source": "---\ncreatedAt: 2025-11-04T09:17:29+09:00\nupdatedAt: 2025-11-04T09:25:28+09:00\ntags:\n  - scribble\n---\n- midori.so にはコミュニティマネージャという人がいて、わたしには及びもつかない能力を持っている\n- 居心地を良くしたり、人と人を引き合わせたり、（たぶん）様々な雑務をこなしたり\n- そうではない世界のあり方は可能か？\n\t- 結局大事なのは「人」「つながり」だよね、の持つしんどさ\n- 「[[バザール]]」は「もの」が先行する空間でありたい\n\t- ファシリテータとして「もの」マネージャがいるのかもしれない\n- 対比的に考えるならホラクラシーは「概念」マネジメントのしくみと言えるかもしれない\n\t- 徹底した責務の言語化にからうまれる自律性\n\t- UNIBA は苦手そう〜",
+  "createdAt": "Tue Nov 04 2025 09:17:29 GMT+0900 (日本標準時)",
+  "updatedAt": "Tue Nov 04 2025 09:25:28 GMT+0900 (日本標準時)",
+  "tags": [
+    "scribble"
+  ],
+  "content": {
+    "type": "root",
+    "children": [
+      {
+        "type": "yaml",
+        "value": "createdAt: 2025-11-04T09:17:29+09:00\nupdatedAt: 2025-11-04T09:25:28+09:00\ntags:\n  - scribble",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 4,
+            "offset": 100
+          }
+        }
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": false,
+        "children": [
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "midori.so にはコミュニティマネージャという人がいて、わたしには及びもつかない能力を持っている",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 3,
+                        "offset": 103
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 54,
+                        "offset": 154
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 7,
+                    "column": 3,
+                    "offset": 103
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 54,
+                    "offset": 154
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1,
+                "offset": 101
+              },
+              "end": {
+                "line": 7,
+                "column": 54,
+                "offset": 154
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "居心地を良くしたり、人と人を引き合わせたり、（たぶん）様々な雑務をこなしたり",
+                    "position": {
+                      "start": {
+                        "line": 8,
+                        "column": 3,
+                        "offset": 157
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 41,
+                        "offset": 195
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 8,
+                    "column": 3,
+                    "offset": 157
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 41,
+                    "offset": 195
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 8,
+                "column": 1,
+                "offset": 155
+              },
+              "end": {
+                "line": 8,
+                "column": 41,
+                "offset": 195
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "そうではない世界のあり方は可能か？",
+                    "position": {
+                      "start": {
+                        "line": 9,
+                        "column": 3,
+                        "offset": 198
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 20,
+                        "offset": 215
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 9,
+                    "column": 3,
+                    "offset": 198
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 20,
+                    "offset": 215
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "結局大事なのは「人」「つながり」だよね、の持つしんどさ",
+                            "position": {
+                              "start": {
+                                "line": 10,
+                                "column": 4,
+                                "offset": 219
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 31,
+                                "offset": 246
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 10,
+                            "column": 4,
+                            "offset": 219
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 31,
+                            "offset": 246
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 2,
+                        "offset": 217
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 31,
+                        "offset": 246
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 10,
+                    "column": 2,
+                    "offset": 217
+                  },
+                  "end": {
+                    "line": 10,
+                    "column": 31,
+                    "offset": 246
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 9,
+                "column": 1,
+                "offset": 196
+              },
+              "end": {
+                "line": 10,
+                "column": 31,
+                "offset": 246
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "「[[バザール]]」は「もの」が先行する空間でありたい",
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 3,
+                        "offset": 249
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 30,
+                        "offset": 276
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 11,
+                    "column": 3,
+                    "offset": 249
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 30,
+                    "offset": 276
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ファシリテータとして「もの」マネージャがいるのかもしれない",
+                            "position": {
+                              "start": {
+                                "line": 12,
+                                "column": 4,
+                                "offset": 280
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 33,
+                                "offset": 309
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 12,
+                            "column": 4,
+                            "offset": 280
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 33,
+                            "offset": 309
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 2,
+                        "offset": 278
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 33,
+                        "offset": 309
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 12,
+                    "column": 2,
+                    "offset": 278
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 33,
+                    "offset": 309
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 11,
+                "column": 1,
+                "offset": 247
+              },
+              "end": {
+                "line": 12,
+                "column": 33,
+                "offset": 309
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "対比的に考えるならホラクラシーは「概念」マネジメントのしくみと言えるかもしれない",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 3,
+                        "offset": 312
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 43,
+                        "offset": 352
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 13,
+                    "column": 3,
+                    "offset": 312
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 43,
+                    "offset": 352
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "徹底した責務の言語化にからうまれる自律性",
+                            "position": {
+                              "start": {
+                                "line": 14,
+                                "column": 4,
+                                "offset": 356
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 24,
+                                "offset": 376
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 14,
+                            "column": 4,
+                            "offset": 356
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 24,
+                            "offset": 376
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 2,
+                        "offset": 354
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 24,
+                        "offset": 376
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "UNIBA は苦手そう〜",
+                            "position": {
+                              "start": {
+                                "line": 15,
+                                "column": 4,
+                                "offset": 380
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 16,
+                                "offset": 392
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 15,
+                            "column": 4,
+                            "offset": 380
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 16,
+                            "offset": 392
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 2,
+                        "offset": 378
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 16,
+                        "offset": 392
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 14,
+                    "column": 2,
+                    "offset": 354
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 16,
+                    "offset": 392
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 13,
+                "column": 1,
+                "offset": 310
+              },
+              "end": {
+                "line": 15,
+                "column": 16,
+                "offset": 392
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1,
+            "offset": 101
+          },
+          "end": {
+            "line": 15,
+            "column": 16,
+            "offset": 392
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 15,
+        "column": 16,
+        "offset": 392
+      }
+    }
+  }
+}

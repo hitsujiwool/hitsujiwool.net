@@ -1,0 +1,112 @@
+{
+  "title": "バーチャルなコモンズを支えるツール群の見取り図を作る",
+  "source": "---\ncreatedAt: 2025-07-16T13:53:53+09:00\nupdatedAt: 2025-11-04T08:56:30+09:00\ntags:\n  - scribble\n---\n![https://i.imgur.com/GxkXlwJ.jpeg](https://i.imgur.com/GxkXlwJ.jpeg)\n\n![https://i.imgur.com/jzmwiZg.jpeg](https://i.imgur.com/jzmwiZg.jpeg)\n",
+  "createdAt": "Wed Jul 16 2025 13:53:53 GMT+0900 (日本標準時)",
+  "updatedAt": "Tue Nov 04 2025 08:56:30 GMT+0900 (日本標準時)",
+  "tags": [
+    "scribble"
+  ],
+  "content": {
+    "type": "root",
+    "children": [
+      {
+        "type": "yaml",
+        "value": "createdAt: 2025-07-16T13:53:53+09:00\nupdatedAt: 2025-11-04T08:56:30+09:00\ntags:\n  - scribble",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 4,
+            "offset": 100
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "image",
+            "title": null,
+            "url": "https://i.imgur.com/GxkXlwJ.jpeg",
+            "alt": "https://i.imgur.com/GxkXlwJ.jpeg",
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1,
+                "offset": 101
+              },
+              "end": {
+                "line": 7,
+                "column": 70,
+                "offset": 170
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1,
+            "offset": 101
+          },
+          "end": {
+            "line": 7,
+            "column": 70,
+            "offset": 170
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "image",
+            "title": null,
+            "url": "https://i.imgur.com/jzmwiZg.jpeg",
+            "alt": "https://i.imgur.com/jzmwiZg.jpeg",
+            "position": {
+              "start": {
+                "line": 9,
+                "column": 1,
+                "offset": 172
+              },
+              "end": {
+                "line": 9,
+                "column": 70,
+                "offset": 241
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 9,
+            "column": 1,
+            "offset": 172
+          },
+          "end": {
+            "line": 9,
+            "column": 70,
+            "offset": 241
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 10,
+        "column": 1,
+        "offset": 242
+      }
+    }
+  }
+}

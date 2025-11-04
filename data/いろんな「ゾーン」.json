@@ -1,0 +1,314 @@
+{
+  "title": "いろんな「ゾーン」",
+  "source": "---\ncreatedAt: 2025-02-08T16:48:05+09:00\nupdatedAt: 2025-11-04T08:53:15+09:00\ntags:\n  - scribble\n---\n\nCOROS\nhttps://coros.com/stories/coros-metrics/c/coros-heart-rate-zones-the-ultimate-guide\n\nStrava\nhttps://stories.strava.com/articles/understanding-heart-rate-zones-and-how-they-impact-your-training\n\nGarmin\nhttps://www.garmin.com/en-US/garmin-technology/health-science/heart-rate-monitoring/\n\nTraining zones are a mess\nhttps://solaarjona.substack.com/p/training-zones-are-a-mess\n",
+  "createdAt": "Sat Feb 08 2025 16:48:05 GMT+0900 (日本標準時)",
+  "updatedAt": "Tue Nov 04 2025 08:53:15 GMT+0900 (日本標準時)",
+  "tags": [
+    "scribble"
+  ],
+  "content": {
+    "type": "root",
+    "children": [
+      {
+        "type": "yaml",
+        "value": "createdAt: 2025-02-08T16:48:05+09:00\nupdatedAt: 2025-11-04T08:53:15+09:00\ntags:\n  - scribble",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 4,
+            "offset": 100
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "COROS\n",
+            "position": {
+              "start": {
+                "line": 8,
+                "column": 1,
+                "offset": 102
+              },
+              "end": {
+                "line": 9,
+                "column": 1,
+                "offset": 108
+              }
+            }
+          },
+          {
+            "type": "link",
+            "title": null,
+            "url": "https://coros.com/stories/coros-metrics/c/coros-heart-rate-zones-the-ultimate-guide",
+            "children": [
+              {
+                "type": "text",
+                "value": "https://coros.com/stories/coros-metrics/c/coros-heart-rate-zones-the-ultimate-guide",
+                "position": {
+                  "start": {
+                    "line": 9,
+                    "column": 1,
+                    "offset": 108
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 84,
+                    "offset": 191
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 9,
+                "column": 1,
+                "offset": 108
+              },
+              "end": {
+                "line": 9,
+                "column": 84,
+                "offset": 191
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 8,
+            "column": 1,
+            "offset": 102
+          },
+          "end": {
+            "line": 9,
+            "column": 84,
+            "offset": 191
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Strava\n",
+            "position": {
+              "start": {
+                "line": 11,
+                "column": 1,
+                "offset": 193
+              },
+              "end": {
+                "line": 12,
+                "column": 1,
+                "offset": 200
+              }
+            }
+          },
+          {
+            "type": "link",
+            "title": null,
+            "url": "https://stories.strava.com/articles/understanding-heart-rate-zones-and-how-they-impact-your-training",
+            "children": [
+              {
+                "type": "text",
+                "value": "https://stories.strava.com/articles/understanding-heart-rate-zones-and-how-they-impact-your-training",
+                "position": {
+                  "start": {
+                    "line": 12,
+                    "column": 1,
+                    "offset": 200
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 101,
+                    "offset": 300
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 12,
+                "column": 1,
+                "offset": 200
+              },
+              "end": {
+                "line": 12,
+                "column": 101,
+                "offset": 300
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 11,
+            "column": 1,
+            "offset": 193
+          },
+          "end": {
+            "line": 12,
+            "column": 101,
+            "offset": 300
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Garmin\n",
+            "position": {
+              "start": {
+                "line": 14,
+                "column": 1,
+                "offset": 302
+              },
+              "end": {
+                "line": 15,
+                "column": 1,
+                "offset": 309
+              }
+            }
+          },
+          {
+            "type": "link",
+            "title": null,
+            "url": "https://www.garmin.com/en-US/garmin-technology/health-science/heart-rate-monitoring/",
+            "children": [
+              {
+                "type": "text",
+                "value": "https://www.garmin.com/en-US/garmin-technology/health-science/heart-rate-monitoring/",
+                "position": {
+                  "start": {
+                    "line": 15,
+                    "column": 1,
+                    "offset": 309
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 85,
+                    "offset": 393
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 15,
+                "column": 1,
+                "offset": 309
+              },
+              "end": {
+                "line": 15,
+                "column": 85,
+                "offset": 393
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 14,
+            "column": 1,
+            "offset": 302
+          },
+          "end": {
+            "line": 15,
+            "column": 85,
+            "offset": 393
+          }
+        }
+      },
+      {
+        "type": "paragraph",
+        "children": [
+          {
+            "type": "text",
+            "value": "Training zones are a mess\n",
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1,
+                "offset": 395
+              },
+              "end": {
+                "line": 18,
+                "column": 1,
+                "offset": 421
+              }
+            }
+          },
+          {
+            "type": "link",
+            "title": null,
+            "url": "https://solaarjona.substack.com/p/training-zones-are-a-mess",
+            "children": [
+              {
+                "type": "text",
+                "value": "https://solaarjona.substack.com/p/training-zones-are-a-mess",
+                "position": {
+                  "start": {
+                    "line": 18,
+                    "column": 1,
+                    "offset": 421
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 60,
+                    "offset": 480
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 18,
+                "column": 1,
+                "offset": 421
+              },
+              "end": {
+                "line": 18,
+                "column": 60,
+                "offset": 480
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 17,
+            "column": 1,
+            "offset": 395
+          },
+          "end": {
+            "line": 18,
+            "column": 60,
+            "offset": 480
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 19,
+        "column": 1,
+        "offset": 481
+      }
+    }
+  }
+}

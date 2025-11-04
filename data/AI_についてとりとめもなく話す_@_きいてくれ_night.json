@@ -1,8 +1,8 @@
 {
   "title": "AI についてとりとめもなく話す @ きいてくれ night",
-  "source": "---\ntags:\n  - scribble\n---\n\n- 普段何につかってるの？\n\t- 新しい領域、新しいプロダクト \n\t\t- 設計の壁打ち\n\t\t\t- 「知識はあるが知恵がない」相手で良い場合\n\t\t\t- 技術的な選択肢の洗い出し\n\t\t\t- キーワード、キータームを見つけて説明してもらう\n\t\t- サンプル実装\n\t\t\t- README や入門サイトにあるような典型的な scaffolding は得意\n\t\t\t- 加えて最も基本的なドメイン知識やエンティティを伝えるとリアリティがでる\n\t\t\t- とりあえず見て、基本的な原理原則、使い方を理解する\n\t\t\t- 捨てることが多い\t\t\n\t- すでにコードベースがある場合\n\t\t- 人手で作ったリファレンス実装を見ながら横展開はめちゃくちゃ得意\n\t\t- API の単純なエンドポイントを増やす\n\t- ドキュメント生成\n\t\t- 基本的なサービスコンセプトや用語リストは事前にペライチで書いておく\n\t\t- これがあると生成するコードの質やネーミングセンスが明らかに変わる\n\t\t- 設計ドキュメントやユースケースのリストアップは AI に作ってもらう\n\t\t\t- ニンゲンが書くのは面倒でつい後回しにしがち（の割りに後から致命的になる）\n\t- 型パズルを解かせる\n\t\t- AI に書かせるとリファクタリングのサイクルが早くなる（後述）\n\t\t- モジュール化してコードベースの責務分担を明確にする\n\t\t- 抽象化したくなるケースが増えると、ジェネリクスが増える\n\t\t- ジェネリクスが増えると型パズル化進行するのでやってもらう\n\t\t- うまくいくときといかないときがある（理由は不明）\n- ここからはもう少し一般化した話として……\n\t- その前に [fugabori.fm](https://fukabori.fm/episode/131) が良かったのでぜひ聞いてほしい\n\t- [rebuild.fm](https://rebuild.fm/410/) の回も実体験が伴うリアリティがあって良かった\n- 「AI に知識はあるが知恵がない」はまさにその通り\n\t- ソフトウェアのアーキテクチャは機能改修を重ねる度に耐用年数が増えていく\n\t- 当初想定されていたポテンシャルを超える場合はリアーキテクトが必要\n\t- 知恵＝現実に動作する不完全なアプリケーションに対して、現実的な最適解を出し続ける力\n\t- おそらくニンゲンは良くも悪くもその対応力が高い\n\t- 元々のコードベースに無理があると、AI の出力の品質ががた落ちする\n\t- 逆に言えば、AI にちゃんとやってもらうためにリアーキテクトが必要\n- いったい何をブーストしているのか？\n\t- コードを超速で量産する力はそんなにありがたみを感じていない\n\t\t- もちろん手数として有用\n\t- あらゆる局面での高速な壁打ち相手としてとても有用\n\t\t- AI の出力の品質自体が大きなフィードバックになる\n\t\t- ドメインの精緻化、言語化、ドキュメンテーション\n- AI 使うとプログラミング力は落ちる？\n\t- 「写経」による学習機会が失われる可能性はありそう\n\t\t- アルゴリズムの意味を 1 行 1 行追って自分の血肉にする\n\t- アーキテクチャのたたき台を作ってもらって大局や構造を把握する力は影響なし\n\t\t- むしろスクラップ & ビルド試行回数が増えている気がする\n- 「誰もが自分だけのソフトウェアを作れる」時代\n\t- 「他人に作ってもらうソフトウェア」の価値とは？\n\t- 「他人のためにソフトウェアを作るエンジニア」の価値とは？\n\t- 生き残り戦略については Podcast で言及されている\n\t- デザイン＋エンジニアリングの結晶としてのソフトウェアは、ユーザをに自由をもたらすべき\n\t- 目の前の問題を効率よく解くのではなく、何か新しい思考を可能にするためのソフトウェア\n\t- それを普通の人が「自分だけで」作るのは、原理的といっていいほど困難なのではないか？\n\t- というときに、道具としてのソフトウェアをデザインする専門家の存在意義はより高まるはず？",
-  "createdAt": "2025-09-29T02:31:14.785Z",
-  "updatedAt": "2025-11-02T22:10:52.746Z",
+  "source": "---\ntags:\n  - scribble\ncreatedAt: 2025-09-29T11:31:14+09:00\nupdatedAt: 2025-11-03T20:54:09+09:00\n---\n\n- 普段何につかってるの？\n\t- 新しい領域、新しいプロダクト \n\t\t- 設計の壁打ち\n\t\t\t- 「知識はあるが知恵がない」相手で良い場合\n\t\t\t- 技術的な選択肢の洗い出し\n\t\t\t- キーワード、キータームを見つけて説明してもらう\n\t\t- サンプル実装\n\t\t\t- README や入門サイトにあるような典型的な scaffolding は得意\n\t\t\t- 加えて最も基本的なドメイン知識やエンティティを伝えるとリアリティがでる\n\t\t\t- とりあえず見て、基本的な原理原則、使い方を理解する\n\t\t\t- 捨てることが多い\t\t\n\t- すでにコードベースがある場合\n\t\t- 人手で作ったリファレンス実装を見ながら横展開はめちゃくちゃ得意\n\t\t- API の単純なエンドポイントを増やす\n\t- ドキュメント生成\n\t\t- 基本的なサービスコンセプトや用語リストは事前にペライチで書いておく\n\t\t- これがあると生成するコードの質やネーミングセンスが明らかに変わる\n\t\t- 設計ドキュメントやユースケースのリストアップは AI に作ってもらう\n\t\t\t- ニンゲンが書くのは面倒でつい後回しにしがち（の割りに後から致命的になる）\n\t- 型パズルを解かせる\n\t\t- AI に書かせるとリファクタリングのサイクルが早くなる（後述）\n\t\t- モジュール化してコードベースの責務分担を明確にする\n\t\t- 抽象化したくなるケースが増えると、ジェネリクスが増える\n\t\t- ジェネリクスが増えると型パズル化進行するのでやってもらう\n\t\t- うまくいくときといかないときがある（理由は不明）\n- ここからはもう少し一般化した話として……\n\t- その前に [fugabori.fm](https://fukabori.fm/episode/131) が良かったのでぜひ聞いてほしい\n\t- [rebuild.fm](https://rebuild.fm/410/) の回も実体験が伴うリアリティがあって良かった\n- 「AI に知識はあるが知恵がない」はまさにその通り\n\t- ソフトウェアのアーキテクチャは機能改修を重ねる度に耐用年数が増えていく\n\t- 当初想定されていたポテンシャルを超える場合はリアーキテクトが必要\n\t- 知恵＝現実に動作する不完全なアプリケーションに対して、現実的な最適解を出し続ける力\n\t- おそらくニンゲンは良くも悪くもその対応力が高い\n\t- 元々のコードベースに無理があると、AI の出力の品質ががた落ちする\n\t- 逆に言えば、AI にちゃんとやってもらうためにリアーキテクトが必要\n- いったい何をブーストしているのか？\n\t- コードを超速で量産する力はそんなにありがたみを感じていない\n\t\t- もちろん手数として有用\n\t- あらゆる局面での高速な壁打ち相手としてとても有用\n\t\t- AI の出力の品質自体が大きなフィードバックになる\n\t\t- ドメインの精緻化、言語化、ドキュメンテーション\n- AI 使うとプログラミング力は落ちる？\n\t- 「写経」による学習機会が失われる可能性はありそう\n\t\t- アルゴリズムの意味を 1 行 1 行追って自分の血肉にする\n\t- アーキテクチャのたたき台を作ってもらって大局や構造を把握する力は影響なし\n\t\t- むしろスクラップ & ビルド試行回数が増えている気がする\n- 「誰もが自分だけのソフトウェアを作れる」時代\n\t- 「他人に作ってもらうソフトウェア」の価値とは？\n\t- 「他人のためにソフトウェアを作るエンジニア」の価値とは？\n\t- 生き残り戦略については Podcast で言及されている\n\t- デザイン＋エンジニアリングの結晶としてのソフトウェアは、ユーザをに自由をもたらすべき\n\t- 目の前の問題を効率よく解くのではなく、何か新しい思考を可能にするためのソフトウェア\n\t- それを普通の人が「自分だけで」作るのは、原理的といっていいほど困難なのではないか？\n\t- というときに、道具としてのソフトウェアをデザインする専門家の存在意義はより高まるはず？",
+  "createdAt": "Mon Sep 29 2025 11:31:14 GMT+0900 (日本標準時)",
+  "updatedAt": "Mon Nov 03 2025 20:54:09 GMT+0900 (日本標準時)",
   "tags": [
     "scribble"
   ],
@@ -11,7 +11,7 @@
     "children": [
       {
         "type": "yaml",
-        "value": "tags:\n  - scribble",
+        "value": "tags:\n  - scribble\ncreatedAt: 2025-09-29T11:31:14+09:00\nupdatedAt: 2025-11-03T20:54:09+09:00",
         "position": {
           "start": {
             "line": 1,
@@ -19,9 +19,9 @@
             "offset": 0
           },
           "end": {
-            "line": 4,
+            "line": 6,
             "column": 4,
-            "offset": 26
+            "offset": 100
           }
         }
       },
@@ -44,28 +44,28 @@
                     "value": "普段何につかってるの？",
                     "position": {
                       "start": {
-                        "line": 6,
+                        "line": 8,
                         "column": 3,
-                        "offset": 30
+                        "offset": 104
                       },
                       "end": {
-                        "line": 6,
+                        "line": 8,
                         "column": 14,
-                        "offset": 41
+                        "offset": 115
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 6,
+                    "line": 8,
                     "column": 3,
-                    "offset": 30
+                    "offset": 104
                   },
                   "end": {
-                    "line": 6,
+                    "line": 8,
                     "column": 14,
-                    "offset": 41
+                    "offset": 115
                   }
                 }
               },
@@ -88,28 +88,28 @@
                             "value": "新しい領域、新しいプロダクト",
                             "position": {
                               "start": {
-                                "line": 7,
+                                "line": 9,
                                 "column": 4,
-                                "offset": 45
+                                "offset": 119
                               },
                               "end": {
-                                "line": 7,
+                                "line": 9,
                                 "column": 18,
-                                "offset": 59
+                                "offset": 133
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 7,
+                            "line": 9,
                             "column": 4,
-                            "offset": 45
+                            "offset": 119
                           },
                           "end": {
-                            "line": 7,
+                            "line": 9,
                             "column": 19,
-                            "offset": 60
+                            "offset": 134
                           }
                         }
                       },
@@ -132,28 +132,28 @@
                                     "value": "設計の壁打ち",
                                     "position": {
                                       "start": {
-                                        "line": 8,
+                                        "line": 10,
                                         "column": 5,
-                                        "offset": 65
+                                        "offset": 139
                                       },
                                       "end": {
-                                        "line": 8,
+                                        "line": 10,
                                         "column": 11,
-                                        "offset": 71
+                                        "offset": 145
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 8,
+                                    "line": 10,
                                     "column": 5,
-                                    "offset": 65
+                                    "offset": 139
                                   },
                                   "end": {
-                                    "line": 8,
+                                    "line": 10,
                                     "column": 11,
-                                    "offset": 71
+                                    "offset": 145
                                   }
                                 }
                               },
@@ -176,42 +176,42 @@
                                             "value": "「知識はあるが知恵がない」相手で良い場合",
                                             "position": {
                                               "start": {
-                                                "line": 9,
+                                                "line": 11,
                                                 "column": 6,
-                                                "offset": 77
+                                                "offset": 151
                                               },
                                               "end": {
-                                                "line": 9,
+                                                "line": 11,
                                                 "column": 26,
-                                                "offset": 97
+                                                "offset": 171
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 9,
+                                            "line": 11,
                                             "column": 6,
-                                            "offset": 77
+                                            "offset": 151
                                           },
                                           "end": {
-                                            "line": 9,
+                                            "line": 11,
                                             "column": 26,
-                                            "offset": 97
+                                            "offset": 171
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 9,
+                                        "line": 11,
                                         "column": 4,
-                                        "offset": 75
+                                        "offset": 149
                                       },
                                       "end": {
-                                        "line": 9,
+                                        "line": 11,
                                         "column": 26,
-                                        "offset": 97
+                                        "offset": 171
                                       }
                                     }
                                   },
@@ -228,42 +228,42 @@
                                             "value": "技術的な選択肢の洗い出し",
                                             "position": {
                                               "start": {
-                                                "line": 10,
+                                                "line": 12,
                                                 "column": 6,
-                                                "offset": 103
+                                                "offset": 177
                                               },
                                               "end": {
-                                                "line": 10,
+                                                "line": 12,
                                                 "column": 18,
-                                                "offset": 115
+                                                "offset": 189
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 10,
+                                            "line": 12,
                                             "column": 6,
-                                            "offset": 103
+                                            "offset": 177
                                           },
                                           "end": {
-                                            "line": 10,
+                                            "line": 12,
                                             "column": 18,
-                                            "offset": 115
+                                            "offset": 189
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 10,
+                                        "line": 12,
                                         "column": 4,
-                                        "offset": 101
+                                        "offset": 175
                                       },
                                       "end": {
-                                        "line": 10,
+                                        "line": 12,
                                         "column": 18,
-                                        "offset": 115
+                                        "offset": 189
                                       }
                                     }
                                   },
@@ -280,70 +280,70 @@
                                             "value": "キーワード、キータームを見つけて説明してもらう",
                                             "position": {
                                               "start": {
-                                                "line": 11,
+                                                "line": 13,
                                                 "column": 6,
-                                                "offset": 121
+                                                "offset": 195
                                               },
                                               "end": {
-                                                "line": 11,
+                                                "line": 13,
                                                 "column": 29,
-                                                "offset": 144
+                                                "offset": 218
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 11,
+                                            "line": 13,
                                             "column": 6,
-                                            "offset": 121
+                                            "offset": 195
                                           },
                                           "end": {
-                                            "line": 11,
+                                            "line": 13,
                                             "column": 29,
-                                            "offset": 144
+                                            "offset": 218
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 11,
+                                        "line": 13,
                                         "column": 4,
-                                        "offset": 119
+                                        "offset": 193
                                       },
                                       "end": {
-                                        "line": 11,
+                                        "line": 13,
                                         "column": 29,
-                                        "offset": 144
+                                        "offset": 218
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 9,
+                                    "line": 11,
                                     "column": 4,
-                                    "offset": 75
+                                    "offset": 149
                                   },
                                   "end": {
-                                    "line": 11,
+                                    "line": 13,
                                     "column": 29,
-                                    "offset": 144
+                                    "offset": 218
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 8,
+                                "line": 10,
                                 "column": 3,
-                                "offset": 63
+                                "offset": 137
                               },
                               "end": {
-                                "line": 11,
+                                "line": 13,
                                 "column": 29,
-                                "offset": 144
+                                "offset": 218
                               }
                             }
                           },
@@ -360,28 +360,28 @@
                                     "value": "サンプル実装",
                                     "position": {
                                       "start": {
-                                        "line": 12,
+                                        "line": 14,
                                         "column": 5,
-                                        "offset": 149
+                                        "offset": 223
                                       },
                                       "end": {
-                                        "line": 12,
+                                        "line": 14,
                                         "column": 11,
-                                        "offset": 155
+                                        "offset": 229
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 12,
+                                    "line": 14,
                                     "column": 5,
-                                    "offset": 149
+                                    "offset": 223
                                   },
                                   "end": {
-                                    "line": 12,
+                                    "line": 14,
                                     "column": 11,
-                                    "offset": 155
+                                    "offset": 229
                                   }
                                 }
                               },
@@ -404,42 +404,42 @@
                                             "value": "README や入門サイトにあるような典型的な scaffolding は得意",
                                             "position": {
                                               "start": {
-                                                "line": 13,
+                                                "line": 15,
                                                 "column": 6,
-                                                "offset": 161
+                                                "offset": 235
                                               },
                                               "end": {
-                                                "line": 13,
+                                                "line": 15,
                                                 "column": 45,
-                                                "offset": 200
+                                                "offset": 274
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 13,
+                                            "line": 15,
                                             "column": 6,
-                                            "offset": 161
+                                            "offset": 235
                                           },
                                           "end": {
-                                            "line": 13,
+                                            "line": 15,
                                             "column": 45,
-                                            "offset": 200
+                                            "offset": 274
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 13,
+                                        "line": 15,
                                         "column": 4,
-                                        "offset": 159
+                                        "offset": 233
                                       },
                                       "end": {
-                                        "line": 13,
+                                        "line": 15,
                                         "column": 45,
-                                        "offset": 200
+                                        "offset": 274
                                       }
                                     }
                                   },
@@ -456,42 +456,42 @@
                                             "value": "加えて最も基本的なドメイン知識やエンティティを伝えるとリアリティがでる",
                                             "position": {
                                               "start": {
-                                                "line": 14,
+                                                "line": 16,
                                                 "column": 6,
-                                                "offset": 206
+                                                "offset": 280
                                               },
                                               "end": {
-                                                "line": 14,
+                                                "line": 16,
                                                 "column": 41,
-                                                "offset": 241
+                                                "offset": 315
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 14,
+                                            "line": 16,
                                             "column": 6,
-                                            "offset": 206
+                                            "offset": 280
                                           },
                                           "end": {
-                                            "line": 14,
+                                            "line": 16,
                                             "column": 41,
-                                            "offset": 241
+                                            "offset": 315
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 14,
+                                        "line": 16,
                                         "column": 4,
-                                        "offset": 204
+                                        "offset": 278
                                       },
                                       "end": {
-                                        "line": 14,
+                                        "line": 16,
                                         "column": 41,
-                                        "offset": 241
+                                        "offset": 315
                                       }
                                     }
                                   },
@@ -508,42 +508,42 @@
                                             "value": "とりあえず見て、基本的な原理原則、使い方を理解する",
                                             "position": {
                                               "start": {
-                                                "line": 15,
+                                                "line": 17,
                                                 "column": 6,
-                                                "offset": 247
+                                                "offset": 321
                                               },
                                               "end": {
-                                                "line": 15,
+                                                "line": 17,
                                                 "column": 31,
-                                                "offset": 272
+                                                "offset": 346
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 15,
+                                            "line": 17,
                                             "column": 6,
-                                            "offset": 247
+                                            "offset": 321
                                           },
                                           "end": {
-                                            "line": 15,
+                                            "line": 17,
                                             "column": 31,
-                                            "offset": 272
+                                            "offset": 346
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 15,
+                                        "line": 17,
                                         "column": 4,
-                                        "offset": 245
+                                        "offset": 319
                                       },
                                       "end": {
-                                        "line": 15,
+                                        "line": 17,
                                         "column": 31,
-                                        "offset": 272
+                                        "offset": 346
                                       }
                                     }
                                   },
@@ -560,98 +560,98 @@
                                             "value": "捨てることが多い",
                                             "position": {
                                               "start": {
-                                                "line": 16,
+                                                "line": 18,
                                                 "column": 6,
-                                                "offset": 278
+                                                "offset": 352
                                               },
                                               "end": {
-                                                "line": 16,
+                                                "line": 18,
                                                 "column": 14,
-                                                "offset": 286
+                                                "offset": 360
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 16,
+                                            "line": 18,
                                             "column": 6,
-                                            "offset": 278
+                                            "offset": 352
                                           },
                                           "end": {
-                                            "line": 16,
+                                            "line": 18,
                                             "column": 16,
-                                            "offset": 288
+                                            "offset": 362
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 16,
+                                        "line": 18,
                                         "column": 4,
-                                        "offset": 276
+                                        "offset": 350
                                       },
                                       "end": {
-                                        "line": 16,
+                                        "line": 18,
                                         "column": 16,
-                                        "offset": 288
+                                        "offset": 362
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 13,
+                                    "line": 15,
                                     "column": 4,
-                                    "offset": 159
+                                    "offset": 233
                                   },
                                   "end": {
-                                    "line": 16,
+                                    "line": 18,
                                     "column": 16,
-                                    "offset": 288
+                                    "offset": 362
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 12,
+                                "line": 14,
                                 "column": 3,
-                                "offset": 147
+                                "offset": 221
                               },
                               "end": {
-                                "line": 16,
+                                "line": 18,
                                 "column": 16,
-                                "offset": 288
+                                "offset": 362
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 8,
+                            "line": 10,
                             "column": 3,
-                            "offset": 63
+                            "offset": 137
                           },
                           "end": {
-                            "line": 16,
+                            "line": 18,
                             "column": 16,
-                            "offset": 288
+                            "offset": 362
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 7,
+                        "line": 9,
                         "column": 2,
-                        "offset": 43
+                        "offset": 117
                       },
                       "end": {
-                        "line": 16,
+                        "line": 18,
                         "column": 16,
-                        "offset": 288
+                        "offset": 362
                       }
                     }
                   },
@@ -668,28 +668,28 @@
                             "value": "すでにコードベースがある場合",
                             "position": {
                               "start": {
-                                "line": 17,
+                                "line": 19,
                                 "column": 4,
-                                "offset": 292
+                                "offset": 366
                               },
                               "end": {
-                                "line": 17,
+                                "line": 19,
                                 "column": 18,
-                                "offset": 306
+                                "offset": 380
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 17,
+                            "line": 19,
                             "column": 4,
-                            "offset": 292
+                            "offset": 366
                           },
                           "end": {
-                            "line": 17,
+                            "line": 19,
                             "column": 18,
-                            "offset": 306
+                            "offset": 380
                           }
                         }
                       },
@@ -712,42 +712,42 @@
                                     "value": "人手で作ったリファレンス実装を見ながら横展開はめちゃくちゃ得意",
                                     "position": {
                                       "start": {
-                                        "line": 18,
+                                        "line": 20,
                                         "column": 5,
-                                        "offset": 311
+                                        "offset": 385
                                       },
                                       "end": {
-                                        "line": 18,
+                                        "line": 20,
                                         "column": 36,
-                                        "offset": 342
+                                        "offset": 416
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 18,
+                                    "line": 20,
                                     "column": 5,
-                                    "offset": 311
+                                    "offset": 385
                                   },
                                   "end": {
-                                    "line": 18,
+                                    "line": 20,
                                     "column": 36,
-                                    "offset": 342
+                                    "offset": 416
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 18,
+                                "line": 20,
                                 "column": 3,
-                                "offset": 309
+                                "offset": 383
                               },
                               "end": {
-                                "line": 18,
+                                "line": 20,
                                 "column": 36,
-                                "offset": 342
+                                "offset": 416
                               }
                             }
                           },
@@ -764,70 +764,70 @@
                                     "value": "API の単純なエンドポイントを増やす",
                                     "position": {
                                       "start": {
-                                        "line": 19,
+                                        "line": 21,
                                         "column": 5,
-                                        "offset": 347
+                                        "offset": 421
                                       },
                                       "end": {
-                                        "line": 19,
+                                        "line": 21,
                                         "column": 24,
-                                        "offset": 366
+                                        "offset": 440
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 19,
+                                    "line": 21,
                                     "column": 5,
-                                    "offset": 347
+                                    "offset": 421
                                   },
                                   "end": {
-                                    "line": 19,
+                                    "line": 21,
                                     "column": 24,
-                                    "offset": 366
+                                    "offset": 440
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 19,
+                                "line": 21,
                                 "column": 3,
-                                "offset": 345
+                                "offset": 419
                               },
                               "end": {
-                                "line": 19,
+                                "line": 21,
                                 "column": 24,
-                                "offset": 366
+                                "offset": 440
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 18,
+                            "line": 20,
                             "column": 3,
-                            "offset": 309
+                            "offset": 383
                           },
                           "end": {
-                            "line": 19,
+                            "line": 21,
                             "column": 24,
-                            "offset": 366
+                            "offset": 440
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 17,
+                        "line": 19,
                         "column": 2,
-                        "offset": 290
+                        "offset": 364
                       },
                       "end": {
-                        "line": 19,
+                        "line": 21,
                         "column": 24,
-                        "offset": 366
+                        "offset": 440
                       }
                     }
                   },
@@ -844,28 +844,28 @@
                             "value": "ドキュメント生成",
                             "position": {
                               "start": {
-                                "line": 20,
+                                "line": 22,
                                 "column": 4,
-                                "offset": 370
+                                "offset": 444
                               },
                               "end": {
-                                "line": 20,
+                                "line": 22,
                                 "column": 12,
-                                "offset": 378
+                                "offset": 452
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 20,
+                            "line": 22,
                             "column": 4,
-                            "offset": 370
+                            "offset": 444
                           },
                           "end": {
-                            "line": 20,
+                            "line": 22,
                             "column": 12,
-                            "offset": 378
+                            "offset": 452
                           }
                         }
                       },
@@ -888,42 +888,42 @@
                                     "value": "基本的なサービスコンセプトや用語リストは事前にペライチで書いておく",
                                     "position": {
                                       "start": {
-                                        "line": 21,
+                                        "line": 23,
                                         "column": 5,
-                                        "offset": 383
+                                        "offset": 457
                                       },
                                       "end": {
-                                        "line": 21,
+                                        "line": 23,
                                         "column": 38,
-                                        "offset": 416
+                                        "offset": 490
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 21,
+                                    "line": 23,
                                     "column": 5,
-                                    "offset": 383
+                                    "offset": 457
                                   },
                                   "end": {
-                                    "line": 21,
+                                    "line": 23,
                                     "column": 38,
-                                    "offset": 416
+                                    "offset": 490
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 21,
+                                "line": 23,
                                 "column": 3,
-                                "offset": 381
+                                "offset": 455
                               },
                               "end": {
-                                "line": 21,
+                                "line": 23,
                                 "column": 38,
-                                "offset": 416
+                                "offset": 490
                               }
                             }
                           },
@@ -940,42 +940,42 @@
                                     "value": "これがあると生成するコードの質やネーミングセンスが明らかに変わる",
                                     "position": {
                                       "start": {
-                                        "line": 22,
+                                        "line": 24,
                                         "column": 5,
-                                        "offset": 421
+                                        "offset": 495
                                       },
                                       "end": {
-                                        "line": 22,
+                                        "line": 24,
                                         "column": 37,
-                                        "offset": 453
+                                        "offset": 527
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 22,
+                                    "line": 24,
                                     "column": 5,
-                                    "offset": 421
+                                    "offset": 495
                                   },
                                   "end": {
-                                    "line": 22,
+                                    "line": 24,
                                     "column": 37,
-                                    "offset": 453
+                                    "offset": 527
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 22,
+                                "line": 24,
                                 "column": 3,
-                                "offset": 419
+                                "offset": 493
                               },
                               "end": {
-                                "line": 22,
+                                "line": 24,
                                 "column": 37,
-                                "offset": 453
+                                "offset": 527
                               }
                             }
                           },
@@ -992,28 +992,28 @@
                                     "value": "設計ドキュメントやユースケースのリストアップは AI に作ってもらう",
                                     "position": {
                                       "start": {
-                                        "line": 23,
+                                        "line": 25,
                                         "column": 5,
-                                        "offset": 458
+                                        "offset": 532
                                       },
                                       "end": {
-                                        "line": 23,
+                                        "line": 25,
                                         "column": 39,
-                                        "offset": 492
+                                        "offset": 566
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 23,
+                                    "line": 25,
                                     "column": 5,
-                                    "offset": 458
+                                    "offset": 532
                                   },
                                   "end": {
-                                    "line": 23,
+                                    "line": 25,
                                     "column": 39,
-                                    "offset": 492
+                                    "offset": 566
                                   }
                                 }
                               },
@@ -1036,98 +1036,98 @@
                                             "value": "ニンゲンが書くのは面倒でつい後回しにしがち（の割りに後から致命的になる）",
                                             "position": {
                                               "start": {
-                                                "line": 24,
+                                                "line": 26,
                                                 "column": 6,
-                                                "offset": 498
+                                                "offset": 572
                                               },
                                               "end": {
-                                                "line": 24,
+                                                "line": 26,
                                                 "column": 42,
-                                                "offset": 534
+                                                "offset": 608
                                               }
                                             }
                                           }
                                         ],
                                         "position": {
                                           "start": {
-                                            "line": 24,
+                                            "line": 26,
                                             "column": 6,
-                                            "offset": 498
+                                            "offset": 572
                                           },
                                           "end": {
-                                            "line": 24,
+                                            "line": 26,
                                             "column": 42,
-                                            "offset": 534
+                                            "offset": 608
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 24,
+                                        "line": 26,
                                         "column": 4,
-                                        "offset": 496
+                                        "offset": 570
                                       },
                                       "end": {
-                                        "line": 24,
+                                        "line": 26,
                                         "column": 42,
-                                        "offset": 534
+                                        "offset": 608
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 24,
+                                    "line": 26,
                                     "column": 4,
-                                    "offset": 496
+                                    "offset": 570
                                   },
                                   "end": {
-                                    "line": 24,
+                                    "line": 26,
                                     "column": 42,
-                                    "offset": 534
+                                    "offset": 608
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 23,
+                                "line": 25,
                                 "column": 3,
-                                "offset": 456
+                                "offset": 530
                               },
                               "end": {
-                                "line": 24,
+                                "line": 26,
                                 "column": 42,
-                                "offset": 534
+                                "offset": 608
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 21,
+                            "line": 23,
                             "column": 3,
-                            "offset": 381
+                            "offset": 455
                           },
                           "end": {
-                            "line": 24,
+                            "line": 26,
                             "column": 42,
-                            "offset": 534
+                            "offset": 608
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 20,
+                        "line": 22,
                         "column": 2,
-                        "offset": 368
+                        "offset": 442
                       },
                       "end": {
-                        "line": 24,
+                        "line": 26,
                         "column": 42,
-                        "offset": 534
+                        "offset": 608
                       }
                     }
                   },
@@ -1144,28 +1144,28 @@
                             "value": "型パズルを解かせる",
                             "position": {
                               "start": {
-                                "line": 25,
+                                "line": 27,
                                 "column": 4,
-                                "offset": 538
+                                "offset": 612
                               },
                               "end": {
-                                "line": 25,
+                                "line": 27,
                                 "column": 13,
-                                "offset": 547
+                                "offset": 621
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 25,
+                            "line": 27,
                             "column": 4,
-                            "offset": 538
+                            "offset": 612
                           },
                           "end": {
-                            "line": 25,
+                            "line": 27,
                             "column": 13,
-                            "offset": 547
+                            "offset": 621
                           }
                         }
                       },
@@ -1188,42 +1188,42 @@
                                     "value": "AI に書かせるとリファクタリングのサイクルが早くなる（後述）",
                                     "position": {
                                       "start": {
-                                        "line": 26,
+                                        "line": 28,
                                         "column": 5,
-                                        "offset": 552
+                                        "offset": 626
                                       },
                                       "end": {
-                                        "line": 26,
+                                        "line": 28,
                                         "column": 36,
-                                        "offset": 583
+                                        "offset": 657
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 26,
+                                    "line": 28,
                                     "column": 5,
-                                    "offset": 552
+                                    "offset": 626
                                   },
                                   "end": {
-                                    "line": 26,
+                                    "line": 28,
                                     "column": 36,
-                                    "offset": 583
+                                    "offset": 657
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 26,
+                                "line": 28,
                                 "column": 3,
-                                "offset": 550
+                                "offset": 624
                               },
                               "end": {
-                                "line": 26,
+                                "line": 28,
                                 "column": 36,
-                                "offset": 583
+                                "offset": 657
                               }
                             }
                           },
@@ -1240,42 +1240,42 @@
                                     "value": "モジュール化してコードベースの責務分担を明確にする",
                                     "position": {
                                       "start": {
-                                        "line": 27,
+                                        "line": 29,
                                         "column": 5,
-                                        "offset": 588
+                                        "offset": 662
                                       },
                                       "end": {
-                                        "line": 27,
+                                        "line": 29,
                                         "column": 30,
-                                        "offset": 613
+                                        "offset": 687
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 27,
+                                    "line": 29,
                                     "column": 5,
-                                    "offset": 588
+                                    "offset": 662
                                   },
                                   "end": {
-                                    "line": 27,
+                                    "line": 29,
                                     "column": 30,
-                                    "offset": 613
+                                    "offset": 687
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 27,
+                                "line": 29,
                                 "column": 3,
-                                "offset": 586
+                                "offset": 660
                               },
                               "end": {
-                                "line": 27,
+                                "line": 29,
                                 "column": 30,
-                                "offset": 613
+                                "offset": 687
                               }
                             }
                           },
@@ -1292,42 +1292,42 @@
                                     "value": "抽象化したくなるケースが増えると、ジェネリクスが増える",
                                     "position": {
                                       "start": {
-                                        "line": 28,
+                                        "line": 30,
                                         "column": 5,
-                                        "offset": 618
+                                        "offset": 692
                                       },
                                       "end": {
-                                        "line": 28,
+                                        "line": 30,
                                         "column": 32,
-                                        "offset": 645
+                                        "offset": 719
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 28,
+                                    "line": 30,
                                     "column": 5,
-                                    "offset": 618
+                                    "offset": 692
                                   },
                                   "end": {
-                                    "line": 28,
+                                    "line": 30,
                                     "column": 32,
-                                    "offset": 645
+                                    "offset": 719
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 28,
+                                "line": 30,
                                 "column": 3,
-                                "offset": 616
+                                "offset": 690
                               },
                               "end": {
-                                "line": 28,
+                                "line": 30,
                                 "column": 32,
-                                "offset": 645
+                                "offset": 719
                               }
                             }
                           },
@@ -1344,42 +1344,42 @@
                                     "value": "ジェネリクスが増えると型パズル化進行するのでやってもらう",
                                     "position": {
                                       "start": {
-                                        "line": 29,
+                                        "line": 31,
                                         "column": 5,
-                                        "offset": 650
+                                        "offset": 724
                                       },
                                       "end": {
-                                        "line": 29,
+                                        "line": 31,
                                         "column": 33,
-                                        "offset": 678
+                                        "offset": 752
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 29,
+                                    "line": 31,
                                     "column": 5,
-                                    "offset": 650
+                                    "offset": 724
                                   },
                                   "end": {
-                                    "line": 29,
+                                    "line": 31,
                                     "column": 33,
-                                    "offset": 678
+                                    "offset": 752
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 29,
+                                "line": 31,
                                 "column": 3,
-                                "offset": 648
+                                "offset": 722
                               },
                               "end": {
-                                "line": 29,
+                                "line": 31,
                                 "column": 33,
-                                "offset": 678
+                                "offset": 752
                               }
                             }
                           },
@@ -1396,98 +1396,98 @@
                                     "value": "うまくいくときといかないときがある（理由は不明）",
                                     "position": {
                                       "start": {
-                                        "line": 30,
+                                        "line": 32,
                                         "column": 5,
-                                        "offset": 683
+                                        "offset": 757
                                       },
                                       "end": {
-                                        "line": 30,
+                                        "line": 32,
                                         "column": 29,
-                                        "offset": 707
+                                        "offset": 781
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 30,
+                                    "line": 32,
                                     "column": 5,
-                                    "offset": 683
+                                    "offset": 757
                                   },
                                   "end": {
-                                    "line": 30,
+                                    "line": 32,
                                     "column": 29,
-                                    "offset": 707
+                                    "offset": 781
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 30,
+                                "line": 32,
                                 "column": 3,
-                                "offset": 681
+                                "offset": 755
                               },
                               "end": {
-                                "line": 30,
+                                "line": 32,
                                 "column": 29,
-                                "offset": 707
+                                "offset": 781
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 26,
+                            "line": 28,
                             "column": 3,
-                            "offset": 550
+                            "offset": 624
                           },
                           "end": {
-                            "line": 30,
+                            "line": 32,
                             "column": 29,
-                            "offset": 707
+                            "offset": 781
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 25,
+                        "line": 27,
                         "column": 2,
-                        "offset": 536
+                        "offset": 610
                       },
                       "end": {
-                        "line": 30,
+                        "line": 32,
                         "column": 29,
-                        "offset": 707
+                        "offset": 781
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 7,
+                    "line": 9,
                     "column": 2,
-                    "offset": 43
+                    "offset": 117
                   },
                   "end": {
-                    "line": 30,
+                    "line": 32,
                     "column": 29,
-                    "offset": 707
+                    "offset": 781
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 6,
+                "line": 8,
                 "column": 1,
-                "offset": 28
+                "offset": 102
               },
               "end": {
-                "line": 30,
+                "line": 32,
                 "column": 29,
-                "offset": 707
+                "offset": 781
               }
             }
           },
@@ -1504,28 +1504,28 @@
                     "value": "ここからはもう少し一般化した話として……",
                     "position": {
                       "start": {
-                        "line": 31,
+                        "line": 33,
                         "column": 3,
-                        "offset": 710
+                        "offset": 784
                       },
                       "end": {
-                        "line": 31,
+                        "line": 33,
                         "column": 23,
-                        "offset": 730
+                        "offset": 804
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 31,
+                    "line": 33,
                     "column": 3,
-                    "offset": 710
+                    "offset": 784
                   },
                   "end": {
-                    "line": 31,
+                    "line": 33,
                     "column": 23,
-                    "offset": 730
+                    "offset": 804
                   }
                 }
               },
@@ -1548,14 +1548,14 @@
                             "value": "その前に ",
                             "position": {
                               "start": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 4,
-                                "offset": 734
+                                "offset": 808
                               },
                               "end": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 9,
-                                "offset": 739
+                                "offset": 813
                               }
                             }
                           },
@@ -1569,28 +1569,28 @@
                                 "value": "fugabori.fm",
                                 "position": {
                                   "start": {
-                                    "line": 32,
+                                    "line": 34,
                                     "column": 10,
-                                    "offset": 740
+                                    "offset": 814
                                   },
                                   "end": {
-                                    "line": 32,
+                                    "line": 34,
                                     "column": 21,
-                                    "offset": 751
+                                    "offset": 825
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 9,
-                                "offset": 739
+                                "offset": 813
                               },
                               "end": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 55,
-                                "offset": 785
+                                "offset": 859
                               }
                             }
                           },
@@ -1599,42 +1599,42 @@
                             "value": " が良かったのでぜひ聞いてほしい",
                             "position": {
                               "start": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 55,
-                                "offset": 785
+                                "offset": 859
                               },
                               "end": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 71,
-                                "offset": 801
+                                "offset": 875
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 32,
+                            "line": 34,
                             "column": 4,
-                            "offset": 734
+                            "offset": 808
                           },
                           "end": {
-                            "line": 32,
+                            "line": 34,
                             "column": 71,
-                            "offset": 801
+                            "offset": 875
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 32,
+                        "line": 34,
                         "column": 2,
-                        "offset": 732
+                        "offset": 806
                       },
                       "end": {
-                        "line": 32,
+                        "line": 34,
                         "column": 71,
-                        "offset": 801
+                        "offset": 875
                       }
                     }
                   },
@@ -1656,28 +1656,28 @@
                                 "value": "rebuild.fm",
                                 "position": {
                                   "start": {
-                                    "line": 33,
+                                    "line": 35,
                                     "column": 5,
-                                    "offset": 806
+                                    "offset": 880
                                   },
                                   "end": {
-                                    "line": 33,
+                                    "line": 35,
                                     "column": 15,
-                                    "offset": 816
+                                    "offset": 890
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 33,
+                                "line": 35,
                                 "column": 4,
-                                "offset": 805
+                                "offset": 879
                               },
                               "end": {
-                                "line": 33,
+                                "line": 35,
                                 "column": 41,
-                                "offset": 842
+                                "offset": 916
                               }
                             }
                           },
@@ -1686,70 +1686,70 @@
                             "value": " の回も実体験が伴うリアリティがあって良かった",
                             "position": {
                               "start": {
-                                "line": 33,
+                                "line": 35,
                                 "column": 41,
-                                "offset": 842
+                                "offset": 916
                               },
                               "end": {
-                                "line": 33,
+                                "line": 35,
                                 "column": 64,
-                                "offset": 865
+                                "offset": 939
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 33,
+                            "line": 35,
                             "column": 4,
-                            "offset": 805
+                            "offset": 879
                           },
                           "end": {
-                            "line": 33,
+                            "line": 35,
                             "column": 64,
-                            "offset": 865
+                            "offset": 939
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 33,
+                        "line": 35,
                         "column": 2,
-                        "offset": 803
+                        "offset": 877
                       },
                       "end": {
-                        "line": 33,
+                        "line": 35,
                         "column": 64,
-                        "offset": 865
+                        "offset": 939
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 32,
+                    "line": 34,
                     "column": 2,
-                    "offset": 732
+                    "offset": 806
                   },
                   "end": {
-                    "line": 33,
+                    "line": 35,
                     "column": 64,
-                    "offset": 865
+                    "offset": 939
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 31,
+                "line": 33,
                 "column": 1,
-                "offset": 708
+                "offset": 782
               },
               "end": {
-                "line": 33,
+                "line": 35,
                 "column": 64,
-                "offset": 865
+                "offset": 939
               }
             }
           },
@@ -1766,28 +1766,28 @@
                     "value": "「AI に知識はあるが知恵がない」はまさにその通り",
                     "position": {
                       "start": {
-                        "line": 34,
+                        "line": 36,
                         "column": 3,
-                        "offset": 868
+                        "offset": 942
                       },
                       "end": {
-                        "line": 34,
+                        "line": 36,
                         "column": 28,
-                        "offset": 893
+                        "offset": 967
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 34,
+                    "line": 36,
                     "column": 3,
-                    "offset": 868
+                    "offset": 942
                   },
                   "end": {
-                    "line": 34,
+                    "line": 36,
                     "column": 28,
-                    "offset": 893
+                    "offset": 967
                   }
                 }
               },
@@ -1810,42 +1810,42 @@
                             "value": "ソフトウェアのアーキテクチャは機能改修を重ねる度に耐用年数が増えていく",
                             "position": {
                               "start": {
-                                "line": 35,
+                                "line": 37,
                                 "column": 4,
-                                "offset": 897
+                                "offset": 971
                               },
                               "end": {
-                                "line": 35,
+                                "line": 37,
                                 "column": 39,
-                                "offset": 932
+                                "offset": 1006
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 35,
+                            "line": 37,
                             "column": 4,
-                            "offset": 897
+                            "offset": 971
                           },
                           "end": {
-                            "line": 35,
+                            "line": 37,
                             "column": 39,
-                            "offset": 932
+                            "offset": 1006
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 35,
+                        "line": 37,
                         "column": 2,
-                        "offset": 895
+                        "offset": 969
                       },
                       "end": {
-                        "line": 35,
+                        "line": 37,
                         "column": 39,
-                        "offset": 932
+                        "offset": 1006
                       }
                     }
                   },
@@ -1862,42 +1862,42 @@
                             "value": "当初想定されていたポテンシャルを超える場合はリアーキテクトが必要",
                             "position": {
                               "start": {
-                                "line": 36,
+                                "line": 38,
                                 "column": 4,
-                                "offset": 936
+                                "offset": 1010
                               },
                               "end": {
-                                "line": 36,
+                                "line": 38,
                                 "column": 36,
-                                "offset": 968
+                                "offset": 1042
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 36,
+                            "line": 38,
                             "column": 4,
-                            "offset": 936
+                            "offset": 1010
                           },
                           "end": {
-                            "line": 36,
+                            "line": 38,
                             "column": 36,
-                            "offset": 968
+                            "offset": 1042
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 36,
+                        "line": 38,
                         "column": 2,
-                        "offset": 934
+                        "offset": 1008
                       },
                       "end": {
-                        "line": 36,
+                        "line": 38,
                         "column": 36,
-                        "offset": 968
+                        "offset": 1042
                       }
                     }
                   },
@@ -1914,42 +1914,42 @@
                             "value": "知恵＝現実に動作する不完全なアプリケーションに対して、現実的な最適解を出し続ける力",
                             "position": {
                               "start": {
-                                "line": 37,
+                                "line": 39,
                                 "column": 4,
-                                "offset": 972
+                                "offset": 1046
                               },
                               "end": {
-                                "line": 37,
+                                "line": 39,
                                 "column": 45,
-                                "offset": 1013
+                                "offset": 1087
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 37,
+                            "line": 39,
                             "column": 4,
-                            "offset": 972
+                            "offset": 1046
                           },
                           "end": {
-                            "line": 37,
+                            "line": 39,
                             "column": 45,
-                            "offset": 1013
+                            "offset": 1087
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 37,
+                        "line": 39,
                         "column": 2,
-                        "offset": 970
+                        "offset": 1044
                       },
                       "end": {
-                        "line": 37,
+                        "line": 39,
                         "column": 45,
-                        "offset": 1013
+                        "offset": 1087
                       }
                     }
                   },
@@ -1966,42 +1966,42 @@
                             "value": "おそらくニンゲンは良くも悪くもその対応力が高い",
                             "position": {
                               "start": {
-                                "line": 38,
+                                "line": 40,
                                 "column": 4,
-                                "offset": 1017
+                                "offset": 1091
                               },
                               "end": {
-                                "line": 38,
+                                "line": 40,
                                 "column": 27,
-                                "offset": 1040
+                                "offset": 1114
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 38,
+                            "line": 40,
                             "column": 4,
-                            "offset": 1017
+                            "offset": 1091
                           },
                           "end": {
-                            "line": 38,
+                            "line": 40,
                             "column": 27,
-                            "offset": 1040
+                            "offset": 1114
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 38,
+                        "line": 40,
                         "column": 2,
-                        "offset": 1015
+                        "offset": 1089
                       },
                       "end": {
-                        "line": 38,
+                        "line": 40,
                         "column": 27,
-                        "offset": 1040
+                        "offset": 1114
                       }
                     }
                   },
@@ -2018,42 +2018,42 @@
                             "value": "元々のコードベースに無理があると、AI の出力の品質ががた落ちする",
                             "position": {
                               "start": {
-                                "line": 39,
+                                "line": 41,
                                 "column": 4,
-                                "offset": 1044
+                                "offset": 1118
                               },
                               "end": {
-                                "line": 39,
+                                "line": 41,
                                 "column": 37,
-                                "offset": 1077
+                                "offset": 1151
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 39,
+                            "line": 41,
                             "column": 4,
-                            "offset": 1044
+                            "offset": 1118
                           },
                           "end": {
-                            "line": 39,
+                            "line": 41,
                             "column": 37,
-                            "offset": 1077
+                            "offset": 1151
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 39,
+                        "line": 41,
                         "column": 2,
-                        "offset": 1042
+                        "offset": 1116
                       },
                       "end": {
-                        "line": 39,
+                        "line": 41,
                         "column": 37,
-                        "offset": 1077
+                        "offset": 1151
                       }
                     }
                   },
@@ -2070,70 +2070,70 @@
                             "value": "逆に言えば、AI にちゃんとやってもらうためにリアーキテクトが必要",
                             "position": {
                               "start": {
-                                "line": 40,
+                                "line": 42,
                                 "column": 4,
-                                "offset": 1081
+                                "offset": 1155
                               },
                               "end": {
-                                "line": 40,
+                                "line": 42,
                                 "column": 37,
-                                "offset": 1114
+                                "offset": 1188
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 40,
+                            "line": 42,
                             "column": 4,
-                            "offset": 1081
+                            "offset": 1155
                           },
                           "end": {
-                            "line": 40,
+                            "line": 42,
                             "column": 37,
-                            "offset": 1114
+                            "offset": 1188
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 40,
+                        "line": 42,
                         "column": 2,
-                        "offset": 1079
+                        "offset": 1153
                       },
                       "end": {
-                        "line": 40,
+                        "line": 42,
                         "column": 37,
-                        "offset": 1114
+                        "offset": 1188
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 35,
+                    "line": 37,
                     "column": 2,
-                    "offset": 895
+                    "offset": 969
                   },
                   "end": {
-                    "line": 40,
+                    "line": 42,
                     "column": 37,
-                    "offset": 1114
+                    "offset": 1188
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 34,
+                "line": 36,
                 "column": 1,
-                "offset": 866
+                "offset": 940
               },
               "end": {
-                "line": 40,
+                "line": 42,
                 "column": 37,
-                "offset": 1114
+                "offset": 1188
               }
             }
           },
@@ -2150,28 +2150,28 @@
                     "value": "いったい何をブーストしているのか？",
                     "position": {
                       "start": {
-                        "line": 41,
+                        "line": 43,
                         "column": 3,
-                        "offset": 1117
+                        "offset": 1191
                       },
                       "end": {
-                        "line": 41,
+                        "line": 43,
                         "column": 20,
-                        "offset": 1134
+                        "offset": 1208
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 41,
+                    "line": 43,
                     "column": 3,
-                    "offset": 1117
+                    "offset": 1191
                   },
                   "end": {
-                    "line": 41,
+                    "line": 43,
                     "column": 20,
-                    "offset": 1134
+                    "offset": 1208
                   }
                 }
               },
@@ -2194,28 +2194,28 @@
                             "value": "コードを超速で量産する力はそんなにありがたみを感じていない",
                             "position": {
                               "start": {
-                                "line": 42,
+                                "line": 44,
                                 "column": 4,
-                                "offset": 1138
+                                "offset": 1212
                               },
                               "end": {
-                                "line": 42,
+                                "line": 44,
                                 "column": 33,
-                                "offset": 1167
+                                "offset": 1241
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 42,
+                            "line": 44,
                             "column": 4,
-                            "offset": 1138
+                            "offset": 1212
                           },
                           "end": {
-                            "line": 42,
+                            "line": 44,
                             "column": 33,
-                            "offset": 1167
+                            "offset": 1241
                           }
                         }
                       },
@@ -2238,70 +2238,70 @@
                                     "value": "もちろん手数として有用",
                                     "position": {
                                       "start": {
-                                        "line": 43,
+                                        "line": 45,
                                         "column": 5,
-                                        "offset": 1172
+                                        "offset": 1246
                                       },
                                       "end": {
-                                        "line": 43,
+                                        "line": 45,
                                         "column": 16,
-                                        "offset": 1183
+                                        "offset": 1257
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 43,
+                                    "line": 45,
                                     "column": 5,
-                                    "offset": 1172
+                                    "offset": 1246
                                   },
                                   "end": {
-                                    "line": 43,
+                                    "line": 45,
                                     "column": 16,
-                                    "offset": 1183
+                                    "offset": 1257
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 43,
+                                "line": 45,
                                 "column": 3,
-                                "offset": 1170
+                                "offset": 1244
                               },
                               "end": {
-                                "line": 43,
+                                "line": 45,
                                 "column": 16,
-                                "offset": 1183
+                                "offset": 1257
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 43,
+                            "line": 45,
                             "column": 3,
-                            "offset": 1170
+                            "offset": 1244
                           },
                           "end": {
-                            "line": 43,
+                            "line": 45,
                             "column": 16,
-                            "offset": 1183
+                            "offset": 1257
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 42,
+                        "line": 44,
                         "column": 2,
-                        "offset": 1136
+                        "offset": 1210
                       },
                       "end": {
-                        "line": 43,
+                        "line": 45,
                         "column": 16,
-                        "offset": 1183
+                        "offset": 1257
                       }
                     }
                   },
@@ -2318,28 +2318,28 @@
                             "value": "あらゆる局面での高速な壁打ち相手としてとても有用",
                             "position": {
                               "start": {
-                                "line": 44,
+                                "line": 46,
                                 "column": 4,
-                                "offset": 1187
+                                "offset": 1261
                               },
                               "end": {
-                                "line": 44,
+                                "line": 46,
                                 "column": 28,
-                                "offset": 1211
+                                "offset": 1285
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 44,
+                            "line": 46,
                             "column": 4,
-                            "offset": 1187
+                            "offset": 1261
                           },
                           "end": {
-                            "line": 44,
+                            "line": 46,
                             "column": 28,
-                            "offset": 1211
+                            "offset": 1285
                           }
                         }
                       },
@@ -2362,42 +2362,42 @@
                                     "value": "AI の出力の品質自体が大きなフィードバックになる",
                                     "position": {
                                       "start": {
-                                        "line": 45,
+                                        "line": 47,
                                         "column": 5,
-                                        "offset": 1216
+                                        "offset": 1290
                                       },
                                       "end": {
-                                        "line": 45,
+                                        "line": 47,
                                         "column": 30,
-                                        "offset": 1241
+                                        "offset": 1315
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 45,
+                                    "line": 47,
                                     "column": 5,
-                                    "offset": 1216
+                                    "offset": 1290
                                   },
                                   "end": {
-                                    "line": 45,
+                                    "line": 47,
                                     "column": 30,
-                                    "offset": 1241
+                                    "offset": 1315
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 45,
+                                "line": 47,
                                 "column": 3,
-                                "offset": 1214
+                                "offset": 1288
                               },
                               "end": {
-                                "line": 45,
+                                "line": 47,
                                 "column": 30,
-                                "offset": 1241
+                                "offset": 1315
                               }
                             }
                           },
@@ -2414,98 +2414,98 @@
                                     "value": "ドメインの精緻化、言語化、ドキュメンテーション",
                                     "position": {
                                       "start": {
-                                        "line": 46,
+                                        "line": 48,
                                         "column": 5,
-                                        "offset": 1246
+                                        "offset": 1320
                                       },
                                       "end": {
-                                        "line": 46,
+                                        "line": 48,
                                         "column": 28,
-                                        "offset": 1269
+                                        "offset": 1343
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 46,
+                                    "line": 48,
                                     "column": 5,
-                                    "offset": 1246
+                                    "offset": 1320
                                   },
                                   "end": {
-                                    "line": 46,
+                                    "line": 48,
                                     "column": 28,
-                                    "offset": 1269
+                                    "offset": 1343
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 46,
+                                "line": 48,
                                 "column": 3,
-                                "offset": 1244
+                                "offset": 1318
                               },
                               "end": {
-                                "line": 46,
+                                "line": 48,
                                 "column": 28,
-                                "offset": 1269
+                                "offset": 1343
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 45,
+                            "line": 47,
                             "column": 3,
-                            "offset": 1214
+                            "offset": 1288
                           },
                           "end": {
-                            "line": 46,
+                            "line": 48,
                             "column": 28,
-                            "offset": 1269
+                            "offset": 1343
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 44,
+                        "line": 46,
                         "column": 2,
-                        "offset": 1185
+                        "offset": 1259
                       },
                       "end": {
-                        "line": 46,
+                        "line": 48,
                         "column": 28,
-                        "offset": 1269
+                        "offset": 1343
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 42,
+                    "line": 44,
                     "column": 2,
-                    "offset": 1136
+                    "offset": 1210
                   },
                   "end": {
-                    "line": 46,
+                    "line": 48,
                     "column": 28,
-                    "offset": 1269
+                    "offset": 1343
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 41,
+                "line": 43,
                 "column": 1,
-                "offset": 1115
+                "offset": 1189
               },
               "end": {
-                "line": 46,
+                "line": 48,
                 "column": 28,
-                "offset": 1269
+                "offset": 1343
               }
             }
           },
@@ -2522,28 +2522,28 @@
                     "value": "AI 使うとプログラミング力は落ちる？",
                     "position": {
                       "start": {
-                        "line": 47,
+                        "line": 49,
                         "column": 3,
-                        "offset": 1272
+                        "offset": 1346
                       },
                       "end": {
-                        "line": 47,
+                        "line": 49,
                         "column": 22,
-                        "offset": 1291
+                        "offset": 1365
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 47,
+                    "line": 49,
                     "column": 3,
-                    "offset": 1272
+                    "offset": 1346
                   },
                   "end": {
-                    "line": 47,
+                    "line": 49,
                     "column": 22,
-                    "offset": 1291
+                    "offset": 1365
                   }
                 }
               },
@@ -2566,28 +2566,28 @@
                             "value": "「写経」による学習機会が失われる可能性はありそう",
                             "position": {
                               "start": {
-                                "line": 48,
+                                "line": 50,
                                 "column": 4,
-                                "offset": 1295
+                                "offset": 1369
                               },
                               "end": {
-                                "line": 48,
+                                "line": 50,
                                 "column": 28,
-                                "offset": 1319
+                                "offset": 1393
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 48,
+                            "line": 50,
                             "column": 4,
-                            "offset": 1295
+                            "offset": 1369
                           },
                           "end": {
-                            "line": 48,
+                            "line": 50,
                             "column": 28,
-                            "offset": 1319
+                            "offset": 1393
                           }
                         }
                       },
@@ -2610,70 +2610,70 @@
                                     "value": "アルゴリズムの意味を 1 行 1 行追って自分の血肉にする",
                                     "position": {
                                       "start": {
-                                        "line": 49,
+                                        "line": 51,
                                         "column": 5,
-                                        "offset": 1324
+                                        "offset": 1398
                                       },
                                       "end": {
-                                        "line": 49,
+                                        "line": 51,
                                         "column": 34,
-                                        "offset": 1353
+                                        "offset": 1427
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 49,
+                                    "line": 51,
                                     "column": 5,
-                                    "offset": 1324
+                                    "offset": 1398
                                   },
                                   "end": {
-                                    "line": 49,
+                                    "line": 51,
                                     "column": 34,
-                                    "offset": 1353
+                                    "offset": 1427
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 49,
+                                "line": 51,
                                 "column": 3,
-                                "offset": 1322
+                                "offset": 1396
                               },
                               "end": {
-                                "line": 49,
+                                "line": 51,
                                 "column": 34,
-                                "offset": 1353
+                                "offset": 1427
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 49,
+                            "line": 51,
                             "column": 3,
-                            "offset": 1322
+                            "offset": 1396
                           },
                           "end": {
-                            "line": 49,
+                            "line": 51,
                             "column": 34,
-                            "offset": 1353
+                            "offset": 1427
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 48,
+                        "line": 50,
                         "column": 2,
-                        "offset": 1293
+                        "offset": 1367
                       },
                       "end": {
-                        "line": 49,
+                        "line": 51,
                         "column": 34,
-                        "offset": 1353
+                        "offset": 1427
                       }
                     }
                   },
@@ -2690,28 +2690,28 @@
                             "value": "アーキテクチャのたたき台を作ってもらって大局や構造を把握する力は影響なし",
                             "position": {
                               "start": {
-                                "line": 50,
+                                "line": 52,
                                 "column": 4,
-                                "offset": 1357
+                                "offset": 1431
                               },
                               "end": {
-                                "line": 50,
+                                "line": 52,
                                 "column": 40,
-                                "offset": 1393
+                                "offset": 1467
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 50,
+                            "line": 52,
                             "column": 4,
-                            "offset": 1357
+                            "offset": 1431
                           },
                           "end": {
-                            "line": 50,
+                            "line": 52,
                             "column": 40,
-                            "offset": 1393
+                            "offset": 1467
                           }
                         }
                       },
@@ -2734,98 +2734,98 @@
                                     "value": "むしろスクラップ & ビルド試行回数が増えている気がする",
                                     "position": {
                                       "start": {
-                                        "line": 51,
+                                        "line": 53,
                                         "column": 5,
-                                        "offset": 1398
+                                        "offset": 1472
                                       },
                                       "end": {
-                                        "line": 51,
+                                        "line": 53,
                                         "column": 33,
-                                        "offset": 1426
+                                        "offset": 1500
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 51,
+                                    "line": 53,
                                     "column": 5,
-                                    "offset": 1398
+                                    "offset": 1472
                                   },
                                   "end": {
-                                    "line": 51,
+                                    "line": 53,
                                     "column": 33,
-                                    "offset": 1426
+                                    "offset": 1500
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 51,
+                                "line": 53,
                                 "column": 3,
-                                "offset": 1396
+                                "offset": 1470
                               },
                               "end": {
-                                "line": 51,
+                                "line": 53,
                                 "column": 33,
-                                "offset": 1426
+                                "offset": 1500
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 51,
+                            "line": 53,
                             "column": 3,
-                            "offset": 1396
+                            "offset": 1470
                           },
                           "end": {
-                            "line": 51,
+                            "line": 53,
                             "column": 33,
-                            "offset": 1426
+                            "offset": 1500
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 50,
+                        "line": 52,
                         "column": 2,
-                        "offset": 1355
+                        "offset": 1429
                       },
                       "end": {
-                        "line": 51,
+                        "line": 53,
                         "column": 33,
-                        "offset": 1426
+                        "offset": 1500
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 48,
+                    "line": 50,
                     "column": 2,
-                    "offset": 1293
+                    "offset": 1367
                   },
                   "end": {
-                    "line": 51,
+                    "line": 53,
                     "column": 33,
-                    "offset": 1426
+                    "offset": 1500
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 47,
+                "line": 49,
                 "column": 1,
-                "offset": 1270
+                "offset": 1344
               },
               "end": {
-                "line": 51,
+                "line": 53,
                 "column": 33,
-                "offset": 1426
+                "offset": 1500
               }
             }
           },
@@ -2842,28 +2842,28 @@
                     "value": "「誰もが自分だけのソフトウェアを作れる」時代",
                     "position": {
                       "start": {
-                        "line": 52,
+                        "line": 54,
                         "column": 3,
-                        "offset": 1429
+                        "offset": 1503
                       },
                       "end": {
-                        "line": 52,
+                        "line": 54,
                         "column": 25,
-                        "offset": 1451
+                        "offset": 1525
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 52,
+                    "line": 54,
                     "column": 3,
-                    "offset": 1429
+                    "offset": 1503
                   },
                   "end": {
-                    "line": 52,
+                    "line": 54,
                     "column": 25,
-                    "offset": 1451
+                    "offset": 1525
                   }
                 }
               },
@@ -2886,42 +2886,42 @@
                             "value": "「他人に作ってもらうソフトウェア」の価値とは？",
                             "position": {
                               "start": {
-                                "line": 53,
+                                "line": 55,
                                 "column": 4,
-                                "offset": 1455
+                                "offset": 1529
                               },
                               "end": {
-                                "line": 53,
+                                "line": 55,
                                 "column": 27,
-                                "offset": 1478
+                                "offset": 1552
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 53,
+                            "line": 55,
                             "column": 4,
-                            "offset": 1455
+                            "offset": 1529
                           },
                           "end": {
-                            "line": 53,
+                            "line": 55,
                             "column": 27,
-                            "offset": 1478
+                            "offset": 1552
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 53,
+                        "line": 55,
                         "column": 2,
-                        "offset": 1453
+                        "offset": 1527
                       },
                       "end": {
-                        "line": 53,
+                        "line": 55,
                         "column": 27,
-                        "offset": 1478
+                        "offset": 1552
                       }
                     }
                   },
@@ -2938,42 +2938,42 @@
                             "value": "「他人のためにソフトウェアを作るエンジニア」の価値とは？",
                             "position": {
                               "start": {
-                                "line": 54,
+                                "line": 56,
                                 "column": 4,
-                                "offset": 1482
+                                "offset": 1556
                               },
                               "end": {
-                                "line": 54,
+                                "line": 56,
                                 "column": 32,
-                                "offset": 1510
+                                "offset": 1584
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 54,
+                            "line": 56,
                             "column": 4,
-                            "offset": 1482
+                            "offset": 1556
                           },
                           "end": {
-                            "line": 54,
+                            "line": 56,
                             "column": 32,
-                            "offset": 1510
+                            "offset": 1584
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 54,
+                        "line": 56,
                         "column": 2,
-                        "offset": 1480
+                        "offset": 1554
                       },
                       "end": {
-                        "line": 54,
+                        "line": 56,
                         "column": 32,
-                        "offset": 1510
+                        "offset": 1584
                       }
                     }
                   },
@@ -2990,42 +2990,42 @@
                             "value": "生き残り戦略については Podcast で言及されている",
                             "position": {
                               "start": {
-                                "line": 55,
+                                "line": 57,
                                 "column": 4,
-                                "offset": 1514
+                                "offset": 1588
                               },
                               "end": {
-                                "line": 55,
+                                "line": 57,
                                 "column": 32,
-                                "offset": 1542
+                                "offset": 1616
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 55,
+                            "line": 57,
                             "column": 4,
-                            "offset": 1514
+                            "offset": 1588
                           },
                           "end": {
-                            "line": 55,
+                            "line": 57,
                             "column": 32,
-                            "offset": 1542
+                            "offset": 1616
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 55,
+                        "line": 57,
                         "column": 2,
-                        "offset": 1512
+                        "offset": 1586
                       },
                       "end": {
-                        "line": 55,
+                        "line": 57,
                         "column": 32,
-                        "offset": 1542
+                        "offset": 1616
                       }
                     }
                   },
@@ -3042,42 +3042,42 @@
                             "value": "デザイン＋エンジニアリングの結晶としてのソフトウェアは、ユーザをに自由をもたらすべき",
                             "position": {
                               "start": {
-                                "line": 56,
+                                "line": 58,
                                 "column": 4,
-                                "offset": 1546
+                                "offset": 1620
                               },
                               "end": {
-                                "line": 56,
+                                "line": 58,
                                 "column": 46,
-                                "offset": 1588
+                                "offset": 1662
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 56,
+                            "line": 58,
                             "column": 4,
-                            "offset": 1546
+                            "offset": 1620
                           },
                           "end": {
-                            "line": 56,
+                            "line": 58,
                             "column": 46,
-                            "offset": 1588
+                            "offset": 1662
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 56,
+                        "line": 58,
                         "column": 2,
-                        "offset": 1544
+                        "offset": 1618
                       },
                       "end": {
-                        "line": 56,
+                        "line": 58,
                         "column": 46,
-                        "offset": 1588
+                        "offset": 1662
                       }
                     }
                   },
@@ -3094,42 +3094,42 @@
                             "value": "目の前の問題を効率よく解くのではなく、何か新しい思考を可能にするためのソフトウェア",
                             "position": {
                               "start": {
-                                "line": 57,
+                                "line": 59,
                                 "column": 4,
-                                "offset": 1592
+                                "offset": 1666
                               },
                               "end": {
-                                "line": 57,
+                                "line": 59,
                                 "column": 45,
-                                "offset": 1633
+                                "offset": 1707
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 57,
+                            "line": 59,
                             "column": 4,
-                            "offset": 1592
+                            "offset": 1666
                           },
                           "end": {
-                            "line": 57,
+                            "line": 59,
                             "column": 45,
-                            "offset": 1633
+                            "offset": 1707
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 57,
+                        "line": 59,
                         "column": 2,
-                        "offset": 1590
+                        "offset": 1664
                       },
                       "end": {
-                        "line": 57,
+                        "line": 59,
                         "column": 45,
-                        "offset": 1633
+                        "offset": 1707
                       }
                     }
                   },
@@ -3146,42 +3146,42 @@
                             "value": "それを普通の人が「自分だけで」作るのは、原理的といっていいほど困難なのではないか？",
                             "position": {
                               "start": {
-                                "line": 58,
+                                "line": 60,
                                 "column": 4,
-                                "offset": 1637
+                                "offset": 1711
                               },
                               "end": {
-                                "line": 58,
+                                "line": 60,
                                 "column": 45,
-                                "offset": 1678
+                                "offset": 1752
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 58,
+                            "line": 60,
                             "column": 4,
-                            "offset": 1637
+                            "offset": 1711
                           },
                           "end": {
-                            "line": 58,
+                            "line": 60,
                             "column": 45,
-                            "offset": 1678
+                            "offset": 1752
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 58,
+                        "line": 60,
                         "column": 2,
-                        "offset": 1635
+                        "offset": 1709
                       },
                       "end": {
-                        "line": 58,
+                        "line": 60,
                         "column": 45,
-                        "offset": 1678
+                        "offset": 1752
                       }
                     }
                   },
@@ -3198,84 +3198,84 @@
                             "value": "というときに、道具としてのソフトウェアをデザインする専門家の存在意義はより高まるはず？",
                             "position": {
                               "start": {
-                                "line": 59,
+                                "line": 61,
                                 "column": 4,
-                                "offset": 1682
+                                "offset": 1756
                               },
                               "end": {
-                                "line": 59,
+                                "line": 61,
                                 "column": 47,
-                                "offset": 1725
+                                "offset": 1799
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 59,
+                            "line": 61,
                             "column": 4,
-                            "offset": 1682
+                            "offset": 1756
                           },
                           "end": {
-                            "line": 59,
+                            "line": 61,
                             "column": 47,
-                            "offset": 1725
+                            "offset": 1799
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 59,
+                        "line": 61,
                         "column": 2,
-                        "offset": 1680
+                        "offset": 1754
                       },
                       "end": {
-                        "line": 59,
+                        "line": 61,
                         "column": 47,
-                        "offset": 1725
+                        "offset": 1799
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 53,
+                    "line": 55,
                     "column": 2,
-                    "offset": 1453
+                    "offset": 1527
                   },
                   "end": {
-                    "line": 59,
+                    "line": 61,
                     "column": 47,
-                    "offset": 1725
+                    "offset": 1799
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 52,
+                "line": 54,
                 "column": 1,
-                "offset": 1427
+                "offset": 1501
               },
               "end": {
-                "line": 59,
+                "line": 61,
                 "column": 47,
-                "offset": 1725
+                "offset": 1799
               }
             }
           }
         ],
         "position": {
           "start": {
-            "line": 6,
+            "line": 8,
             "column": 1,
-            "offset": 28
+            "offset": 102
           },
           "end": {
-            "line": 59,
+            "line": 61,
             "column": 47,
-            "offset": 1725
+            "offset": 1799
           }
         }
       }
@@ -3287,9 +3287,9 @@
         "offset": 0
       },
       "end": {
-        "line": 59,
+        "line": 61,
         "column": 47,
-        "offset": 1725
+        "offset": 1799
       }
     }
   }

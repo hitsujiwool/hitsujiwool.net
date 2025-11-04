@@ -1,0 +1,3033 @@
+{
+  "title": "LLM と二人三脚で進める UI ライブラリ開発",
+  "source": "---\ncreatedAt: 2025-06-12T15:15:53+09:00\nupdatedAt: 2025-11-04T08:56:08+09:00\ntags:\n  - scribble\n---\n- 元々の経緯は……\n\t- UI ライブラリの実装を LLM にやらせたい\n\t- 隔離された環境のコーディングなら多少きたなくても許容可能\n\t- Figma MCP でデザインを読み取らせてたたき台を実装してもらう\n\t- uniba/super-good-meetings-ui\n\t- https://super-good-meetings-ui.vercel.app/\n- やってみてどうだった？\n\t- 確かにペアワークしている気持ちにはなった\n\t- めちゃめちゃ adhoc な指示出しが疲れる\n\t- いきなりでかい変更してくる\n\t- できたっていってるのに直ってない\n\t- これ、どうやったら継続的に改善できるようになるんだろう？\n- いっかいコードを書かせてみて、何を LLM を期待すべきかが整理されてきた\n\t- 意思決定のタイミングと役割分担のあり方（＝ワークフロー）のデザイン\n\t\t- AI をペアワークのパートナーとみなす\n\t\t- ナビゲーターとしてのニンゲンと、ドライバーとしての AI（まあこれはありがち）\n\t\t- 作業ステップごとに細かく確認と了解を取れるようにする\n\t\t\t- 確認が大事というより、ステップの言語化そのものが重要な成果物\n\t\t- どういう作業ステップにすべきかの類型をあらかじめ作っておく\n\t\t- 何にせよ大事なのは、分析、方向性の提案、実施、確認の反復作業（ふつうの PDCA）\n\t\t- そもそもこのサイクルのテスト自体を超高速に反復できるのが圧倒的な便益\n\t\t\t- ニンゲン相手にそんなことできないよね\n\t\t- コードを書くことだけではなく、コミュニケーションの枠組み自体をトライ & エラーできる\n\t- ニンゲンと AI の両者が理解できる形のドキュメンテーション\n\t\t- 設計したワークフローを言語化する\n\t\t- AI 向けの「おまじない集」にしない\n\t\t- こうすれば誰でもワークフロー自体に手を入れられる\n\t- AI に対する印象が変える必要がある\n\t\t- 「やたら特定ドメインのコードを書くのに強いプログラマ」（よくある）\n\t\t- 「ちょっぱや（だけど雑な）コードを書くプログラマ」（よくある）\n\t\t-　「実装力はないけど素直な新人」（新発見）\n- ここまで考えたら、むしろ Storybook の自動生成の方が楽だし得意そうじゃない？\n\t- ニンゲンが読むためのドキュメント作り\n\t- たいていサボりがち（実装しっぱなし）なので AI にやらせたい\n- やってみた（デモ）\n- AI がきちんと応答するまでに何をやったか？\n\t- 発生するタスクの類型化\n\t\t- 「タスクタイプ」による分類\n\t\t\t- コンポーネントのデザインをみて実装する\n\t\t\t- コンポーネントの実装をドキュメントに起こす\n\t\t\t- （＋ライブラリとしての体裁を整える）\n\t\t- UI ライブラリのメンテという限定されたドメインだと類型化しやすい\n\t\t- というかドメインの切り出しこそが重要？\n\t- コミュニケーションのあり方の形式化\n\t\t- lint フェーズ\n\t\t\t- lint とは、ある基準に従ったときの「あるべき姿」と「実態」のずれ\n\t\t\t- X という観点について、本来 Y であるべきものが、Z になっている\n\t\t\t- 実装そのもの以上に、実装とドキュメントのずれの解消にとって重要\n\t\t\t- LLM は 高度な linter\n\t\t- fix フェーズ\n\t\t\t- コードを実際に直す\n\t\t\t- lint のフェーズで正しい分析ができているなら、おのずと筋良く修正ができる\n",
+  "createdAt": "Thu Jun 12 2025 15:15:53 GMT+0900 (日本標準時)",
+  "updatedAt": "Tue Nov 04 2025 08:56:08 GMT+0900 (日本標準時)",
+  "tags": [
+    "scribble"
+  ],
+  "content": {
+    "type": "root",
+    "children": [
+      {
+        "type": "yaml",
+        "value": "createdAt: 2025-06-12T15:15:53+09:00\nupdatedAt: 2025-11-04T08:56:08+09:00\ntags:\n  - scribble",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 4,
+            "offset": 100
+          }
+        }
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": false,
+        "children": [
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "元々の経緯は……",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 3,
+                        "offset": 103
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 11,
+                        "offset": 111
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 7,
+                    "column": 3,
+                    "offset": 103
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 11,
+                    "offset": 111
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "UI ライブラリの実装を LLM にやらせたい",
+                            "position": {
+                              "start": {
+                                "line": 8,
+                                "column": 4,
+                                "offset": 115
+                              },
+                              "end": {
+                                "line": 8,
+                                "column": 27,
+                                "offset": 138
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 8,
+                            "column": 4,
+                            "offset": 115
+                          },
+                          "end": {
+                            "line": 8,
+                            "column": 27,
+                            "offset": 138
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 8,
+                        "column": 2,
+                        "offset": 113
+                      },
+                      "end": {
+                        "line": 8,
+                        "column": 27,
+                        "offset": 138
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "隔離された環境のコーディングなら多少きたなくても許容可能",
+                            "position": {
+                              "start": {
+                                "line": 9,
+                                "column": 4,
+                                "offset": 142
+                              },
+                              "end": {
+                                "line": 9,
+                                "column": 32,
+                                "offset": 170
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 9,
+                            "column": 4,
+                            "offset": 142
+                          },
+                          "end": {
+                            "line": 9,
+                            "column": 32,
+                            "offset": 170
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 9,
+                        "column": 2,
+                        "offset": 140
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 32,
+                        "offset": 170
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "Figma MCP でデザインを読み取らせてたたき台を実装してもらう",
+                            "position": {
+                              "start": {
+                                "line": 10,
+                                "column": 4,
+                                "offset": 174
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 38,
+                                "offset": 208
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 10,
+                            "column": 4,
+                            "offset": 174
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 38,
+                            "offset": 208
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 2,
+                        "offset": 172
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 38,
+                        "offset": 208
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "uniba/super-good-meetings-ui",
+                            "position": {
+                              "start": {
+                                "line": 11,
+                                "column": 4,
+                                "offset": 212
+                              },
+                              "end": {
+                                "line": 11,
+                                "column": 32,
+                                "offset": 240
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 11,
+                            "column": 4,
+                            "offset": 212
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 32,
+                            "offset": 240
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 2,
+                        "offset": 210
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 32,
+                        "offset": 240
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "link",
+                            "title": null,
+                            "url": "https://super-good-meetings-ui.vercel.app/",
+                            "children": [
+                              {
+                                "type": "text",
+                                "value": "https://super-good-meetings-ui.vercel.app/",
+                                "position": {
+                                  "start": {
+                                    "line": 12,
+                                    "column": 4,
+                                    "offset": 244
+                                  },
+                                  "end": {
+                                    "line": 12,
+                                    "column": 46,
+                                    "offset": 286
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 12,
+                                "column": 4,
+                                "offset": 244
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 46,
+                                "offset": 286
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 12,
+                            "column": 4,
+                            "offset": 244
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 46,
+                            "offset": 286
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 2,
+                        "offset": 242
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 46,
+                        "offset": 286
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 8,
+                    "column": 2,
+                    "offset": 113
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 46,
+                    "offset": 286
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1,
+                "offset": 101
+              },
+              "end": {
+                "line": 12,
+                "column": 46,
+                "offset": 286
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "やってみてどうだった？",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 3,
+                        "offset": 289
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 14,
+                        "offset": 300
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 13,
+                    "column": 3,
+                    "offset": 289
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 14,
+                    "offset": 300
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "確かにペアワークしている気持ちにはなった",
+                            "position": {
+                              "start": {
+                                "line": 14,
+                                "column": 4,
+                                "offset": 304
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 24,
+                                "offset": 324
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 14,
+                            "column": 4,
+                            "offset": 304
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 24,
+                            "offset": 324
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 2,
+                        "offset": 302
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 24,
+                        "offset": 324
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "めちゃめちゃ adhoc な指示出しが疲れる",
+                            "position": {
+                              "start": {
+                                "line": 15,
+                                "column": 4,
+                                "offset": 328
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 26,
+                                "offset": 350
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 15,
+                            "column": 4,
+                            "offset": 328
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 26,
+                            "offset": 350
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 2,
+                        "offset": 326
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 26,
+                        "offset": 350
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "いきなりでかい変更してくる",
+                            "position": {
+                              "start": {
+                                "line": 16,
+                                "column": 4,
+                                "offset": 354
+                              },
+                              "end": {
+                                "line": 16,
+                                "column": 17,
+                                "offset": 367
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 16,
+                            "column": 4,
+                            "offset": 354
+                          },
+                          "end": {
+                            "line": 16,
+                            "column": 17,
+                            "offset": 367
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 2,
+                        "offset": 352
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 17,
+                        "offset": 367
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "できたっていってるのに直ってない",
+                            "position": {
+                              "start": {
+                                "line": 17,
+                                "column": 4,
+                                "offset": 371
+                              },
+                              "end": {
+                                "line": 17,
+                                "column": 20,
+                                "offset": 387
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 17,
+                            "column": 4,
+                            "offset": 371
+                          },
+                          "end": {
+                            "line": 17,
+                            "column": 20,
+                            "offset": 387
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 2,
+                        "offset": 369
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 20,
+                        "offset": 387
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "これ、どうやったら継続的に改善できるようになるんだろう？",
+                            "position": {
+                              "start": {
+                                "line": 18,
+                                "column": 4,
+                                "offset": 391
+                              },
+                              "end": {
+                                "line": 18,
+                                "column": 32,
+                                "offset": 419
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 18,
+                            "column": 4,
+                            "offset": 391
+                          },
+                          "end": {
+                            "line": 18,
+                            "column": 32,
+                            "offset": 419
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 2,
+                        "offset": 389
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 32,
+                        "offset": 419
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 14,
+                    "column": 2,
+                    "offset": 302
+                  },
+                  "end": {
+                    "line": 18,
+                    "column": 32,
+                    "offset": 419
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 13,
+                "column": 1,
+                "offset": 287
+              },
+              "end": {
+                "line": 18,
+                "column": 32,
+                "offset": 419
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "いっかいコードを書かせてみて、何を LLM を期待すべきかが整理されてきた",
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 3,
+                        "offset": 422
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 40,
+                        "offset": 459
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 19,
+                    "column": 3,
+                    "offset": 422
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 40,
+                    "offset": 459
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "意思決定のタイミングと役割分担のあり方（＝ワークフロー）のデザイン",
+                            "position": {
+                              "start": {
+                                "line": 20,
+                                "column": 4,
+                                "offset": 463
+                              },
+                              "end": {
+                                "line": 20,
+                                "column": 37,
+                                "offset": 496
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 20,
+                            "column": 4,
+                            "offset": 463
+                          },
+                          "end": {
+                            "line": 20,
+                            "column": 37,
+                            "offset": 496
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "AI をペアワークのパートナーとみなす",
+                                    "position": {
+                                      "start": {
+                                        "line": 21,
+                                        "column": 5,
+                                        "offset": 501
+                                      },
+                                      "end": {
+                                        "line": 21,
+                                        "column": 24,
+                                        "offset": 520
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 21,
+                                    "column": 5,
+                                    "offset": 501
+                                  },
+                                  "end": {
+                                    "line": 21,
+                                    "column": 24,
+                                    "offset": 520
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 21,
+                                "column": 3,
+                                "offset": 499
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 24,
+                                "offset": 520
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "ナビゲーターとしてのニンゲンと、ドライバーとしての AI（まあこれはありがち）",
+                                    "position": {
+                                      "start": {
+                                        "line": 22,
+                                        "column": 5,
+                                        "offset": 525
+                                      },
+                                      "end": {
+                                        "line": 22,
+                                        "column": 44,
+                                        "offset": 564
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 22,
+                                    "column": 5,
+                                    "offset": 525
+                                  },
+                                  "end": {
+                                    "line": 22,
+                                    "column": 44,
+                                    "offset": 564
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 22,
+                                "column": 3,
+                                "offset": 523
+                              },
+                              "end": {
+                                "line": 22,
+                                "column": 44,
+                                "offset": 564
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "作業ステップごとに細かく確認と了解を取れるようにする",
+                                    "position": {
+                                      "start": {
+                                        "line": 23,
+                                        "column": 5,
+                                        "offset": 569
+                                      },
+                                      "end": {
+                                        "line": 23,
+                                        "column": 31,
+                                        "offset": 595
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 23,
+                                    "column": 5,
+                                    "offset": 569
+                                  },
+                                  "end": {
+                                    "line": 23,
+                                    "column": 31,
+                                    "offset": 595
+                                  }
+                                }
+                              },
+                              {
+                                "type": "list",
+                                "ordered": false,
+                                "start": null,
+                                "spread": false,
+                                "children": [
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "確認が大事というより、ステップの言語化そのものが重要な成果物",
+                                            "position": {
+                                              "start": {
+                                                "line": 24,
+                                                "column": 6,
+                                                "offset": 601
+                                              },
+                                              "end": {
+                                                "line": 24,
+                                                "column": 36,
+                                                "offset": 631
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 24,
+                                            "column": 6,
+                                            "offset": 601
+                                          },
+                                          "end": {
+                                            "line": 24,
+                                            "column": 36,
+                                            "offset": 631
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 24,
+                                        "column": 4,
+                                        "offset": 599
+                                      },
+                                      "end": {
+                                        "line": 24,
+                                        "column": 36,
+                                        "offset": 631
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 24,
+                                    "column": 4,
+                                    "offset": 599
+                                  },
+                                  "end": {
+                                    "line": 24,
+                                    "column": 36,
+                                    "offset": 631
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 23,
+                                "column": 3,
+                                "offset": 567
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 36,
+                                "offset": 631
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "どういう作業ステップにすべきかの類型をあらかじめ作っておく",
+                                    "position": {
+                                      "start": {
+                                        "line": 25,
+                                        "column": 5,
+                                        "offset": 636
+                                      },
+                                      "end": {
+                                        "line": 25,
+                                        "column": 34,
+                                        "offset": 665
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 25,
+                                    "column": 5,
+                                    "offset": 636
+                                  },
+                                  "end": {
+                                    "line": 25,
+                                    "column": 34,
+                                    "offset": 665
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 25,
+                                "column": 3,
+                                "offset": 634
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 34,
+                                "offset": 665
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "何にせよ大事なのは、分析、方向性の提案、実施、確認の反復作業（ふつうの PDCA）",
+                                    "position": {
+                                      "start": {
+                                        "line": 26,
+                                        "column": 5,
+                                        "offset": 670
+                                      },
+                                      "end": {
+                                        "line": 26,
+                                        "column": 46,
+                                        "offset": 711
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 26,
+                                    "column": 5,
+                                    "offset": 670
+                                  },
+                                  "end": {
+                                    "line": 26,
+                                    "column": 46,
+                                    "offset": 711
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 26,
+                                "column": 3,
+                                "offset": 668
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 46,
+                                "offset": 711
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "そもそもこのサイクルのテスト自体を超高速に反復できるのが圧倒的な便益",
+                                    "position": {
+                                      "start": {
+                                        "line": 27,
+                                        "column": 5,
+                                        "offset": 716
+                                      },
+                                      "end": {
+                                        "line": 27,
+                                        "column": 39,
+                                        "offset": 750
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 27,
+                                    "column": 5,
+                                    "offset": 716
+                                  },
+                                  "end": {
+                                    "line": 27,
+                                    "column": 39,
+                                    "offset": 750
+                                  }
+                                }
+                              },
+                              {
+                                "type": "list",
+                                "ordered": false,
+                                "start": null,
+                                "spread": false,
+                                "children": [
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "ニンゲン相手にそんなことできないよね",
+                                            "position": {
+                                              "start": {
+                                                "line": 28,
+                                                "column": 6,
+                                                "offset": 756
+                                              },
+                                              "end": {
+                                                "line": 28,
+                                                "column": 24,
+                                                "offset": 774
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 28,
+                                            "column": 6,
+                                            "offset": 756
+                                          },
+                                          "end": {
+                                            "line": 28,
+                                            "column": 24,
+                                            "offset": 774
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 28,
+                                        "column": 4,
+                                        "offset": 754
+                                      },
+                                      "end": {
+                                        "line": 28,
+                                        "column": 24,
+                                        "offset": 774
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 28,
+                                    "column": 4,
+                                    "offset": 754
+                                  },
+                                  "end": {
+                                    "line": 28,
+                                    "column": 24,
+                                    "offset": 774
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 27,
+                                "column": 3,
+                                "offset": 714
+                              },
+                              "end": {
+                                "line": 28,
+                                "column": 24,
+                                "offset": 774
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "コードを書くことだけではなく、コミュニケーションの枠組み自体をトライ & エラーできる",
+                                    "position": {
+                                      "start": {
+                                        "line": 29,
+                                        "column": 5,
+                                        "offset": 779
+                                      },
+                                      "end": {
+                                        "line": 29,
+                                        "column": 48,
+                                        "offset": 822
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 29,
+                                    "column": 5,
+                                    "offset": 779
+                                  },
+                                  "end": {
+                                    "line": 29,
+                                    "column": 48,
+                                    "offset": 822
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 29,
+                                "column": 3,
+                                "offset": 777
+                              },
+                              "end": {
+                                "line": 29,
+                                "column": 48,
+                                "offset": 822
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 21,
+                            "column": 3,
+                            "offset": 499
+                          },
+                          "end": {
+                            "line": 29,
+                            "column": 48,
+                            "offset": 822
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 20,
+                        "column": 2,
+                        "offset": 461
+                      },
+                      "end": {
+                        "line": 29,
+                        "column": 48,
+                        "offset": 822
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ニンゲンと AI の両者が理解できる形のドキュメンテーション",
+                            "position": {
+                              "start": {
+                                "line": 30,
+                                "column": 4,
+                                "offset": 826
+                              },
+                              "end": {
+                                "line": 30,
+                                "column": 34,
+                                "offset": 856
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 30,
+                            "column": 4,
+                            "offset": 826
+                          },
+                          "end": {
+                            "line": 30,
+                            "column": 34,
+                            "offset": 856
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "設計したワークフローを言語化する",
+                                    "position": {
+                                      "start": {
+                                        "line": 31,
+                                        "column": 5,
+                                        "offset": 861
+                                      },
+                                      "end": {
+                                        "line": 31,
+                                        "column": 21,
+                                        "offset": 877
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 31,
+                                    "column": 5,
+                                    "offset": 861
+                                  },
+                                  "end": {
+                                    "line": 31,
+                                    "column": 21,
+                                    "offset": 877
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 31,
+                                "column": 3,
+                                "offset": 859
+                              },
+                              "end": {
+                                "line": 31,
+                                "column": 21,
+                                "offset": 877
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "AI 向けの「おまじない集」にしない",
+                                    "position": {
+                                      "start": {
+                                        "line": 32,
+                                        "column": 5,
+                                        "offset": 882
+                                      },
+                                      "end": {
+                                        "line": 32,
+                                        "column": 23,
+                                        "offset": 900
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 32,
+                                    "column": 5,
+                                    "offset": 882
+                                  },
+                                  "end": {
+                                    "line": 32,
+                                    "column": 23,
+                                    "offset": 900
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 32,
+                                "column": 3,
+                                "offset": 880
+                              },
+                              "end": {
+                                "line": 32,
+                                "column": 23,
+                                "offset": 900
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "こうすれば誰でもワークフロー自体に手を入れられる",
+                                    "position": {
+                                      "start": {
+                                        "line": 33,
+                                        "column": 5,
+                                        "offset": 905
+                                      },
+                                      "end": {
+                                        "line": 33,
+                                        "column": 29,
+                                        "offset": 929
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 33,
+                                    "column": 5,
+                                    "offset": 905
+                                  },
+                                  "end": {
+                                    "line": 33,
+                                    "column": 29,
+                                    "offset": 929
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 33,
+                                "column": 3,
+                                "offset": 903
+                              },
+                              "end": {
+                                "line": 33,
+                                "column": 29,
+                                "offset": 929
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 31,
+                            "column": 3,
+                            "offset": 859
+                          },
+                          "end": {
+                            "line": 33,
+                            "column": 29,
+                            "offset": 929
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 30,
+                        "column": 2,
+                        "offset": 824
+                      },
+                      "end": {
+                        "line": 33,
+                        "column": 29,
+                        "offset": 929
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "AI に対する印象が変える必要がある",
+                            "position": {
+                              "start": {
+                                "line": 34,
+                                "column": 4,
+                                "offset": 933
+                              },
+                              "end": {
+                                "line": 34,
+                                "column": 22,
+                                "offset": 951
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 34,
+                            "column": 4,
+                            "offset": 933
+                          },
+                          "end": {
+                            "line": 34,
+                            "column": 22,
+                            "offset": 951
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "「やたら特定ドメインのコードを書くのに強いプログラマ」（よくある）",
+                                    "position": {
+                                      "start": {
+                                        "line": 35,
+                                        "column": 5,
+                                        "offset": 956
+                                      },
+                                      "end": {
+                                        "line": 35,
+                                        "column": 38,
+                                        "offset": 989
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 35,
+                                    "column": 5,
+                                    "offset": 956
+                                  },
+                                  "end": {
+                                    "line": 35,
+                                    "column": 38,
+                                    "offset": 989
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 35,
+                                "column": 3,
+                                "offset": 954
+                              },
+                              "end": {
+                                "line": 35,
+                                "column": 38,
+                                "offset": 989
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "「ちょっぱや（だけど雑な）コードを書くプログラマ」（よくある）\n-　「実装力はないけど素直な新人」（新発見）",
+                                    "position": {
+                                      "start": {
+                                        "line": 36,
+                                        "column": 5,
+                                        "offset": 994
+                                      },
+                                      "end": {
+                                        "line": 37,
+                                        "column": 25,
+                                        "offset": 1050
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 36,
+                                    "column": 5,
+                                    "offset": 994
+                                  },
+                                  "end": {
+                                    "line": 37,
+                                    "column": 25,
+                                    "offset": 1050
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 36,
+                                "column": 3,
+                                "offset": 992
+                              },
+                              "end": {
+                                "line": 37,
+                                "column": 25,
+                                "offset": 1050
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 35,
+                            "column": 3,
+                            "offset": 954
+                          },
+                          "end": {
+                            "line": 37,
+                            "column": 25,
+                            "offset": 1050
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 34,
+                        "column": 2,
+                        "offset": 931
+                      },
+                      "end": {
+                        "line": 37,
+                        "column": 25,
+                        "offset": 1050
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 20,
+                    "column": 2,
+                    "offset": 461
+                  },
+                  "end": {
+                    "line": 37,
+                    "column": 25,
+                    "offset": 1050
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 19,
+                "column": 1,
+                "offset": 420
+              },
+              "end": {
+                "line": 37,
+                "column": 25,
+                "offset": 1050
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "ここまで考えたら、むしろ Storybook の自動生成の方が楽だし得意そうじゃない？",
+                    "position": {
+                      "start": {
+                        "line": 38,
+                        "column": 3,
+                        "offset": 1053
+                      },
+                      "end": {
+                        "line": 38,
+                        "column": 46,
+                        "offset": 1096
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 38,
+                    "column": 3,
+                    "offset": 1053
+                  },
+                  "end": {
+                    "line": 38,
+                    "column": 46,
+                    "offset": 1096
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ニンゲンが読むためのドキュメント作り",
+                            "position": {
+                              "start": {
+                                "line": 39,
+                                "column": 4,
+                                "offset": 1100
+                              },
+                              "end": {
+                                "line": 39,
+                                "column": 22,
+                                "offset": 1118
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 39,
+                            "column": 4,
+                            "offset": 1100
+                          },
+                          "end": {
+                            "line": 39,
+                            "column": 22,
+                            "offset": 1118
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 39,
+                        "column": 2,
+                        "offset": 1098
+                      },
+                      "end": {
+                        "line": 39,
+                        "column": 22,
+                        "offset": 1118
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "たいていサボりがち（実装しっぱなし）なので AI にやらせたい",
+                            "position": {
+                              "start": {
+                                "line": 40,
+                                "column": 4,
+                                "offset": 1122
+                              },
+                              "end": {
+                                "line": 40,
+                                "column": 35,
+                                "offset": 1153
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 40,
+                            "column": 4,
+                            "offset": 1122
+                          },
+                          "end": {
+                            "line": 40,
+                            "column": 35,
+                            "offset": 1153
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 40,
+                        "column": 2,
+                        "offset": 1120
+                      },
+                      "end": {
+                        "line": 40,
+                        "column": 35,
+                        "offset": 1153
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 39,
+                    "column": 2,
+                    "offset": 1098
+                  },
+                  "end": {
+                    "line": 40,
+                    "column": 35,
+                    "offset": 1153
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 38,
+                "column": 1,
+                "offset": 1051
+              },
+              "end": {
+                "line": 40,
+                "column": 35,
+                "offset": 1153
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "やってみた（デモ）",
+                    "position": {
+                      "start": {
+                        "line": 41,
+                        "column": 3,
+                        "offset": 1156
+                      },
+                      "end": {
+                        "line": 41,
+                        "column": 12,
+                        "offset": 1165
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 41,
+                    "column": 3,
+                    "offset": 1156
+                  },
+                  "end": {
+                    "line": 41,
+                    "column": 12,
+                    "offset": 1165
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 41,
+                "column": 1,
+                "offset": 1154
+              },
+              "end": {
+                "line": 41,
+                "column": 12,
+                "offset": 1165
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "AI がきちんと応答するまでに何をやったか？",
+                    "position": {
+                      "start": {
+                        "line": 42,
+                        "column": 3,
+                        "offset": 1168
+                      },
+                      "end": {
+                        "line": 42,
+                        "column": 25,
+                        "offset": 1190
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 42,
+                    "column": 3,
+                    "offset": 1168
+                  },
+                  "end": {
+                    "line": 42,
+                    "column": 25,
+                    "offset": 1190
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "発生するタスクの類型化",
+                            "position": {
+                              "start": {
+                                "line": 43,
+                                "column": 4,
+                                "offset": 1194
+                              },
+                              "end": {
+                                "line": 43,
+                                "column": 15,
+                                "offset": 1205
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 43,
+                            "column": 4,
+                            "offset": 1194
+                          },
+                          "end": {
+                            "line": 43,
+                            "column": 15,
+                            "offset": 1205
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "「タスクタイプ」による分類",
+                                    "position": {
+                                      "start": {
+                                        "line": 44,
+                                        "column": 5,
+                                        "offset": 1210
+                                      },
+                                      "end": {
+                                        "line": 44,
+                                        "column": 18,
+                                        "offset": 1223
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 44,
+                                    "column": 5,
+                                    "offset": 1210
+                                  },
+                                  "end": {
+                                    "line": 44,
+                                    "column": 18,
+                                    "offset": 1223
+                                  }
+                                }
+                              },
+                              {
+                                "type": "list",
+                                "ordered": false,
+                                "start": null,
+                                "spread": false,
+                                "children": [
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "コンポーネントのデザインをみて実装する",
+                                            "position": {
+                                              "start": {
+                                                "line": 45,
+                                                "column": 6,
+                                                "offset": 1229
+                                              },
+                                              "end": {
+                                                "line": 45,
+                                                "column": 25,
+                                                "offset": 1248
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 45,
+                                            "column": 6,
+                                            "offset": 1229
+                                          },
+                                          "end": {
+                                            "line": 45,
+                                            "column": 25,
+                                            "offset": 1248
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 45,
+                                        "column": 4,
+                                        "offset": 1227
+                                      },
+                                      "end": {
+                                        "line": 45,
+                                        "column": 25,
+                                        "offset": 1248
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "コンポーネントの実装をドキュメントに起こす",
+                                            "position": {
+                                              "start": {
+                                                "line": 46,
+                                                "column": 6,
+                                                "offset": 1254
+                                              },
+                                              "end": {
+                                                "line": 46,
+                                                "column": 27,
+                                                "offset": 1275
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 46,
+                                            "column": 6,
+                                            "offset": 1254
+                                          },
+                                          "end": {
+                                            "line": 46,
+                                            "column": 27,
+                                            "offset": 1275
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 46,
+                                        "column": 4,
+                                        "offset": 1252
+                                      },
+                                      "end": {
+                                        "line": 46,
+                                        "column": 27,
+                                        "offset": 1275
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "（＋ライブラリとしての体裁を整える）",
+                                            "position": {
+                                              "start": {
+                                                "line": 47,
+                                                "column": 6,
+                                                "offset": 1281
+                                              },
+                                              "end": {
+                                                "line": 47,
+                                                "column": 24,
+                                                "offset": 1299
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 47,
+                                            "column": 6,
+                                            "offset": 1281
+                                          },
+                                          "end": {
+                                            "line": 47,
+                                            "column": 24,
+                                            "offset": 1299
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 47,
+                                        "column": 4,
+                                        "offset": 1279
+                                      },
+                                      "end": {
+                                        "line": 47,
+                                        "column": 24,
+                                        "offset": 1299
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 45,
+                                    "column": 4,
+                                    "offset": 1227
+                                  },
+                                  "end": {
+                                    "line": 47,
+                                    "column": 24,
+                                    "offset": 1299
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 44,
+                                "column": 3,
+                                "offset": 1208
+                              },
+                              "end": {
+                                "line": 47,
+                                "column": 24,
+                                "offset": 1299
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "UI ライブラリのメンテという限定されたドメインだと類型化しやすい",
+                                    "position": {
+                                      "start": {
+                                        "line": 48,
+                                        "column": 5,
+                                        "offset": 1304
+                                      },
+                                      "end": {
+                                        "line": 48,
+                                        "column": 38,
+                                        "offset": 1337
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 48,
+                                    "column": 5,
+                                    "offset": 1304
+                                  },
+                                  "end": {
+                                    "line": 48,
+                                    "column": 38,
+                                    "offset": 1337
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 48,
+                                "column": 3,
+                                "offset": 1302
+                              },
+                              "end": {
+                                "line": 48,
+                                "column": 38,
+                                "offset": 1337
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "というかドメインの切り出しこそが重要？",
+                                    "position": {
+                                      "start": {
+                                        "line": 49,
+                                        "column": 5,
+                                        "offset": 1342
+                                      },
+                                      "end": {
+                                        "line": 49,
+                                        "column": 24,
+                                        "offset": 1361
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 49,
+                                    "column": 5,
+                                    "offset": 1342
+                                  },
+                                  "end": {
+                                    "line": 49,
+                                    "column": 24,
+                                    "offset": 1361
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 49,
+                                "column": 3,
+                                "offset": 1340
+                              },
+                              "end": {
+                                "line": 49,
+                                "column": 24,
+                                "offset": 1361
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 44,
+                            "column": 3,
+                            "offset": 1208
+                          },
+                          "end": {
+                            "line": 49,
+                            "column": 24,
+                            "offset": 1361
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 43,
+                        "column": 2,
+                        "offset": 1192
+                      },
+                      "end": {
+                        "line": 49,
+                        "column": 24,
+                        "offset": 1361
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "コミュニケーションのあり方の形式化",
+                            "position": {
+                              "start": {
+                                "line": 50,
+                                "column": 4,
+                                "offset": 1365
+                              },
+                              "end": {
+                                "line": 50,
+                                "column": 21,
+                                "offset": 1382
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 50,
+                            "column": 4,
+                            "offset": 1365
+                          },
+                          "end": {
+                            "line": 50,
+                            "column": 21,
+                            "offset": 1382
+                          }
+                        }
+                      },
+                      {
+                        "type": "list",
+                        "ordered": false,
+                        "start": null,
+                        "spread": false,
+                        "children": [
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "lint フェーズ",
+                                    "position": {
+                                      "start": {
+                                        "line": 51,
+                                        "column": 5,
+                                        "offset": 1387
+                                      },
+                                      "end": {
+                                        "line": 51,
+                                        "column": 14,
+                                        "offset": 1396
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 51,
+                                    "column": 5,
+                                    "offset": 1387
+                                  },
+                                  "end": {
+                                    "line": 51,
+                                    "column": 14,
+                                    "offset": 1396
+                                  }
+                                }
+                              },
+                              {
+                                "type": "list",
+                                "ordered": false,
+                                "start": null,
+                                "spread": false,
+                                "children": [
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "lint とは、ある基準に従ったときの「あるべき姿」と「実態」のずれ",
+                                            "position": {
+                                              "start": {
+                                                "line": 52,
+                                                "column": 6,
+                                                "offset": 1402
+                                              },
+                                              "end": {
+                                                "line": 52,
+                                                "column": 40,
+                                                "offset": 1436
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 52,
+                                            "column": 6,
+                                            "offset": 1402
+                                          },
+                                          "end": {
+                                            "line": 52,
+                                            "column": 40,
+                                            "offset": 1436
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 52,
+                                        "column": 4,
+                                        "offset": 1400
+                                      },
+                                      "end": {
+                                        "line": 52,
+                                        "column": 40,
+                                        "offset": 1436
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "X という観点について、本来 Y であるべきものが、Z になっている",
+                                            "position": {
+                                              "start": {
+                                                "line": 53,
+                                                "column": 6,
+                                                "offset": 1442
+                                              },
+                                              "end": {
+                                                "line": 53,
+                                                "column": 40,
+                                                "offset": 1476
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 53,
+                                            "column": 6,
+                                            "offset": 1442
+                                          },
+                                          "end": {
+                                            "line": 53,
+                                            "column": 40,
+                                            "offset": 1476
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 53,
+                                        "column": 4,
+                                        "offset": 1440
+                                      },
+                                      "end": {
+                                        "line": 53,
+                                        "column": 40,
+                                        "offset": 1476
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "実装そのもの以上に、実装とドキュメントのずれの解消にとって重要",
+                                            "position": {
+                                              "start": {
+                                                "line": 54,
+                                                "column": 6,
+                                                "offset": 1482
+                                              },
+                                              "end": {
+                                                "line": 54,
+                                                "column": 37,
+                                                "offset": 1513
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 54,
+                                            "column": 6,
+                                            "offset": 1482
+                                          },
+                                          "end": {
+                                            "line": 54,
+                                            "column": 37,
+                                            "offset": 1513
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 54,
+                                        "column": 4,
+                                        "offset": 1480
+                                      },
+                                      "end": {
+                                        "line": 54,
+                                        "column": 37,
+                                        "offset": 1513
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "LLM は 高度な linter",
+                                            "position": {
+                                              "start": {
+                                                "line": 55,
+                                                "column": 6,
+                                                "offset": 1519
+                                              },
+                                              "end": {
+                                                "line": 55,
+                                                "column": 22,
+                                                "offset": 1535
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 55,
+                                            "column": 6,
+                                            "offset": 1519
+                                          },
+                                          "end": {
+                                            "line": 55,
+                                            "column": 22,
+                                            "offset": 1535
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 55,
+                                        "column": 4,
+                                        "offset": 1517
+                                      },
+                                      "end": {
+                                        "line": 55,
+                                        "column": 22,
+                                        "offset": 1535
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 52,
+                                    "column": 4,
+                                    "offset": 1400
+                                  },
+                                  "end": {
+                                    "line": 55,
+                                    "column": 22,
+                                    "offset": 1535
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 51,
+                                "column": 3,
+                                "offset": 1385
+                              },
+                              "end": {
+                                "line": 55,
+                                "column": 22,
+                                "offset": 1535
+                              }
+                            }
+                          },
+                          {
+                            "type": "listItem",
+                            "spread": false,
+                            "checked": null,
+                            "children": [
+                              {
+                                "type": "paragraph",
+                                "children": [
+                                  {
+                                    "type": "text",
+                                    "value": "fix フェーズ",
+                                    "position": {
+                                      "start": {
+                                        "line": 56,
+                                        "column": 5,
+                                        "offset": 1540
+                                      },
+                                      "end": {
+                                        "line": 56,
+                                        "column": 13,
+                                        "offset": 1548
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 56,
+                                    "column": 5,
+                                    "offset": 1540
+                                  },
+                                  "end": {
+                                    "line": 56,
+                                    "column": 13,
+                                    "offset": 1548
+                                  }
+                                }
+                              },
+                              {
+                                "type": "list",
+                                "ordered": false,
+                                "start": null,
+                                "spread": false,
+                                "children": [
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "コードを実際に直す",
+                                            "position": {
+                                              "start": {
+                                                "line": 57,
+                                                "column": 6,
+                                                "offset": 1554
+                                              },
+                                              "end": {
+                                                "line": 57,
+                                                "column": 15,
+                                                "offset": 1563
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 57,
+                                            "column": 6,
+                                            "offset": 1554
+                                          },
+                                          "end": {
+                                            "line": 57,
+                                            "column": 15,
+                                            "offset": 1563
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 57,
+                                        "column": 4,
+                                        "offset": 1552
+                                      },
+                                      "end": {
+                                        "line": 57,
+                                        "column": 15,
+                                        "offset": 1563
+                                      }
+                                    }
+                                  },
+                                  {
+                                    "type": "listItem",
+                                    "spread": false,
+                                    "checked": null,
+                                    "children": [
+                                      {
+                                        "type": "paragraph",
+                                        "children": [
+                                          {
+                                            "type": "text",
+                                            "value": "lint のフェーズで正しい分析ができているなら、おのずと筋良く修正ができる",
+                                            "position": {
+                                              "start": {
+                                                "line": 58,
+                                                "column": 6,
+                                                "offset": 1569
+                                              },
+                                              "end": {
+                                                "line": 58,
+                                                "column": 44,
+                                                "offset": 1607
+                                              }
+                                            }
+                                          }
+                                        ],
+                                        "position": {
+                                          "start": {
+                                            "line": 58,
+                                            "column": 6,
+                                            "offset": 1569
+                                          },
+                                          "end": {
+                                            "line": 58,
+                                            "column": 44,
+                                            "offset": 1607
+                                          }
+                                        }
+                                      }
+                                    ],
+                                    "position": {
+                                      "start": {
+                                        "line": 58,
+                                        "column": 4,
+                                        "offset": 1567
+                                      },
+                                      "end": {
+                                        "line": 58,
+                                        "column": 44,
+                                        "offset": 1607
+                                      }
+                                    }
+                                  }
+                                ],
+                                "position": {
+                                  "start": {
+                                    "line": 57,
+                                    "column": 4,
+                                    "offset": 1552
+                                  },
+                                  "end": {
+                                    "line": 58,
+                                    "column": 44,
+                                    "offset": 1607
+                                  }
+                                }
+                              }
+                            ],
+                            "position": {
+                              "start": {
+                                "line": 56,
+                                "column": 3,
+                                "offset": 1538
+                              },
+                              "end": {
+                                "line": 58,
+                                "column": 44,
+                                "offset": 1607
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 51,
+                            "column": 3,
+                            "offset": 1385
+                          },
+                          "end": {
+                            "line": 58,
+                            "column": 44,
+                            "offset": 1607
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 50,
+                        "column": 2,
+                        "offset": 1363
+                      },
+                      "end": {
+                        "line": 58,
+                        "column": 44,
+                        "offset": 1607
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 43,
+                    "column": 2,
+                    "offset": 1192
+                  },
+                  "end": {
+                    "line": 58,
+                    "column": 44,
+                    "offset": 1607
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 42,
+                "column": 1,
+                "offset": 1166
+              },
+              "end": {
+                "line": 58,
+                "column": 44,
+                "offset": 1607
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1,
+            "offset": 101
+          },
+          "end": {
+            "line": 58,
+            "column": 44,
+            "offset": 1607
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 59,
+        "column": 1,
+        "offset": 1608
+      }
+    }
+  }
+}

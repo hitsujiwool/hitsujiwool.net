@@ -1,8 +1,8 @@
 {
   "title": "例外処理の考え方",
-  "source": "---\ntags:\n  - scribble\n---\n\n\n 仕事で作っているウェブサービスのエラー処理の方針を見直す必要に迫られて、例外設計の考え方をおさらいしている。\n\n- 知識の出発点としての[「ビジネス例外」と「技術的例外」](https://xn--97-273ae6a4irb6e2hsoiozc2g4b8082p.com/%E3%82%A8%E3%83%83%E3%82%BB%E3%82%A4/%E6%8A%80%E8%A1%93%E7%9A%84%E4%BE%8B%E5%A4%96%E3%81%A8%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E4%BE%8B%E5%A4%96%E3%82%92%E6%98%8E%E7%A2%BA%E3%81%AB%E5%8C%BA%E5%88%A5%E3%81%99%E3%82%8B/)\n\t- そもそも類語がたくさんある\n\t\t- ビジネス例外・業務例外・アプリケーション例外\n\t\t- 技術的例外・システム例外\n\t- .NET には ApplicationException とその他の System Exception という区分がある\n\t\t- https://learn.microsoft.com/ja-jp/dotnet/api/system\n\t\t- https://www.geeksforgeeks.org/c-sharp/difference-between-system-level-exception-and-application-level-exception-in-c-sharp/\n \n- 基礎知識としてのビジネス例外と技術例外という区別\n\t- https://qiita.com/jnchito/items/3ef95ea144ed15df3637\n\t\t- コントローラと直下のモデルやサービスとの関係という意味では納得感あり\n- ビジネス例外とは、その内容に応じて処理や表示を変えたい例外\n\t- そもそもユースケースの範囲内である\n\t- フォームのバリデーションエラー\n\t- エラー画面に理由を出したい\n\t- 冒頭資料では「お前が悪い、ちゃんとやり直せ」\n- ビジネス例外は列挙可能である\n\t- わたし（モジュール）がこのエラーについてはケアしますという宣言\n\t- というか、そもそも列挙できないとモジュールの呼び出し側が処理を分岐できない\n\t- 方法としては ErrorCode を Enum として定義する、生じうる Error を列挙するのがよさそう\n- 技術例外は、業務フローを妨げる「リスク」と言い換えられる\n\t- 普通は起きないし起きてほしくないけど、起きるかもしれない状況\n\t- 開発者のデバッグレベルで理由を識別する必要があるが、処理のフローには無関係\n\t- 無関係というか、起きてしまったらどうしようもない\n- ビジネス例外は例外をスローしない（try/catch を使わない）よう実装すると、ビジネス例外とそれ以外の例外の区別をつけやすい\n\t- 例外がスローされる＝自身の責務ではコントロール不能な予想外の事態の発生、という風にふるまうのはきわめて直感的\n\t- 真逆のアンチパターンは、ビジネス例外の分岐のために try/catch が必要になるケース\n\t\t- 例：zod で入力値のバリデーションに safeParse ではなく parse を使う\n- フレームワークのエラーハンドリング機構に一括処理させたい場合は、アプリケーションのレイヤで受け取ったビジネス例外を明示的にスローするのもあり\n\t- Remix の throw new Response() とか\n\t- 典型的には ErrorCode を元に適切なエラーをスローする\n- ビジネス例外と技術例外の境界はドメインによって変わりうる\n\t- ネットワークエラーを敢えて表示した方がよいケースもある\n\t- 同一アプリケーションのレイヤによっても変わりうる\n- 上記区別とは別に、そもそもロジック上起きるはずがない例外（エラー）がある\n\t- 要は 500 エラー（モニタリングして継続的に発生を最小化すべき）\n\t- 不適切なタイミングでのドメインロジックの呼び出し\n\t\t- これは DomainError としてスローべき\n\t\t- 「ビジネス例外」と勘違いしがち\n\t- 制御フローの誤り\n\t\t- 正しく実装されていれば Unreachable なコード\n\t\t- これも UnreachableError としてスローすべき\n\t- この領域は適切に型を書けば守れることも多い\n- アプリケーションとライブラリで例外設計の考え方は変わる\n\t- ライブラリは「どう使われるかわからない」\n\t- 例外は「わたしはこの解像度までならエラーを識別できます」という宣言\n\t- Result でも throw でもよいが、何かしら呼び出し側で code や reason を分岐できる必要がある\n\t- モジュールは「アプリケーションの全体の責務分担の 1 つ」\n\t- そのモジュールがどこまでの解像度でエラーを識別するかは、むしろ呼び出し側の要請に拠る\n- 例外のスローという仕組みが、そもそもある種のホワイトリスト的な考え方\n\t- 自分が責任を持てる領域のみスローをやめて適切に処理するところから始める\n\t- それ以外はクラッシュさせる（クラッシュ寸前まで貫通させる）のがむしろ見通しが良い\n\t- 必要に応じてその領域を拡大していけばよい\n\t- この原理を理解しておけば、とりあえず全体を try/catch で囲んでレイヤリングをする、というアンチパターンを防げる\n- 一番上位のレイヤでは全体を try/catch で囲んだ方がよさそうだが、これもケースバイケース\n\t- サーバなど長時間動くプロセスがクラッシュするのはまずい\n\t\t- フレームワークを使っているならたいてい拾ってくれる\n\t- サーバレス関数の場合はそのままクラッシュさせてもよいかもしれない\n\t\t- ただしプラットフォーム側のリトライ機構に乗せたくない場合は捕捉するのもあり\n\t- バッチ処理の場合は必ず捕捉してログを取ったりしたい\n- そもそも「ビジネス例外」と「技術例外」という区分自体が、アプリケーションの例外設計のための考え方であるとも言える\n\t- ライブラリはアプリケーションではないので、ビジネス例外を Result にせず、全部例外としてスローしておく方がよいケースもある\n",
-  "createdAt": "2025-10-29T23:15:12.599Z",
-  "updatedAt": "2025-11-03T05:56:56.907Z",
+  "source": "---\ntags:\n  - scribble\ncreatedAt: 2025-10-30T08:15:12+09:00\nupdatedAt: 2025-11-03T20:54:44+09:00\n---\n\n\n 仕事で作っているウェブサービスのエラー処理の方針を見直す必要に迫られて、例外設計の考え方をおさらいしている。\n\n- 知識の出発点としての[「ビジネス例外」と「技術的例外」](https://xn--97-273ae6a4irb6e2hsoiozc2g4b8082p.com/%E3%82%A8%E3%83%83%E3%82%BB%E3%82%A4/%E6%8A%80%E8%A1%93%E7%9A%84%E4%BE%8B%E5%A4%96%E3%81%A8%E3%83%93%E3%82%B8%E3%83%8D%E3%82%B9%E4%BE%8B%E5%A4%96%E3%82%92%E6%98%8E%E7%A2%BA%E3%81%AB%E5%8C%BA%E5%88%A5%E3%81%99%E3%82%8B/)\n\t- そもそも類語がたくさんある\n\t\t- ビジネス例外・業務例外・アプリケーション例外\n\t\t- 技術的例外・システム例外\n\t- .NET には ApplicationException とその他の System Exception という区分がある\n\t\t- https://learn.microsoft.com/ja-jp/dotnet/api/system\n\t\t- https://www.geeksforgeeks.org/c-sharp/difference-between-system-level-exception-and-application-level-exception-in-c-sharp/\n \n- 基礎知識としてのビジネス例外と技術例外という区別\n\t- https://qiita.com/jnchito/items/3ef95ea144ed15df3637\n\t\t- コントローラと直下のモデルやサービスとの関係という意味では納得感あり\n- ビジネス例外とは、その内容に応じて処理や表示を変えたい例外\n\t- そもそもユースケースの範囲内である\n\t- フォームのバリデーションエラー\n\t- エラー画面に理由を出したい\n\t- 冒頭資料では「お前が悪い、ちゃんとやり直せ」\n- ビジネス例外は列挙可能である\n\t- わたし（モジュール）がこのエラーについてはケアしますという宣言\n\t- というか、そもそも列挙できないとモジュールの呼び出し側が処理を分岐できない\n\t- 方法としては ErrorCode を Enum として定義する、生じうる Error を列挙するのがよさそう\n- 技術例外は、業務フローを妨げる「リスク」と言い換えられる\n\t- 普通は起きないし起きてほしくないけど、起きるかもしれない状況\n\t- 開発者のデバッグレベルで理由を識別する必要があるが、処理のフローには無関係\n\t- 無関係というか、起きてしまったらどうしようもない\n- ビジネス例外は例外をスローしない（try/catch を使わない）よう実装すると、ビジネス例外とそれ以外の例外の区別をつけやすい\n\t- 例外がスローされる＝自身の責務ではコントロール不能な予想外の事態の発生、という風にふるまうのはきわめて直感的\n\t- 真逆のアンチパターンは、ビジネス例外の分岐のために try/catch が必要になるケース\n\t\t- 例：zod で入力値のバリデーションに safeParse ではなく parse を使う\n- フレームワークのエラーハンドリング機構に一括処理させたい場合は、アプリケーションのレイヤで受け取ったビジネス例外を明示的にスローするのもあり\n\t- Remix の throw new Response() とか\n\t- 典型的には ErrorCode を元に適切なエラーをスローする\n- ビジネス例外と技術例外の境界はドメインによって変わりうる\n\t- ネットワークエラーを敢えて表示した方がよいケースもある\n\t- 同一アプリケーションのレイヤによっても変わりうる\n- 上記区別とは別に、そもそもロジック上起きるはずがない例外（エラー）がある\n\t- 要は 500 エラー（モニタリングして継続的に発生を最小化すべき）\n\t- 不適切なタイミングでのドメインロジックの呼び出し\n\t\t- これは DomainError としてスローべき\n\t\t- 「ビジネス例外」と勘違いしがち\n\t- 制御フローの誤り\n\t\t- 正しく実装されていれば Unreachable なコード\n\t\t- これも UnreachableError としてスローすべき\n\t- この領域は適切に型を書けば守れることも多い\n- アプリケーションとライブラリで例外設計の考え方は変わる\n\t- ライブラリは「どう使われるかわからない」\n\t- 例外は「わたしはこの解像度までならエラーを識別できます」という宣言\n\t- Result でも throw でもよいが、何かしら呼び出し側で code や reason を分岐できる必要がある\n\t- モジュールは「アプリケーションの全体の責務分担の 1 つ」\n\t- そのモジュールがどこまでの解像度でエラーを識別するかは、むしろ呼び出し側の要請に拠る\n- 例外のスローという仕組みが、そもそもある種のホワイトリスト的な考え方\n\t- 自分が責任を持てる領域のみスローをやめて適切に処理するところから始める\n\t- それ以外はクラッシュさせる（クラッシュ寸前まで貫通させる）のがむしろ見通しが良い\n\t- 必要に応じてその領域を拡大していけばよい\n\t- この原理を理解しておけば、とりあえず全体を try/catch で囲んでレイヤリングをする、というアンチパターンを防げる\n- 一番上位のレイヤでは全体を try/catch で囲んだ方がよさそうだが、これもケースバイケース\n\t- サーバなど長時間動くプロセスがクラッシュするのはまずい\n\t\t- フレームワークを使っているならたいてい拾ってくれる\n\t- サーバレス関数の場合はそのままクラッシュさせてもよいかもしれない\n\t\t- ただしプラットフォーム側のリトライ機構に乗せたくない場合は捕捉するのもあり\n\t- バッチ処理の場合は必ず捕捉してログを取ったりしたい\n- そもそも「ビジネス例外」と「技術例外」という区分自体が、アプリケーションの例外設計のための考え方であるとも言える\n\t- ライブラリはアプリケーションではないので、ビジネス例外を Result にせず、全部例外としてスローしておく方がよいケースもある\n",
+  "createdAt": "Thu Oct 30 2025 08:15:12 GMT+0900 (日本標準時)",
+  "updatedAt": "Mon Nov 03 2025 20:54:44 GMT+0900 (日本標準時)",
   "tags": [
     "scribble"
   ],
@@ -11,7 +11,7 @@
     "children": [
       {
         "type": "yaml",
-        "value": "tags:\n  - scribble",
+        "value": "tags:\n  - scribble\ncreatedAt: 2025-10-30T08:15:12+09:00\nupdatedAt: 2025-11-03T20:54:44+09:00",
         "position": {
           "start": {
             "line": 1,
@@ -19,9 +19,9 @@
             "offset": 0
           },
           "end": {
-            "line": 4,
+            "line": 6,
             "column": 4,
-            "offset": 26
+            "offset": 100
           }
         }
       },
@@ -33,28 +33,28 @@
             "value": "仕事で作っているウェブサービスのエラー処理の方針を見直す必要に迫られて、例外設計の考え方をおさらいしている。",
             "position": {
               "start": {
-                "line": 7,
+                "line": 9,
                 "column": 2,
-                "offset": 30
+                "offset": 104
               },
               "end": {
-                "line": 7,
+                "line": 9,
                 "column": 56,
-                "offset": 84
+                "offset": 158
               }
             }
           }
         ],
         "position": {
           "start": {
-            "line": 7,
+            "line": 9,
             "column": 2,
-            "offset": 30
+            "offset": 104
           },
           "end": {
-            "line": 7,
+            "line": 9,
             "column": 56,
-            "offset": 84
+            "offset": 158
           }
         }
       },
@@ -77,14 +77,14 @@
                     "value": "知識の出発点としての",
                     "position": {
                       "start": {
-                        "line": 9,
+                        "line": 11,
                         "column": 3,
-                        "offset": 88
+                        "offset": 162
                       },
                       "end": {
-                        "line": 9,
+                        "line": 11,
                         "column": 13,
-                        "offset": 98
+                        "offset": 172
                       }
                     }
                   },
@@ -98,42 +98,42 @@
                         "value": "「ビジネス例外」と「技術的例外」",
                         "position": {
                           "start": {
-                            "line": 9,
+                            "line": 11,
                             "column": 14,
-                            "offset": 99
+                            "offset": 173
                           },
                           "end": {
-                            "line": 9,
+                            "line": 11,
                             "column": 30,
-                            "offset": 115
+                            "offset": 189
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 9,
+                        "line": 11,
                         "column": 13,
-                        "offset": 98
+                        "offset": 172
                       },
                       "end": {
-                        "line": 9,
+                        "line": 11,
                         "column": 301,
-                        "offset": 386
+                        "offset": 460
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 9,
+                    "line": 11,
                     "column": 3,
-                    "offset": 88
+                    "offset": 162
                   },
                   "end": {
-                    "line": 9,
+                    "line": 11,
                     "column": 301,
-                    "offset": 386
+                    "offset": 460
                   }
                 }
               },
@@ -156,28 +156,28 @@
                             "value": "そもそも類語がたくさんある",
                             "position": {
                               "start": {
-                                "line": 10,
+                                "line": 12,
                                 "column": 4,
-                                "offset": 390
+                                "offset": 464
                               },
                               "end": {
-                                "line": 10,
+                                "line": 12,
                                 "column": 17,
-                                "offset": 403
+                                "offset": 477
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 10,
+                            "line": 12,
                             "column": 4,
-                            "offset": 390
+                            "offset": 464
                           },
                           "end": {
-                            "line": 10,
+                            "line": 12,
                             "column": 17,
-                            "offset": 403
+                            "offset": 477
                           }
                         }
                       },
@@ -200,42 +200,42 @@
                                     "value": "ビジネス例外・業務例外・アプリケーション例外",
                                     "position": {
                                       "start": {
-                                        "line": 11,
+                                        "line": 13,
                                         "column": 5,
-                                        "offset": 408
+                                        "offset": 482
                                       },
                                       "end": {
-                                        "line": 11,
+                                        "line": 13,
                                         "column": 27,
-                                        "offset": 430
+                                        "offset": 504
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 11,
+                                    "line": 13,
                                     "column": 5,
-                                    "offset": 408
+                                    "offset": 482
                                   },
                                   "end": {
-                                    "line": 11,
+                                    "line": 13,
                                     "column": 27,
-                                    "offset": 430
+                                    "offset": 504
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 11,
+                                "line": 13,
                                 "column": 3,
-                                "offset": 406
+                                "offset": 480
                               },
                               "end": {
-                                "line": 11,
+                                "line": 13,
                                 "column": 27,
-                                "offset": 430
+                                "offset": 504
                               }
                             }
                           },
@@ -252,70 +252,70 @@
                                     "value": "技術的例外・システム例外",
                                     "position": {
                                       "start": {
-                                        "line": 12,
+                                        "line": 14,
                                         "column": 5,
-                                        "offset": 435
+                                        "offset": 509
                                       },
                                       "end": {
-                                        "line": 12,
+                                        "line": 14,
                                         "column": 17,
-                                        "offset": 447
+                                        "offset": 521
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 12,
+                                    "line": 14,
                                     "column": 5,
-                                    "offset": 435
+                                    "offset": 509
                                   },
                                   "end": {
-                                    "line": 12,
+                                    "line": 14,
                                     "column": 17,
-                                    "offset": 447
+                                    "offset": 521
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 12,
+                                "line": 14,
                                 "column": 3,
-                                "offset": 433
+                                "offset": 507
                               },
                               "end": {
-                                "line": 12,
+                                "line": 14,
                                 "column": 17,
-                                "offset": 447
+                                "offset": 521
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 11,
+                            "line": 13,
                             "column": 3,
-                            "offset": 406
+                            "offset": 480
                           },
                           "end": {
-                            "line": 12,
+                            "line": 14,
                             "column": 17,
-                            "offset": 447
+                            "offset": 521
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 10,
+                        "line": 12,
                         "column": 2,
-                        "offset": 388
+                        "offset": 462
                       },
                       "end": {
-                        "line": 12,
+                        "line": 14,
                         "column": 17,
-                        "offset": 447
+                        "offset": 521
                       }
                     }
                   },
@@ -332,28 +332,28 @@
                             "value": ".NET には ApplicationException とその他の System Exception という区分がある",
                             "position": {
                               "start": {
-                                "line": 13,
+                                "line": 15,
                                 "column": 4,
-                                "offset": 451
+                                "offset": 525
                               },
                               "end": {
-                                "line": 13,
+                                "line": 15,
                                 "column": 64,
-                                "offset": 511
+                                "offset": 585
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 13,
+                            "line": 15,
                             "column": 4,
-                            "offset": 451
+                            "offset": 525
                           },
                           "end": {
-                            "line": 13,
+                            "line": 15,
                             "column": 64,
-                            "offset": 511
+                            "offset": 585
                           }
                         }
                       },
@@ -381,56 +381,56 @@
                                         "value": "https://learn.microsoft.com/ja-jp/dotnet/api/system",
                                         "position": {
                                           "start": {
-                                            "line": 14,
+                                            "line": 16,
                                             "column": 5,
-                                            "offset": 516
+                                            "offset": 590
                                           },
                                           "end": {
-                                            "line": 14,
+                                            "line": 16,
                                             "column": 56,
-                                            "offset": 567
+                                            "offset": 641
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 14,
+                                        "line": 16,
                                         "column": 5,
-                                        "offset": 516
+                                        "offset": 590
                                       },
                                       "end": {
-                                        "line": 14,
+                                        "line": 16,
                                         "column": 56,
-                                        "offset": 567
+                                        "offset": 641
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 14,
+                                    "line": 16,
                                     "column": 5,
-                                    "offset": 516
+                                    "offset": 590
                                   },
                                   "end": {
-                                    "line": 14,
+                                    "line": 16,
                                     "column": 56,
-                                    "offset": 567
+                                    "offset": 641
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 14,
+                                "line": 16,
                                 "column": 3,
-                                "offset": 514
+                                "offset": 588
                               },
                               "end": {
-                                "line": 14,
+                                "line": 16,
                                 "column": 56,
-                                "offset": 567
+                                "offset": 641
                               }
                             }
                           },
@@ -452,112 +452,112 @@
                                         "value": "https://www.geeksforgeeks.org/c-sharp/difference-between-system-level-exception-and-application-level-exception-in-c-sharp/",
                                         "position": {
                                           "start": {
-                                            "line": 15,
+                                            "line": 17,
                                             "column": 5,
-                                            "offset": 572
+                                            "offset": 646
                                           },
                                           "end": {
-                                            "line": 15,
+                                            "line": 17,
                                             "column": 128,
-                                            "offset": 695
+                                            "offset": 769
                                           }
                                         }
                                       }
                                     ],
                                     "position": {
                                       "start": {
-                                        "line": 15,
+                                        "line": 17,
                                         "column": 5,
-                                        "offset": 572
+                                        "offset": 646
                                       },
                                       "end": {
-                                        "line": 15,
+                                        "line": 17,
                                         "column": 128,
-                                        "offset": 695
+                                        "offset": 769
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 15,
+                                    "line": 17,
                                     "column": 5,
-                                    "offset": 572
+                                    "offset": 646
                                   },
                                   "end": {
-                                    "line": 15,
+                                    "line": 17,
                                     "column": 128,
-                                    "offset": 695
+                                    "offset": 769
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 15,
+                                "line": 17,
                                 "column": 3,
-                                "offset": 570
+                                "offset": 644
                               },
                               "end": {
-                                "line": 15,
+                                "line": 17,
                                 "column": 128,
-                                "offset": 695
+                                "offset": 769
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 14,
+                            "line": 16,
                             "column": 3,
-                            "offset": 514
+                            "offset": 588
                           },
                           "end": {
-                            "line": 15,
+                            "line": 17,
                             "column": 128,
-                            "offset": 695
+                            "offset": 769
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 13,
+                        "line": 15,
                         "column": 2,
-                        "offset": 449
+                        "offset": 523
                       },
                       "end": {
-                        "line": 15,
+                        "line": 17,
                         "column": 128,
-                        "offset": 695
+                        "offset": 769
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 10,
+                    "line": 12,
                     "column": 2,
-                    "offset": 388
+                    "offset": 462
                   },
                   "end": {
-                    "line": 15,
+                    "line": 17,
                     "column": 128,
-                    "offset": 695
+                    "offset": 769
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 9,
+                "line": 11,
                 "column": 1,
-                "offset": 86
+                "offset": 160
               },
               "end": {
-                "line": 15,
+                "line": 17,
                 "column": 128,
-                "offset": 695
+                "offset": 769
               }
             }
           },
@@ -574,28 +574,28 @@
                     "value": "基礎知識としてのビジネス例外と技術例外という区別",
                     "position": {
                       "start": {
-                        "line": 17,
+                        "line": 19,
                         "column": 3,
-                        "offset": 700
+                        "offset": 774
                       },
                       "end": {
-                        "line": 17,
+                        "line": 19,
                         "column": 27,
-                        "offset": 724
+                        "offset": 798
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 17,
+                    "line": 19,
                     "column": 3,
-                    "offset": 700
+                    "offset": 774
                   },
                   "end": {
-                    "line": 17,
+                    "line": 19,
                     "column": 27,
-                    "offset": 724
+                    "offset": 798
                   }
                 }
               },
@@ -623,42 +623,42 @@
                                 "value": "https://qiita.com/jnchito/items/3ef95ea144ed15df3637",
                                 "position": {
                                   "start": {
-                                    "line": 18,
+                                    "line": 20,
                                     "column": 4,
-                                    "offset": 728
+                                    "offset": 802
                                   },
                                   "end": {
-                                    "line": 18,
+                                    "line": 20,
                                     "column": 56,
-                                    "offset": 780
+                                    "offset": 854
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 18,
+                                "line": 20,
                                 "column": 4,
-                                "offset": 728
+                                "offset": 802
                               },
                               "end": {
-                                "line": 18,
+                                "line": 20,
                                 "column": 56,
-                                "offset": 780
+                                "offset": 854
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 18,
+                            "line": 20,
                             "column": 4,
-                            "offset": 728
+                            "offset": 802
                           },
                           "end": {
-                            "line": 18,
+                            "line": 20,
                             "column": 56,
-                            "offset": 780
+                            "offset": 854
                           }
                         }
                       },
@@ -681,98 +681,98 @@
                                     "value": "コントローラと直下のモデルやサービスとの関係という意味では納得感あり",
                                     "position": {
                                       "start": {
-                                        "line": 19,
+                                        "line": 21,
                                         "column": 5,
-                                        "offset": 785
+                                        "offset": 859
                                       },
                                       "end": {
-                                        "line": 19,
+                                        "line": 21,
                                         "column": 39,
-                                        "offset": 819
+                                        "offset": 893
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 19,
+                                    "line": 21,
                                     "column": 5,
-                                    "offset": 785
+                                    "offset": 859
                                   },
                                   "end": {
-                                    "line": 19,
+                                    "line": 21,
                                     "column": 39,
-                                    "offset": 819
+                                    "offset": 893
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 19,
+                                "line": 21,
                                 "column": 3,
-                                "offset": 783
+                                "offset": 857
                               },
                               "end": {
-                                "line": 19,
+                                "line": 21,
                                 "column": 39,
-                                "offset": 819
+                                "offset": 893
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 19,
+                            "line": 21,
                             "column": 3,
-                            "offset": 783
+                            "offset": 857
                           },
                           "end": {
-                            "line": 19,
+                            "line": 21,
                             "column": 39,
-                            "offset": 819
+                            "offset": 893
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 18,
+                        "line": 20,
                         "column": 2,
-                        "offset": 726
+                        "offset": 800
                       },
                       "end": {
-                        "line": 19,
+                        "line": 21,
                         "column": 39,
-                        "offset": 819
+                        "offset": 893
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 18,
+                    "line": 20,
                     "column": 2,
-                    "offset": 726
+                    "offset": 800
                   },
                   "end": {
-                    "line": 19,
+                    "line": 21,
                     "column": 39,
-                    "offset": 819
+                    "offset": 893
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 17,
+                "line": 19,
                 "column": 1,
-                "offset": 698
+                "offset": 772
               },
               "end": {
-                "line": 19,
+                "line": 21,
                 "column": 39,
-                "offset": 819
+                "offset": 893
               }
             }
           },
@@ -789,28 +789,28 @@
                     "value": "ビジネス例外とは、その内容に応じて処理や表示を変えたい例外",
                     "position": {
                       "start": {
-                        "line": 20,
+                        "line": 22,
                         "column": 3,
-                        "offset": 822
+                        "offset": 896
                       },
                       "end": {
-                        "line": 20,
+                        "line": 22,
                         "column": 32,
-                        "offset": 851
+                        "offset": 925
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 20,
+                    "line": 22,
                     "column": 3,
-                    "offset": 822
+                    "offset": 896
                   },
                   "end": {
-                    "line": 20,
+                    "line": 22,
                     "column": 32,
-                    "offset": 851
+                    "offset": 925
                   }
                 }
               },
@@ -833,42 +833,42 @@
                             "value": "そもそもユースケースの範囲内である",
                             "position": {
                               "start": {
-                                "line": 21,
+                                "line": 23,
                                 "column": 4,
-                                "offset": 855
+                                "offset": 929
                               },
                               "end": {
-                                "line": 21,
+                                "line": 23,
                                 "column": 21,
-                                "offset": 872
+                                "offset": 946
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 21,
+                            "line": 23,
                             "column": 4,
-                            "offset": 855
+                            "offset": 929
                           },
                           "end": {
-                            "line": 21,
+                            "line": 23,
                             "column": 21,
-                            "offset": 872
+                            "offset": 946
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 21,
+                        "line": 23,
                         "column": 2,
-                        "offset": 853
+                        "offset": 927
                       },
                       "end": {
-                        "line": 21,
+                        "line": 23,
                         "column": 21,
-                        "offset": 872
+                        "offset": 946
                       }
                     }
                   },
@@ -885,42 +885,42 @@
                             "value": "フォームのバリデーションエラー",
                             "position": {
                               "start": {
-                                "line": 22,
+                                "line": 24,
                                 "column": 4,
-                                "offset": 876
+                                "offset": 950
                               },
                               "end": {
-                                "line": 22,
+                                "line": 24,
                                 "column": 19,
-                                "offset": 891
+                                "offset": 965
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 22,
+                            "line": 24,
                             "column": 4,
-                            "offset": 876
+                            "offset": 950
                           },
                           "end": {
-                            "line": 22,
+                            "line": 24,
                             "column": 19,
-                            "offset": 891
+                            "offset": 965
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 22,
+                        "line": 24,
                         "column": 2,
-                        "offset": 874
+                        "offset": 948
                       },
                       "end": {
-                        "line": 22,
+                        "line": 24,
                         "column": 19,
-                        "offset": 891
+                        "offset": 965
                       }
                     }
                   },
@@ -937,42 +937,42 @@
                             "value": "エラー画面に理由を出したい",
                             "position": {
                               "start": {
-                                "line": 23,
+                                "line": 25,
                                 "column": 4,
-                                "offset": 895
+                                "offset": 969
                               },
                               "end": {
-                                "line": 23,
+                                "line": 25,
                                 "column": 17,
-                                "offset": 908
+                                "offset": 982
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 23,
+                            "line": 25,
                             "column": 4,
-                            "offset": 895
+                            "offset": 969
                           },
                           "end": {
-                            "line": 23,
+                            "line": 25,
                             "column": 17,
-                            "offset": 908
+                            "offset": 982
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 23,
+                        "line": 25,
                         "column": 2,
-                        "offset": 893
+                        "offset": 967
                       },
                       "end": {
-                        "line": 23,
+                        "line": 25,
                         "column": 17,
-                        "offset": 908
+                        "offset": 982
                       }
                     }
                   },
@@ -989,70 +989,70 @@
                             "value": "冒頭資料では「お前が悪い、ちゃんとやり直せ」",
                             "position": {
                               "start": {
-                                "line": 24,
+                                "line": 26,
                                 "column": 4,
-                                "offset": 912
+                                "offset": 986
                               },
                               "end": {
-                                "line": 24,
+                                "line": 26,
                                 "column": 26,
-                                "offset": 934
+                                "offset": 1008
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 24,
+                            "line": 26,
                             "column": 4,
-                            "offset": 912
+                            "offset": 986
                           },
                           "end": {
-                            "line": 24,
+                            "line": 26,
                             "column": 26,
-                            "offset": 934
+                            "offset": 1008
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 24,
+                        "line": 26,
                         "column": 2,
-                        "offset": 910
+                        "offset": 984
                       },
                       "end": {
-                        "line": 24,
+                        "line": 26,
                         "column": 26,
-                        "offset": 934
+                        "offset": 1008
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 21,
+                    "line": 23,
                     "column": 2,
-                    "offset": 853
+                    "offset": 927
                   },
                   "end": {
-                    "line": 24,
+                    "line": 26,
                     "column": 26,
-                    "offset": 934
+                    "offset": 1008
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 20,
+                "line": 22,
                 "column": 1,
-                "offset": 820
+                "offset": 894
               },
               "end": {
-                "line": 24,
+                "line": 26,
                 "column": 26,
-                "offset": 934
+                "offset": 1008
               }
             }
           },
@@ -1069,28 +1069,28 @@
                     "value": "ビジネス例外は列挙可能である",
                     "position": {
                       "start": {
-                        "line": 25,
+                        "line": 27,
                         "column": 3,
-                        "offset": 937
+                        "offset": 1011
                       },
                       "end": {
-                        "line": 25,
+                        "line": 27,
                         "column": 17,
-                        "offset": 951
+                        "offset": 1025
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 25,
+                    "line": 27,
                     "column": 3,
-                    "offset": 937
+                    "offset": 1011
                   },
                   "end": {
-                    "line": 25,
+                    "line": 27,
                     "column": 17,
-                    "offset": 951
+                    "offset": 1025
                   }
                 }
               },
@@ -1113,42 +1113,42 @@
                             "value": "わたし（モジュール）がこのエラーについてはケアしますという宣言",
                             "position": {
                               "start": {
-                                "line": 26,
+                                "line": 28,
                                 "column": 4,
-                                "offset": 955
+                                "offset": 1029
                               },
                               "end": {
-                                "line": 26,
+                                "line": 28,
                                 "column": 35,
-                                "offset": 986
+                                "offset": 1060
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 26,
+                            "line": 28,
                             "column": 4,
-                            "offset": 955
+                            "offset": 1029
                           },
                           "end": {
-                            "line": 26,
+                            "line": 28,
                             "column": 35,
-                            "offset": 986
+                            "offset": 1060
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 26,
+                        "line": 28,
                         "column": 2,
-                        "offset": 953
+                        "offset": 1027
                       },
                       "end": {
-                        "line": 26,
+                        "line": 28,
                         "column": 35,
-                        "offset": 986
+                        "offset": 1060
                       }
                     }
                   },
@@ -1165,42 +1165,42 @@
                             "value": "というか、そもそも列挙できないとモジュールの呼び出し側が処理を分岐できない",
                             "position": {
                               "start": {
-                                "line": 27,
+                                "line": 29,
                                 "column": 4,
-                                "offset": 990
+                                "offset": 1064
                               },
                               "end": {
-                                "line": 27,
+                                "line": 29,
                                 "column": 41,
-                                "offset": 1027
+                                "offset": 1101
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 27,
+                            "line": 29,
                             "column": 4,
-                            "offset": 990
+                            "offset": 1064
                           },
                           "end": {
-                            "line": 27,
+                            "line": 29,
                             "column": 41,
-                            "offset": 1027
+                            "offset": 1101
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 27,
+                        "line": 29,
                         "column": 2,
-                        "offset": 988
+                        "offset": 1062
                       },
                       "end": {
-                        "line": 27,
+                        "line": 29,
                         "column": 41,
-                        "offset": 1027
+                        "offset": 1101
                       }
                     }
                   },
@@ -1217,70 +1217,70 @@
                             "value": "方法としては ErrorCode を Enum として定義する、生じうる Error を列挙するのがよさそう",
                             "position": {
                               "start": {
-                                "line": 28,
+                                "line": 30,
                                 "column": 4,
-                                "offset": 1031
+                                "offset": 1105
                               },
                               "end": {
-                                "line": 28,
+                                "line": 30,
                                 "column": 58,
-                                "offset": 1085
+                                "offset": 1159
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 28,
+                            "line": 30,
                             "column": 4,
-                            "offset": 1031
+                            "offset": 1105
                           },
                           "end": {
-                            "line": 28,
+                            "line": 30,
                             "column": 58,
-                            "offset": 1085
+                            "offset": 1159
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 28,
+                        "line": 30,
                         "column": 2,
-                        "offset": 1029
+                        "offset": 1103
                       },
                       "end": {
-                        "line": 28,
+                        "line": 30,
                         "column": 58,
-                        "offset": 1085
+                        "offset": 1159
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 26,
+                    "line": 28,
                     "column": 2,
-                    "offset": 953
+                    "offset": 1027
                   },
                   "end": {
-                    "line": 28,
+                    "line": 30,
                     "column": 58,
-                    "offset": 1085
+                    "offset": 1159
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 25,
+                "line": 27,
                 "column": 1,
-                "offset": 935
+                "offset": 1009
               },
               "end": {
-                "line": 28,
+                "line": 30,
                 "column": 58,
-                "offset": 1085
+                "offset": 1159
               }
             }
           },
@@ -1297,28 +1297,28 @@
                     "value": "技術例外は、業務フローを妨げる「リスク」と言い換えられる",
                     "position": {
                       "start": {
-                        "line": 29,
+                        "line": 31,
                         "column": 3,
-                        "offset": 1088
+                        "offset": 1162
                       },
                       "end": {
-                        "line": 29,
+                        "line": 31,
                         "column": 31,
-                        "offset": 1116
+                        "offset": 1190
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 29,
+                    "line": 31,
                     "column": 3,
-                    "offset": 1088
+                    "offset": 1162
                   },
                   "end": {
-                    "line": 29,
+                    "line": 31,
                     "column": 31,
-                    "offset": 1116
+                    "offset": 1190
                   }
                 }
               },
@@ -1341,42 +1341,42 @@
                             "value": "普通は起きないし起きてほしくないけど、起きるかもしれない状況",
                             "position": {
                               "start": {
-                                "line": 30,
+                                "line": 32,
                                 "column": 4,
-                                "offset": 1120
+                                "offset": 1194
                               },
                               "end": {
-                                "line": 30,
+                                "line": 32,
                                 "column": 34,
-                                "offset": 1150
+                                "offset": 1224
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 30,
+                            "line": 32,
                             "column": 4,
-                            "offset": 1120
+                            "offset": 1194
                           },
                           "end": {
-                            "line": 30,
+                            "line": 32,
                             "column": 34,
-                            "offset": 1150
+                            "offset": 1224
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 30,
+                        "line": 32,
                         "column": 2,
-                        "offset": 1118
+                        "offset": 1192
                       },
                       "end": {
-                        "line": 30,
+                        "line": 32,
                         "column": 34,
-                        "offset": 1150
+                        "offset": 1224
                       }
                     }
                   },
@@ -1393,42 +1393,42 @@
                             "value": "開発者のデバッグレベルで理由を識別する必要があるが、処理のフローには無関係",
                             "position": {
                               "start": {
-                                "line": 31,
+                                "line": 33,
                                 "column": 4,
-                                "offset": 1154
+                                "offset": 1228
                               },
                               "end": {
-                                "line": 31,
+                                "line": 33,
                                 "column": 41,
-                                "offset": 1191
+                                "offset": 1265
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 31,
+                            "line": 33,
                             "column": 4,
-                            "offset": 1154
+                            "offset": 1228
                           },
                           "end": {
-                            "line": 31,
+                            "line": 33,
                             "column": 41,
-                            "offset": 1191
+                            "offset": 1265
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 31,
+                        "line": 33,
                         "column": 2,
-                        "offset": 1152
+                        "offset": 1226
                       },
                       "end": {
-                        "line": 31,
+                        "line": 33,
                         "column": 41,
-                        "offset": 1191
+                        "offset": 1265
                       }
                     }
                   },
@@ -1445,70 +1445,70 @@
                             "value": "無関係というか、起きてしまったらどうしようもない",
                             "position": {
                               "start": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 4,
-                                "offset": 1195
+                                "offset": 1269
                               },
                               "end": {
-                                "line": 32,
+                                "line": 34,
                                 "column": 28,
-                                "offset": 1219
+                                "offset": 1293
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 32,
+                            "line": 34,
                             "column": 4,
-                            "offset": 1195
+                            "offset": 1269
                           },
                           "end": {
-                            "line": 32,
+                            "line": 34,
                             "column": 28,
-                            "offset": 1219
+                            "offset": 1293
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 32,
+                        "line": 34,
                         "column": 2,
-                        "offset": 1193
+                        "offset": 1267
                       },
                       "end": {
-                        "line": 32,
+                        "line": 34,
                         "column": 28,
-                        "offset": 1219
+                        "offset": 1293
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 30,
+                    "line": 32,
                     "column": 2,
-                    "offset": 1118
+                    "offset": 1192
                   },
                   "end": {
-                    "line": 32,
+                    "line": 34,
                     "column": 28,
-                    "offset": 1219
+                    "offset": 1293
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 29,
+                "line": 31,
                 "column": 1,
-                "offset": 1086
+                "offset": 1160
               },
               "end": {
-                "line": 32,
+                "line": 34,
                 "column": 28,
-                "offset": 1219
+                "offset": 1293
               }
             }
           },
@@ -1525,28 +1525,28 @@
                     "value": "ビジネス例外は例外をスローしない（try/catch を使わない）よう実装すると、ビジネス例外とそれ以外の例外の区別をつけやすい",
                     "position": {
                       "start": {
-                        "line": 33,
+                        "line": 35,
                         "column": 3,
-                        "offset": 1222
+                        "offset": 1296
                       },
                       "end": {
-                        "line": 33,
+                        "line": 35,
                         "column": 67,
-                        "offset": 1286
+                        "offset": 1360
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 33,
+                    "line": 35,
                     "column": 3,
-                    "offset": 1222
+                    "offset": 1296
                   },
                   "end": {
-                    "line": 33,
+                    "line": 35,
                     "column": 67,
-                    "offset": 1286
+                    "offset": 1360
                   }
                 }
               },
@@ -1569,42 +1569,42 @@
                             "value": "例外がスローされる＝自身の責務ではコントロール不能な予想外の事態の発生、という風にふるまうのはきわめて直感的",
                             "position": {
                               "start": {
-                                "line": 34,
+                                "line": 36,
                                 "column": 4,
-                                "offset": 1290
+                                "offset": 1364
                               },
                               "end": {
-                                "line": 34,
+                                "line": 36,
                                 "column": 58,
-                                "offset": 1344
+                                "offset": 1418
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 34,
+                            "line": 36,
                             "column": 4,
-                            "offset": 1290
+                            "offset": 1364
                           },
                           "end": {
-                            "line": 34,
+                            "line": 36,
                             "column": 58,
-                            "offset": 1344
+                            "offset": 1418
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 34,
+                        "line": 36,
                         "column": 2,
-                        "offset": 1288
+                        "offset": 1362
                       },
                       "end": {
-                        "line": 34,
+                        "line": 36,
                         "column": 58,
-                        "offset": 1344
+                        "offset": 1418
                       }
                     }
                   },
@@ -1621,28 +1621,28 @@
                             "value": "真逆のアンチパターンは、ビジネス例外の分岐のために try/catch が必要になるケース",
                             "position": {
                               "start": {
-                                "line": 35,
+                                "line": 37,
                                 "column": 4,
-                                "offset": 1348
+                                "offset": 1422
                               },
                               "end": {
-                                "line": 35,
+                                "line": 37,
                                 "column": 49,
-                                "offset": 1393
+                                "offset": 1467
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 35,
+                            "line": 37,
                             "column": 4,
-                            "offset": 1348
+                            "offset": 1422
                           },
                           "end": {
-                            "line": 35,
+                            "line": 37,
                             "column": 49,
-                            "offset": 1393
+                            "offset": 1467
                           }
                         }
                       },
@@ -1665,98 +1665,98 @@
                                     "value": "例：zod で入力値のバリデーションに safeParse ではなく parse を使う",
                                     "position": {
                                       "start": {
-                                        "line": 36,
+                                        "line": 38,
                                         "column": 5,
-                                        "offset": 1398
+                                        "offset": 1472
                                       },
                                       "end": {
-                                        "line": 36,
+                                        "line": 38,
                                         "column": 49,
-                                        "offset": 1442
+                                        "offset": 1516
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 36,
+                                    "line": 38,
                                     "column": 5,
-                                    "offset": 1398
+                                    "offset": 1472
                                   },
                                   "end": {
-                                    "line": 36,
+                                    "line": 38,
                                     "column": 49,
-                                    "offset": 1442
+                                    "offset": 1516
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 36,
+                                "line": 38,
                                 "column": 3,
-                                "offset": 1396
+                                "offset": 1470
                               },
                               "end": {
-                                "line": 36,
+                                "line": 38,
                                 "column": 49,
-                                "offset": 1442
+                                "offset": 1516
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 36,
+                            "line": 38,
                             "column": 3,
-                            "offset": 1396
+                            "offset": 1470
                           },
                           "end": {
-                            "line": 36,
+                            "line": 38,
                             "column": 49,
-                            "offset": 1442
+                            "offset": 1516
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 35,
+                        "line": 37,
                         "column": 2,
-                        "offset": 1346
+                        "offset": 1420
                       },
                       "end": {
-                        "line": 36,
+                        "line": 38,
                         "column": 49,
-                        "offset": 1442
+                        "offset": 1516
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 34,
+                    "line": 36,
                     "column": 2,
-                    "offset": 1288
+                    "offset": 1362
                   },
                   "end": {
-                    "line": 36,
+                    "line": 38,
                     "column": 49,
-                    "offset": 1442
+                    "offset": 1516
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 33,
+                "line": 35,
                 "column": 1,
-                "offset": 1220
+                "offset": 1294
               },
               "end": {
-                "line": 36,
+                "line": 38,
                 "column": 49,
-                "offset": 1442
+                "offset": 1516
               }
             }
           },
@@ -1773,28 +1773,28 @@
                     "value": "フレームワークのエラーハンドリング機構に一括処理させたい場合は、アプリケーションのレイヤで受け取ったビジネス例外を明示的にスローするのもあり",
                     "position": {
                       "start": {
-                        "line": 37,
+                        "line": 39,
                         "column": 3,
-                        "offset": 1445
+                        "offset": 1519
                       },
                       "end": {
-                        "line": 37,
+                        "line": 39,
                         "column": 73,
-                        "offset": 1515
+                        "offset": 1589
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 37,
+                    "line": 39,
                     "column": 3,
-                    "offset": 1445
+                    "offset": 1519
                   },
                   "end": {
-                    "line": 37,
+                    "line": 39,
                     "column": 73,
-                    "offset": 1515
+                    "offset": 1589
                   }
                 }
               },
@@ -1817,42 +1817,42 @@
                             "value": "Remix の throw new Response() とか",
                             "position": {
                               "start": {
-                                "line": 38,
+                                "line": 40,
                                 "column": 4,
-                                "offset": 1519
+                                "offset": 1593
                               },
                               "end": {
-                                "line": 38,
+                                "line": 40,
                                 "column": 35,
-                                "offset": 1550
+                                "offset": 1624
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 38,
+                            "line": 40,
                             "column": 4,
-                            "offset": 1519
+                            "offset": 1593
                           },
                           "end": {
-                            "line": 38,
+                            "line": 40,
                             "column": 35,
-                            "offset": 1550
+                            "offset": 1624
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 38,
+                        "line": 40,
                         "column": 2,
-                        "offset": 1517
+                        "offset": 1591
                       },
                       "end": {
-                        "line": 38,
+                        "line": 40,
                         "column": 35,
-                        "offset": 1550
+                        "offset": 1624
                       }
                     }
                   },
@@ -1869,70 +1869,70 @@
                             "value": "典型的には ErrorCode を元に適切なエラーをスローする",
                             "position": {
                               "start": {
-                                "line": 39,
+                                "line": 41,
                                 "column": 4,
-                                "offset": 1554
+                                "offset": 1628
                               },
                               "end": {
-                                "line": 39,
+                                "line": 41,
                                 "column": 35,
-                                "offset": 1585
+                                "offset": 1659
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 39,
+                            "line": 41,
                             "column": 4,
-                            "offset": 1554
+                            "offset": 1628
                           },
                           "end": {
-                            "line": 39,
+                            "line": 41,
                             "column": 35,
-                            "offset": 1585
+                            "offset": 1659
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 39,
+                        "line": 41,
                         "column": 2,
-                        "offset": 1552
+                        "offset": 1626
                       },
                       "end": {
-                        "line": 39,
+                        "line": 41,
                         "column": 35,
-                        "offset": 1585
+                        "offset": 1659
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 38,
+                    "line": 40,
                     "column": 2,
-                    "offset": 1517
+                    "offset": 1591
                   },
                   "end": {
-                    "line": 39,
+                    "line": 41,
                     "column": 35,
-                    "offset": 1585
+                    "offset": 1659
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 37,
+                "line": 39,
                 "column": 1,
-                "offset": 1443
+                "offset": 1517
               },
               "end": {
-                "line": 39,
+                "line": 41,
                 "column": 35,
-                "offset": 1585
+                "offset": 1659
               }
             }
           },
@@ -1949,28 +1949,28 @@
                     "value": "ビジネス例外と技術例外の境界はドメインによって変わりうる",
                     "position": {
                       "start": {
-                        "line": 40,
+                        "line": 42,
                         "column": 3,
-                        "offset": 1588
+                        "offset": 1662
                       },
                       "end": {
-                        "line": 40,
+                        "line": 42,
                         "column": 31,
-                        "offset": 1616
+                        "offset": 1690
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 40,
+                    "line": 42,
                     "column": 3,
-                    "offset": 1588
+                    "offset": 1662
                   },
                   "end": {
-                    "line": 40,
+                    "line": 42,
                     "column": 31,
-                    "offset": 1616
+                    "offset": 1690
                   }
                 }
               },
@@ -1993,42 +1993,42 @@
                             "value": "ネットワークエラーを敢えて表示した方がよいケースもある",
                             "position": {
                               "start": {
-                                "line": 41,
+                                "line": 43,
                                 "column": 4,
-                                "offset": 1620
+                                "offset": 1694
                               },
                               "end": {
-                                "line": 41,
+                                "line": 43,
                                 "column": 31,
-                                "offset": 1647
+                                "offset": 1721
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 41,
+                            "line": 43,
                             "column": 4,
-                            "offset": 1620
+                            "offset": 1694
                           },
                           "end": {
-                            "line": 41,
+                            "line": 43,
                             "column": 31,
-                            "offset": 1647
+                            "offset": 1721
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 41,
+                        "line": 43,
                         "column": 2,
-                        "offset": 1618
+                        "offset": 1692
                       },
                       "end": {
-                        "line": 41,
+                        "line": 43,
                         "column": 31,
-                        "offset": 1647
+                        "offset": 1721
                       }
                     }
                   },
@@ -2045,70 +2045,70 @@
                             "value": "同一アプリケーションのレイヤによっても変わりうる",
                             "position": {
                               "start": {
-                                "line": 42,
+                                "line": 44,
                                 "column": 4,
-                                "offset": 1651
+                                "offset": 1725
                               },
                               "end": {
-                                "line": 42,
+                                "line": 44,
                                 "column": 28,
-                                "offset": 1675
+                                "offset": 1749
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 42,
+                            "line": 44,
                             "column": 4,
-                            "offset": 1651
+                            "offset": 1725
                           },
                           "end": {
-                            "line": 42,
+                            "line": 44,
                             "column": 28,
-                            "offset": 1675
+                            "offset": 1749
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 42,
+                        "line": 44,
                         "column": 2,
-                        "offset": 1649
+                        "offset": 1723
                       },
                       "end": {
-                        "line": 42,
+                        "line": 44,
                         "column": 28,
-                        "offset": 1675
+                        "offset": 1749
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 41,
+                    "line": 43,
                     "column": 2,
-                    "offset": 1618
+                    "offset": 1692
                   },
                   "end": {
-                    "line": 42,
+                    "line": 44,
                     "column": 28,
-                    "offset": 1675
+                    "offset": 1749
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 40,
+                "line": 42,
                 "column": 1,
-                "offset": 1586
+                "offset": 1660
               },
               "end": {
-                "line": 42,
+                "line": 44,
                 "column": 28,
-                "offset": 1675
+                "offset": 1749
               }
             }
           },
@@ -2125,28 +2125,28 @@
                     "value": "上記区別とは別に、そもそもロジック上起きるはずがない例外（エラー）がある",
                     "position": {
                       "start": {
-                        "line": 43,
+                        "line": 45,
                         "column": 3,
-                        "offset": 1678
+                        "offset": 1752
                       },
                       "end": {
-                        "line": 43,
+                        "line": 45,
                         "column": 39,
-                        "offset": 1714
+                        "offset": 1788
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 43,
+                    "line": 45,
                     "column": 3,
-                    "offset": 1678
+                    "offset": 1752
                   },
                   "end": {
-                    "line": 43,
+                    "line": 45,
                     "column": 39,
-                    "offset": 1714
+                    "offset": 1788
                   }
                 }
               },
@@ -2169,42 +2169,42 @@
                             "value": "要は 500 エラー（モニタリングして継続的に発生を最小化すべき）",
                             "position": {
                               "start": {
-                                "line": 44,
+                                "line": 46,
                                 "column": 4,
-                                "offset": 1718
+                                "offset": 1792
                               },
                               "end": {
-                                "line": 44,
+                                "line": 46,
                                 "column": 37,
-                                "offset": 1751
+                                "offset": 1825
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 44,
+                            "line": 46,
                             "column": 4,
-                            "offset": 1718
+                            "offset": 1792
                           },
                           "end": {
-                            "line": 44,
+                            "line": 46,
                             "column": 37,
-                            "offset": 1751
+                            "offset": 1825
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 44,
+                        "line": 46,
                         "column": 2,
-                        "offset": 1716
+                        "offset": 1790
                       },
                       "end": {
-                        "line": 44,
+                        "line": 46,
                         "column": 37,
-                        "offset": 1751
+                        "offset": 1825
                       }
                     }
                   },
@@ -2221,28 +2221,28 @@
                             "value": "不適切なタイミングでのドメインロジックの呼び出し",
                             "position": {
                               "start": {
-                                "line": 45,
+                                "line": 47,
                                 "column": 4,
-                                "offset": 1755
+                                "offset": 1829
                               },
                               "end": {
-                                "line": 45,
+                                "line": 47,
                                 "column": 28,
-                                "offset": 1779
+                                "offset": 1853
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 45,
+                            "line": 47,
                             "column": 4,
-                            "offset": 1755
+                            "offset": 1829
                           },
                           "end": {
-                            "line": 45,
+                            "line": 47,
                             "column": 28,
-                            "offset": 1779
+                            "offset": 1853
                           }
                         }
                       },
@@ -2265,42 +2265,42 @@
                                     "value": "これは DomainError としてスローべき",
                                     "position": {
                                       "start": {
-                                        "line": 46,
+                                        "line": 48,
                                         "column": 5,
-                                        "offset": 1784
+                                        "offset": 1858
                                       },
                                       "end": {
-                                        "line": 46,
+                                        "line": 48,
                                         "column": 29,
-                                        "offset": 1808
+                                        "offset": 1882
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 46,
+                                    "line": 48,
                                     "column": 5,
-                                    "offset": 1784
+                                    "offset": 1858
                                   },
                                   "end": {
-                                    "line": 46,
+                                    "line": 48,
                                     "column": 29,
-                                    "offset": 1808
+                                    "offset": 1882
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 46,
+                                "line": 48,
                                 "column": 3,
-                                "offset": 1782
+                                "offset": 1856
                               },
                               "end": {
-                                "line": 46,
+                                "line": 48,
                                 "column": 29,
-                                "offset": 1808
+                                "offset": 1882
                               }
                             }
                           },
@@ -2317,70 +2317,70 @@
                                     "value": "「ビジネス例外」と勘違いしがち",
                                     "position": {
                                       "start": {
-                                        "line": 47,
+                                        "line": 49,
                                         "column": 5,
-                                        "offset": 1813
+                                        "offset": 1887
                                       },
                                       "end": {
-                                        "line": 47,
+                                        "line": 49,
                                         "column": 20,
-                                        "offset": 1828
+                                        "offset": 1902
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 47,
+                                    "line": 49,
                                     "column": 5,
-                                    "offset": 1813
+                                    "offset": 1887
                                   },
                                   "end": {
-                                    "line": 47,
+                                    "line": 49,
                                     "column": 20,
-                                    "offset": 1828
+                                    "offset": 1902
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 47,
+                                "line": 49,
                                 "column": 3,
-                                "offset": 1811
+                                "offset": 1885
                               },
                               "end": {
-                                "line": 47,
+                                "line": 49,
                                 "column": 20,
-                                "offset": 1828
+                                "offset": 1902
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 46,
+                            "line": 48,
                             "column": 3,
-                            "offset": 1782
+                            "offset": 1856
                           },
                           "end": {
-                            "line": 47,
+                            "line": 49,
                             "column": 20,
-                            "offset": 1828
+                            "offset": 1902
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 45,
+                        "line": 47,
                         "column": 2,
-                        "offset": 1753
+                        "offset": 1827
                       },
                       "end": {
-                        "line": 47,
+                        "line": 49,
                         "column": 20,
-                        "offset": 1828
+                        "offset": 1902
                       }
                     }
                   },
@@ -2397,28 +2397,28 @@
                             "value": "制御フローの誤り",
                             "position": {
                               "start": {
-                                "line": 48,
+                                "line": 50,
                                 "column": 4,
-                                "offset": 1832
+                                "offset": 1906
                               },
                               "end": {
-                                "line": 48,
+                                "line": 50,
                                 "column": 12,
-                                "offset": 1840
+                                "offset": 1914
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 48,
+                            "line": 50,
                             "column": 4,
-                            "offset": 1832
+                            "offset": 1906
                           },
                           "end": {
-                            "line": 48,
+                            "line": 50,
                             "column": 12,
-                            "offset": 1840
+                            "offset": 1914
                           }
                         }
                       },
@@ -2441,42 +2441,42 @@
                                     "value": "正しく実装されていれば Unreachable なコード",
                                     "position": {
                                       "start": {
-                                        "line": 49,
+                                        "line": 51,
                                         "column": 5,
-                                        "offset": 1845
+                                        "offset": 1919
                                       },
                                       "end": {
-                                        "line": 49,
+                                        "line": 51,
                                         "column": 33,
-                                        "offset": 1873
+                                        "offset": 1947
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 49,
+                                    "line": 51,
                                     "column": 5,
-                                    "offset": 1845
+                                    "offset": 1919
                                   },
                                   "end": {
-                                    "line": 49,
+                                    "line": 51,
                                     "column": 33,
-                                    "offset": 1873
+                                    "offset": 1947
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 49,
+                                "line": 51,
                                 "column": 3,
-                                "offset": 1843
+                                "offset": 1917
                               },
                               "end": {
-                                "line": 49,
+                                "line": 51,
                                 "column": 33,
-                                "offset": 1873
+                                "offset": 1947
                               }
                             }
                           },
@@ -2493,70 +2493,70 @@
                                     "value": "これも UnreachableError としてスローすべき",
                                     "position": {
                                       "start": {
-                                        "line": 50,
+                                        "line": 52,
                                         "column": 5,
-                                        "offset": 1878
+                                        "offset": 1952
                                       },
                                       "end": {
-                                        "line": 50,
+                                        "line": 52,
                                         "column": 35,
-                                        "offset": 1908
+                                        "offset": 1982
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 50,
+                                    "line": 52,
                                     "column": 5,
-                                    "offset": 1878
+                                    "offset": 1952
                                   },
                                   "end": {
-                                    "line": 50,
+                                    "line": 52,
                                     "column": 35,
-                                    "offset": 1908
+                                    "offset": 1982
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 50,
+                                "line": 52,
                                 "column": 3,
-                                "offset": 1876
+                                "offset": 1950
                               },
                               "end": {
-                                "line": 50,
+                                "line": 52,
                                 "column": 35,
-                                "offset": 1908
+                                "offset": 1982
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 49,
+                            "line": 51,
                             "column": 3,
-                            "offset": 1843
+                            "offset": 1917
                           },
                           "end": {
-                            "line": 50,
+                            "line": 52,
                             "column": 35,
-                            "offset": 1908
+                            "offset": 1982
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 48,
+                        "line": 50,
                         "column": 2,
-                        "offset": 1830
+                        "offset": 1904
                       },
                       "end": {
-                        "line": 50,
+                        "line": 52,
                         "column": 35,
-                        "offset": 1908
+                        "offset": 1982
                       }
                     }
                   },
@@ -2573,70 +2573,70 @@
                             "value": "この領域は適切に型を書けば守れることも多い",
                             "position": {
                               "start": {
-                                "line": 51,
+                                "line": 53,
                                 "column": 4,
-                                "offset": 1912
+                                "offset": 1986
                               },
                               "end": {
-                                "line": 51,
+                                "line": 53,
                                 "column": 25,
-                                "offset": 1933
+                                "offset": 2007
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 51,
+                            "line": 53,
                             "column": 4,
-                            "offset": 1912
+                            "offset": 1986
                           },
                           "end": {
-                            "line": 51,
+                            "line": 53,
                             "column": 25,
-                            "offset": 1933
+                            "offset": 2007
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 51,
+                        "line": 53,
                         "column": 2,
-                        "offset": 1910
+                        "offset": 1984
                       },
                       "end": {
-                        "line": 51,
+                        "line": 53,
                         "column": 25,
-                        "offset": 1933
+                        "offset": 2007
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 44,
+                    "line": 46,
                     "column": 2,
-                    "offset": 1716
+                    "offset": 1790
                   },
                   "end": {
-                    "line": 51,
+                    "line": 53,
                     "column": 25,
-                    "offset": 1933
+                    "offset": 2007
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 43,
+                "line": 45,
                 "column": 1,
-                "offset": 1676
+                "offset": 1750
               },
               "end": {
-                "line": 51,
+                "line": 53,
                 "column": 25,
-                "offset": 1933
+                "offset": 2007
               }
             }
           },
@@ -2653,28 +2653,28 @@
                     "value": "アプリケーションとライブラリで例外設計の考え方は変わる",
                     "position": {
                       "start": {
-                        "line": 52,
+                        "line": 54,
                         "column": 3,
-                        "offset": 1936
+                        "offset": 2010
                       },
                       "end": {
-                        "line": 52,
+                        "line": 54,
                         "column": 30,
-                        "offset": 1963
+                        "offset": 2037
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 52,
+                    "line": 54,
                     "column": 3,
-                    "offset": 1936
+                    "offset": 2010
                   },
                   "end": {
-                    "line": 52,
+                    "line": 54,
                     "column": 30,
-                    "offset": 1963
+                    "offset": 2037
                   }
                 }
               },
@@ -2697,42 +2697,42 @@
                             "value": "ライブラリは「どう使われるかわからない」",
                             "position": {
                               "start": {
-                                "line": 53,
+                                "line": 55,
                                 "column": 4,
-                                "offset": 1967
+                                "offset": 2041
                               },
                               "end": {
-                                "line": 53,
+                                "line": 55,
                                 "column": 24,
-                                "offset": 1987
+                                "offset": 2061
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 53,
+                            "line": 55,
                             "column": 4,
-                            "offset": 1967
+                            "offset": 2041
                           },
                           "end": {
-                            "line": 53,
+                            "line": 55,
                             "column": 24,
-                            "offset": 1987
+                            "offset": 2061
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 53,
+                        "line": 55,
                         "column": 2,
-                        "offset": 1965
+                        "offset": 2039
                       },
                       "end": {
-                        "line": 53,
+                        "line": 55,
                         "column": 24,
-                        "offset": 1987
+                        "offset": 2061
                       }
                     }
                   },
@@ -2749,42 +2749,42 @@
                             "value": "例外は「わたしはこの解像度までならエラーを識別できます」という宣言",
                             "position": {
                               "start": {
-                                "line": 54,
+                                "line": 56,
                                 "column": 4,
-                                "offset": 1991
+                                "offset": 2065
                               },
                               "end": {
-                                "line": 54,
+                                "line": 56,
                                 "column": 37,
-                                "offset": 2024
+                                "offset": 2098
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 54,
+                            "line": 56,
                             "column": 4,
-                            "offset": 1991
+                            "offset": 2065
                           },
                           "end": {
-                            "line": 54,
+                            "line": 56,
                             "column": 37,
-                            "offset": 2024
+                            "offset": 2098
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 54,
+                        "line": 56,
                         "column": 2,
-                        "offset": 1989
+                        "offset": 2063
                       },
                       "end": {
-                        "line": 54,
+                        "line": 56,
                         "column": 37,
-                        "offset": 2024
+                        "offset": 2098
                       }
                     }
                   },
@@ -2801,42 +2801,42 @@
                             "value": "Result でも throw でもよいが、何かしら呼び出し側で code や reason を分岐できる必要がある",
                             "position": {
                               "start": {
-                                "line": 55,
+                                "line": 57,
                                 "column": 4,
-                                "offset": 2028
+                                "offset": 2102
                               },
                               "end": {
-                                "line": 55,
+                                "line": 57,
                                 "column": 62,
-                                "offset": 2086
+                                "offset": 2160
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 55,
+                            "line": 57,
                             "column": 4,
-                            "offset": 2028
+                            "offset": 2102
                           },
                           "end": {
-                            "line": 55,
+                            "line": 57,
                             "column": 62,
-                            "offset": 2086
+                            "offset": 2160
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 55,
+                        "line": 57,
                         "column": 2,
-                        "offset": 2026
+                        "offset": 2100
                       },
                       "end": {
-                        "line": 55,
+                        "line": 57,
                         "column": 62,
-                        "offset": 2086
+                        "offset": 2160
                       }
                     }
                   },
@@ -2853,42 +2853,42 @@
                             "value": "モジュールは「アプリケーションの全体の責務分担の 1 つ」",
                             "position": {
                               "start": {
-                                "line": 56,
+                                "line": 58,
                                 "column": 4,
-                                "offset": 2090
+                                "offset": 2164
                               },
                               "end": {
-                                "line": 56,
+                                "line": 58,
                                 "column": 33,
-                                "offset": 2119
+                                "offset": 2193
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 56,
+                            "line": 58,
                             "column": 4,
-                            "offset": 2090
+                            "offset": 2164
                           },
                           "end": {
-                            "line": 56,
+                            "line": 58,
                             "column": 33,
-                            "offset": 2119
+                            "offset": 2193
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 56,
+                        "line": 58,
                         "column": 2,
-                        "offset": 2088
+                        "offset": 2162
                       },
                       "end": {
-                        "line": 56,
+                        "line": 58,
                         "column": 33,
-                        "offset": 2119
+                        "offset": 2193
                       }
                     }
                   },
@@ -2905,70 +2905,70 @@
                             "value": "そのモジュールがどこまでの解像度でエラーを識別するかは、むしろ呼び出し側の要請に拠る",
                             "position": {
                               "start": {
-                                "line": 57,
+                                "line": 59,
                                 "column": 4,
-                                "offset": 2123
+                                "offset": 2197
                               },
                               "end": {
-                                "line": 57,
+                                "line": 59,
                                 "column": 46,
-                                "offset": 2165
+                                "offset": 2239
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 57,
+                            "line": 59,
                             "column": 4,
-                            "offset": 2123
+                            "offset": 2197
                           },
                           "end": {
-                            "line": 57,
+                            "line": 59,
                             "column": 46,
-                            "offset": 2165
+                            "offset": 2239
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 57,
+                        "line": 59,
                         "column": 2,
-                        "offset": 2121
+                        "offset": 2195
                       },
                       "end": {
-                        "line": 57,
+                        "line": 59,
                         "column": 46,
-                        "offset": 2165
+                        "offset": 2239
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 53,
+                    "line": 55,
                     "column": 2,
-                    "offset": 1965
+                    "offset": 2039
                   },
                   "end": {
-                    "line": 57,
+                    "line": 59,
                     "column": 46,
-                    "offset": 2165
+                    "offset": 2239
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 52,
+                "line": 54,
                 "column": 1,
-                "offset": 1934
+                "offset": 2008
               },
               "end": {
-                "line": 57,
+                "line": 59,
                 "column": 46,
-                "offset": 2165
+                "offset": 2239
               }
             }
           },
@@ -2985,28 +2985,28 @@
                     "value": "例外のスローという仕組みが、そもそもある種のホワイトリスト的な考え方",
                     "position": {
                       "start": {
-                        "line": 58,
+                        "line": 60,
                         "column": 3,
-                        "offset": 2168
+                        "offset": 2242
                       },
                       "end": {
-                        "line": 58,
+                        "line": 60,
                         "column": 37,
-                        "offset": 2202
+                        "offset": 2276
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 58,
+                    "line": 60,
                     "column": 3,
-                    "offset": 2168
+                    "offset": 2242
                   },
                   "end": {
-                    "line": 58,
+                    "line": 60,
                     "column": 37,
-                    "offset": 2202
+                    "offset": 2276
                   }
                 }
               },
@@ -3029,42 +3029,42 @@
                             "value": "自分が責任を持てる領域のみスローをやめて適切に処理するところから始める",
                             "position": {
                               "start": {
-                                "line": 59,
+                                "line": 61,
                                 "column": 4,
-                                "offset": 2206
+                                "offset": 2280
                               },
                               "end": {
-                                "line": 59,
+                                "line": 61,
                                 "column": 39,
-                                "offset": 2241
+                                "offset": 2315
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 59,
+                            "line": 61,
                             "column": 4,
-                            "offset": 2206
+                            "offset": 2280
                           },
                           "end": {
-                            "line": 59,
+                            "line": 61,
                             "column": 39,
-                            "offset": 2241
+                            "offset": 2315
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 59,
+                        "line": 61,
                         "column": 2,
-                        "offset": 2204
+                        "offset": 2278
                       },
                       "end": {
-                        "line": 59,
+                        "line": 61,
                         "column": 39,
-                        "offset": 2241
+                        "offset": 2315
                       }
                     }
                   },
@@ -3081,42 +3081,42 @@
                             "value": "それ以外はクラッシュさせる（クラッシュ寸前まで貫通させる）のがむしろ見通しが良い",
                             "position": {
                               "start": {
-                                "line": 60,
+                                "line": 62,
                                 "column": 4,
-                                "offset": 2245
+                                "offset": 2319
                               },
                               "end": {
-                                "line": 60,
+                                "line": 62,
                                 "column": 44,
-                                "offset": 2285
+                                "offset": 2359
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 60,
+                            "line": 62,
                             "column": 4,
-                            "offset": 2245
+                            "offset": 2319
                           },
                           "end": {
-                            "line": 60,
+                            "line": 62,
                             "column": 44,
-                            "offset": 2285
+                            "offset": 2359
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 60,
+                        "line": 62,
                         "column": 2,
-                        "offset": 2243
+                        "offset": 2317
                       },
                       "end": {
-                        "line": 60,
+                        "line": 62,
                         "column": 44,
-                        "offset": 2285
+                        "offset": 2359
                       }
                     }
                   },
@@ -3133,42 +3133,42 @@
                             "value": "必要に応じてその領域を拡大していけばよい",
                             "position": {
                               "start": {
-                                "line": 61,
+                                "line": 63,
                                 "column": 4,
-                                "offset": 2289
+                                "offset": 2363
                               },
                               "end": {
-                                "line": 61,
+                                "line": 63,
                                 "column": 24,
-                                "offset": 2309
+                                "offset": 2383
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 61,
+                            "line": 63,
                             "column": 4,
-                            "offset": 2289
+                            "offset": 2363
                           },
                           "end": {
-                            "line": 61,
+                            "line": 63,
                             "column": 24,
-                            "offset": 2309
+                            "offset": 2383
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 61,
+                        "line": 63,
                         "column": 2,
-                        "offset": 2287
+                        "offset": 2361
                       },
                       "end": {
-                        "line": 61,
+                        "line": 63,
                         "column": 24,
-                        "offset": 2309
+                        "offset": 2383
                       }
                     }
                   },
@@ -3185,70 +3185,70 @@
                             "value": "この原理を理解しておけば、とりあえず全体を try/catch で囲んでレイヤリングをする、というアンチパターンを防げる",
                             "position": {
                               "start": {
-                                "line": 62,
+                                "line": 64,
                                 "column": 4,
-                                "offset": 2313
+                                "offset": 2387
                               },
                               "end": {
-                                "line": 62,
+                                "line": 64,
                                 "column": 64,
-                                "offset": 2373
+                                "offset": 2447
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 62,
+                            "line": 64,
                             "column": 4,
-                            "offset": 2313
+                            "offset": 2387
                           },
                           "end": {
-                            "line": 62,
+                            "line": 64,
                             "column": 64,
-                            "offset": 2373
+                            "offset": 2447
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 62,
+                        "line": 64,
                         "column": 2,
-                        "offset": 2311
+                        "offset": 2385
                       },
                       "end": {
-                        "line": 62,
+                        "line": 64,
                         "column": 64,
-                        "offset": 2373
+                        "offset": 2447
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 59,
+                    "line": 61,
                     "column": 2,
-                    "offset": 2204
+                    "offset": 2278
                   },
                   "end": {
-                    "line": 62,
+                    "line": 64,
                     "column": 64,
-                    "offset": 2373
+                    "offset": 2447
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 58,
+                "line": 60,
                 "column": 1,
-                "offset": 2166
+                "offset": 2240
               },
               "end": {
-                "line": 62,
+                "line": 64,
                 "column": 64,
-                "offset": 2373
+                "offset": 2447
               }
             }
           },
@@ -3265,28 +3265,28 @@
                     "value": "一番上位のレイヤでは全体を try/catch で囲んだ方がよさそうだが、これもケースバイケース",
                     "position": {
                       "start": {
-                        "line": 63,
+                        "line": 65,
                         "column": 3,
-                        "offset": 2376
+                        "offset": 2450
                       },
                       "end": {
-                        "line": 63,
+                        "line": 65,
                         "column": 51,
-                        "offset": 2424
+                        "offset": 2498
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 63,
+                    "line": 65,
                     "column": 3,
-                    "offset": 2376
+                    "offset": 2450
                   },
                   "end": {
-                    "line": 63,
+                    "line": 65,
                     "column": 51,
-                    "offset": 2424
+                    "offset": 2498
                   }
                 }
               },
@@ -3309,28 +3309,28 @@
                             "value": "サーバなど長時間動くプロセスがクラッシュするのはまずい",
                             "position": {
                               "start": {
-                                "line": 64,
+                                "line": 66,
                                 "column": 4,
-                                "offset": 2428
+                                "offset": 2502
                               },
                               "end": {
-                                "line": 64,
+                                "line": 66,
                                 "column": 31,
-                                "offset": 2455
+                                "offset": 2529
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 64,
+                            "line": 66,
                             "column": 4,
-                            "offset": 2428
+                            "offset": 2502
                           },
                           "end": {
-                            "line": 64,
+                            "line": 66,
                             "column": 31,
-                            "offset": 2455
+                            "offset": 2529
                           }
                         }
                       },
@@ -3353,70 +3353,70 @@
                                     "value": "フレームワークを使っているならたいてい拾ってくれる",
                                     "position": {
                                       "start": {
-                                        "line": 65,
+                                        "line": 67,
                                         "column": 5,
-                                        "offset": 2460
+                                        "offset": 2534
                                       },
                                       "end": {
-                                        "line": 65,
+                                        "line": 67,
                                         "column": 30,
-                                        "offset": 2485
+                                        "offset": 2559
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 65,
+                                    "line": 67,
                                     "column": 5,
-                                    "offset": 2460
+                                    "offset": 2534
                                   },
                                   "end": {
-                                    "line": 65,
+                                    "line": 67,
                                     "column": 30,
-                                    "offset": 2485
+                                    "offset": 2559
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 65,
+                                "line": 67,
                                 "column": 3,
-                                "offset": 2458
+                                "offset": 2532
                               },
                               "end": {
-                                "line": 65,
+                                "line": 67,
                                 "column": 30,
-                                "offset": 2485
+                                "offset": 2559
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 65,
+                            "line": 67,
                             "column": 3,
-                            "offset": 2458
+                            "offset": 2532
                           },
                           "end": {
-                            "line": 65,
+                            "line": 67,
                             "column": 30,
-                            "offset": 2485
+                            "offset": 2559
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 64,
+                        "line": 66,
                         "column": 2,
-                        "offset": 2426
+                        "offset": 2500
                       },
                       "end": {
-                        "line": 65,
+                        "line": 67,
                         "column": 30,
-                        "offset": 2485
+                        "offset": 2559
                       }
                     }
                   },
@@ -3433,28 +3433,28 @@
                             "value": "サーバレス関数の場合はそのままクラッシュさせてもよいかもしれない",
                             "position": {
                               "start": {
-                                "line": 66,
+                                "line": 68,
                                 "column": 4,
-                                "offset": 2489
+                                "offset": 2563
                               },
                               "end": {
-                                "line": 66,
+                                "line": 68,
                                 "column": 36,
-                                "offset": 2521
+                                "offset": 2595
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 66,
+                            "line": 68,
                             "column": 4,
-                            "offset": 2489
+                            "offset": 2563
                           },
                           "end": {
-                            "line": 66,
+                            "line": 68,
                             "column": 36,
-                            "offset": 2521
+                            "offset": 2595
                           }
                         }
                       },
@@ -3477,70 +3477,70 @@
                                     "value": "ただしプラットフォーム側のリトライ機構に乗せたくない場合は捕捉するのもあり",
                                     "position": {
                                       "start": {
-                                        "line": 67,
+                                        "line": 69,
                                         "column": 5,
-                                        "offset": 2526
+                                        "offset": 2600
                                       },
                                       "end": {
-                                        "line": 67,
+                                        "line": 69,
                                         "column": 42,
-                                        "offset": 2563
+                                        "offset": 2637
                                       }
                                     }
                                   }
                                 ],
                                 "position": {
                                   "start": {
-                                    "line": 67,
+                                    "line": 69,
                                     "column": 5,
-                                    "offset": 2526
+                                    "offset": 2600
                                   },
                                   "end": {
-                                    "line": 67,
+                                    "line": 69,
                                     "column": 42,
-                                    "offset": 2563
+                                    "offset": 2637
                                   }
                                 }
                               }
                             ],
                             "position": {
                               "start": {
-                                "line": 67,
+                                "line": 69,
                                 "column": 3,
-                                "offset": 2524
+                                "offset": 2598
                               },
                               "end": {
-                                "line": 67,
+                                "line": 69,
                                 "column": 42,
-                                "offset": 2563
+                                "offset": 2637
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 67,
+                            "line": 69,
                             "column": 3,
-                            "offset": 2524
+                            "offset": 2598
                           },
                           "end": {
-                            "line": 67,
+                            "line": 69,
                             "column": 42,
-                            "offset": 2563
+                            "offset": 2637
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 66,
+                        "line": 68,
                         "column": 2,
-                        "offset": 2487
+                        "offset": 2561
                       },
                       "end": {
-                        "line": 67,
+                        "line": 69,
                         "column": 42,
-                        "offset": 2563
+                        "offset": 2637
                       }
                     }
                   },
@@ -3557,70 +3557,70 @@
                             "value": "バッチ処理の場合は必ず捕捉してログを取ったりしたい",
                             "position": {
                               "start": {
-                                "line": 68,
+                                "line": 70,
                                 "column": 4,
-                                "offset": 2567
+                                "offset": 2641
                               },
                               "end": {
-                                "line": 68,
+                                "line": 70,
                                 "column": 29,
-                                "offset": 2592
+                                "offset": 2666
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 68,
+                            "line": 70,
                             "column": 4,
-                            "offset": 2567
+                            "offset": 2641
                           },
                           "end": {
-                            "line": 68,
+                            "line": 70,
                             "column": 29,
-                            "offset": 2592
+                            "offset": 2666
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 68,
+                        "line": 70,
                         "column": 2,
-                        "offset": 2565
+                        "offset": 2639
                       },
                       "end": {
-                        "line": 68,
+                        "line": 70,
                         "column": 29,
-                        "offset": 2592
+                        "offset": 2666
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 64,
+                    "line": 66,
                     "column": 2,
-                    "offset": 2426
+                    "offset": 2500
                   },
                   "end": {
-                    "line": 68,
+                    "line": 70,
                     "column": 29,
-                    "offset": 2592
+                    "offset": 2666
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 63,
+                "line": 65,
                 "column": 1,
-                "offset": 2374
+                "offset": 2448
               },
               "end": {
-                "line": 68,
+                "line": 70,
                 "column": 29,
-                "offset": 2592
+                "offset": 2666
               }
             }
           },
@@ -3637,28 +3637,28 @@
                     "value": "そもそも「ビジネス例外」と「技術例外」という区分自体が、アプリケーションの例外設計のための考え方であるとも言える",
                     "position": {
                       "start": {
-                        "line": 69,
+                        "line": 71,
                         "column": 3,
-                        "offset": 2595
+                        "offset": 2669
                       },
                       "end": {
-                        "line": 69,
+                        "line": 71,
                         "column": 59,
-                        "offset": 2651
+                        "offset": 2725
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 69,
+                    "line": 71,
                     "column": 3,
-                    "offset": 2595
+                    "offset": 2669
                   },
                   "end": {
-                    "line": 69,
+                    "line": 71,
                     "column": 59,
-                    "offset": 2651
+                    "offset": 2725
                   }
                 }
               },
@@ -3681,84 +3681,84 @@
                             "value": "ライブラリはアプリケーションではないので、ビジネス例外を Result にせず、全部例外としてスローしておく方がよいケースもある",
                             "position": {
                               "start": {
-                                "line": 70,
+                                "line": 72,
                                 "column": 4,
-                                "offset": 2655
+                                "offset": 2729
                               },
                               "end": {
-                                "line": 70,
+                                "line": 72,
                                 "column": 68,
-                                "offset": 2719
+                                "offset": 2793
                               }
                             }
                           }
                         ],
                         "position": {
                           "start": {
-                            "line": 70,
+                            "line": 72,
                             "column": 4,
-                            "offset": 2655
+                            "offset": 2729
                           },
                           "end": {
-                            "line": 70,
+                            "line": 72,
                             "column": 68,
-                            "offset": 2719
+                            "offset": 2793
                           }
                         }
                       }
                     ],
                     "position": {
                       "start": {
-                        "line": 70,
+                        "line": 72,
                         "column": 2,
-                        "offset": 2653
+                        "offset": 2727
                       },
                       "end": {
-                        "line": 70,
+                        "line": 72,
                         "column": 68,
-                        "offset": 2719
+                        "offset": 2793
                       }
                     }
                   }
                 ],
                 "position": {
                   "start": {
-                    "line": 70,
+                    "line": 72,
                     "column": 2,
-                    "offset": 2653
+                    "offset": 2727
                   },
                   "end": {
-                    "line": 70,
+                    "line": 72,
                     "column": 68,
-                    "offset": 2719
+                    "offset": 2793
                   }
                 }
               }
             ],
             "position": {
               "start": {
-                "line": 69,
+                "line": 71,
                 "column": 1,
-                "offset": 2593
+                "offset": 2667
               },
               "end": {
-                "line": 70,
+                "line": 72,
                 "column": 68,
-                "offset": 2719
+                "offset": 2793
               }
             }
           }
         ],
         "position": {
           "start": {
-            "line": 9,
+            "line": 11,
             "column": 1,
-            "offset": 86
+            "offset": 160
           },
           "end": {
-            "line": 70,
+            "line": 72,
             "column": 68,
-            "offset": 2719
+            "offset": 2793
           }
         }
       }
@@ -3770,9 +3770,9 @@
         "offset": 0
       },
       "end": {
-        "line": 71,
+        "line": 73,
         "column": 1,
-        "offset": 2720
+        "offset": 2794
       }
     }
   }

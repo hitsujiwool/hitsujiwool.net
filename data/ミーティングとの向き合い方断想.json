@@ -1,0 +1,1150 @@
+{
+  "title": "ミーティングとの向き合い方断想",
+  "source": "---\ncreatedAt: 2025-04-10T15:26:59+09:00\nupdatedAt: 2025-11-04T08:45:24+09:00\ntags:\n  - scribble\n---\n- 「出席してチームにとって価値のある発言をしよう（しなければならない）」という錯誤がある\n- そうではなくて「出席して発言することがチームにとって価値があると信じる」こと\n-　その転換ができないと\n\t- 「自分が発言しても価値がない（から言わない）」\n\t- 「そもそも参加しなくても良い」\n\t- どんどん思考やリソースが節約されてしまう\n- 時間資源は貴重だし、参加しないで別の事やった方が成果出せる、というのは罠\n\t- いっけん合理的だからこそ陥りやすいアンチパターン\n\t- 自分が予想できる範囲でしか行動できなくなってしまう\n- これに抗って「信じる」ことが必要になってくる\n- 定例会議はこのような価値の先取り・投機の典型的な存在のあり方\n\t- 内容が決まっていなくてもとりあえず枠がある\n\t- 枠があることでそれを良い会議に realize する責任を負う、という発想順序\n-  他方で定例会議が形骸化の象徴として扱われることもある\n\t- これはミーティングの場が信じる対象としての地位を失っている状況\n\t- ファシリテーションとは常にこの信頼・信念をかき立てるために存在している\n- とはいえ、こういうマインドセットを持つ責任は参加者当人が引き受けなければ始まらない\n\t- 「心理的安全性がないので……」は半分は正しいが\n\t- 明確に権威勾配が持ち込まれる\n\t- 「なんかうまくいかないなあ」と\n",
+  "createdAt": "Thu Apr 10 2025 15:26:59 GMT+0900 (日本標準時)",
+  "updatedAt": "Tue Nov 04 2025 08:45:24 GMT+0900 (日本標準時)",
+  "tags": [
+    "scribble"
+  ],
+  "content": {
+    "type": "root",
+    "children": [
+      {
+        "type": "yaml",
+        "value": "createdAt: 2025-04-10T15:26:59+09:00\nupdatedAt: 2025-11-04T08:45:24+09:00\ntags:\n  - scribble",
+        "position": {
+          "start": {
+            "line": 1,
+            "column": 1,
+            "offset": 0
+          },
+          "end": {
+            "line": 6,
+            "column": 4,
+            "offset": 100
+          }
+        }
+      },
+      {
+        "type": "list",
+        "ordered": false,
+        "start": null,
+        "spread": false,
+        "children": [
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "「出席してチームにとって価値のある発言をしよう（しなければならない）」という錯誤がある",
+                    "position": {
+                      "start": {
+                        "line": 7,
+                        "column": 3,
+                        "offset": 103
+                      },
+                      "end": {
+                        "line": 7,
+                        "column": 46,
+                        "offset": 146
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 7,
+                    "column": 3,
+                    "offset": 103
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 46,
+                    "offset": 146
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 7,
+                "column": 1,
+                "offset": 101
+              },
+              "end": {
+                "line": 7,
+                "column": 46,
+                "offset": 146
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "そうではなくて「出席して発言することがチームにとって価値があると信じる」こと\n-　その転換ができないと",
+                    "position": {
+                      "start": {
+                        "line": 8,
+                        "column": 3,
+                        "offset": 149
+                      },
+                      "end": {
+                        "line": 9,
+                        "column": 13,
+                        "offset": 200
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 8,
+                    "column": 3,
+                    "offset": 149
+                  },
+                  "end": {
+                    "line": 9,
+                    "column": 13,
+                    "offset": 200
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "「自分が発言しても価値がない（から言わない）」",
+                            "position": {
+                              "start": {
+                                "line": 10,
+                                "column": 4,
+                                "offset": 204
+                              },
+                              "end": {
+                                "line": 10,
+                                "column": 27,
+                                "offset": 227
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 10,
+                            "column": 4,
+                            "offset": 204
+                          },
+                          "end": {
+                            "line": 10,
+                            "column": 27,
+                            "offset": 227
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 10,
+                        "column": 2,
+                        "offset": 202
+                      },
+                      "end": {
+                        "line": 10,
+                        "column": 27,
+                        "offset": 227
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "「そもそも参加しなくても良い」",
+                            "position": {
+                              "start": {
+                                "line": 11,
+                                "column": 4,
+                                "offset": 231
+                              },
+                              "end": {
+                                "line": 11,
+                                "column": 19,
+                                "offset": 246
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 11,
+                            "column": 4,
+                            "offset": 231
+                          },
+                          "end": {
+                            "line": 11,
+                            "column": 19,
+                            "offset": 246
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 11,
+                        "column": 2,
+                        "offset": 229
+                      },
+                      "end": {
+                        "line": 11,
+                        "column": 19,
+                        "offset": 246
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "どんどん思考やリソースが節約されてしまう",
+                            "position": {
+                              "start": {
+                                "line": 12,
+                                "column": 4,
+                                "offset": 250
+                              },
+                              "end": {
+                                "line": 12,
+                                "column": 24,
+                                "offset": 270
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 12,
+                            "column": 4,
+                            "offset": 250
+                          },
+                          "end": {
+                            "line": 12,
+                            "column": 24,
+                            "offset": 270
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 12,
+                        "column": 2,
+                        "offset": 248
+                      },
+                      "end": {
+                        "line": 12,
+                        "column": 24,
+                        "offset": 270
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 10,
+                    "column": 2,
+                    "offset": 202
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 24,
+                    "offset": 270
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 8,
+                "column": 1,
+                "offset": 147
+              },
+              "end": {
+                "line": 12,
+                "column": 24,
+                "offset": 270
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "時間資源は貴重だし、参加しないで別の事やった方が成果出せる、というのは罠",
+                    "position": {
+                      "start": {
+                        "line": 13,
+                        "column": 3,
+                        "offset": 273
+                      },
+                      "end": {
+                        "line": 13,
+                        "column": 39,
+                        "offset": 309
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 13,
+                    "column": 3,
+                    "offset": 273
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 39,
+                    "offset": 309
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "いっけん合理的だからこそ陥りやすいアンチパターン",
+                            "position": {
+                              "start": {
+                                "line": 14,
+                                "column": 4,
+                                "offset": 313
+                              },
+                              "end": {
+                                "line": 14,
+                                "column": 28,
+                                "offset": 337
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 14,
+                            "column": 4,
+                            "offset": 313
+                          },
+                          "end": {
+                            "line": 14,
+                            "column": 28,
+                            "offset": 337
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 14,
+                        "column": 2,
+                        "offset": 311
+                      },
+                      "end": {
+                        "line": 14,
+                        "column": 28,
+                        "offset": 337
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "自分が予想できる範囲でしか行動できなくなってしまう",
+                            "position": {
+                              "start": {
+                                "line": 15,
+                                "column": 4,
+                                "offset": 341
+                              },
+                              "end": {
+                                "line": 15,
+                                "column": 29,
+                                "offset": 366
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 15,
+                            "column": 4,
+                            "offset": 341
+                          },
+                          "end": {
+                            "line": 15,
+                            "column": 29,
+                            "offset": 366
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 15,
+                        "column": 2,
+                        "offset": 339
+                      },
+                      "end": {
+                        "line": 15,
+                        "column": 29,
+                        "offset": 366
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 14,
+                    "column": 2,
+                    "offset": 311
+                  },
+                  "end": {
+                    "line": 15,
+                    "column": 29,
+                    "offset": 366
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 13,
+                "column": 1,
+                "offset": 271
+              },
+              "end": {
+                "line": 15,
+                "column": 29,
+                "offset": 366
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "これに抗って「信じる」ことが必要になってくる",
+                    "position": {
+                      "start": {
+                        "line": 16,
+                        "column": 3,
+                        "offset": 369
+                      },
+                      "end": {
+                        "line": 16,
+                        "column": 25,
+                        "offset": 391
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 16,
+                    "column": 3,
+                    "offset": 369
+                  },
+                  "end": {
+                    "line": 16,
+                    "column": 25,
+                    "offset": 391
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 16,
+                "column": 1,
+                "offset": 367
+              },
+              "end": {
+                "line": 16,
+                "column": 25,
+                "offset": 391
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "定例会議はこのような価値の先取り・投機の典型的な存在のあり方",
+                    "position": {
+                      "start": {
+                        "line": 17,
+                        "column": 3,
+                        "offset": 394
+                      },
+                      "end": {
+                        "line": 17,
+                        "column": 33,
+                        "offset": 424
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 17,
+                    "column": 3,
+                    "offset": 394
+                  },
+                  "end": {
+                    "line": 17,
+                    "column": 33,
+                    "offset": 424
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "内容が決まっていなくてもとりあえず枠がある",
+                            "position": {
+                              "start": {
+                                "line": 18,
+                                "column": 4,
+                                "offset": 428
+                              },
+                              "end": {
+                                "line": 18,
+                                "column": 25,
+                                "offset": 449
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 18,
+                            "column": 4,
+                            "offset": 428
+                          },
+                          "end": {
+                            "line": 18,
+                            "column": 25,
+                            "offset": 449
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 18,
+                        "column": 2,
+                        "offset": 426
+                      },
+                      "end": {
+                        "line": 18,
+                        "column": 25,
+                        "offset": 449
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "枠があることでそれを良い会議に realize する責任を負う、という発想順序",
+                            "position": {
+                              "start": {
+                                "line": 19,
+                                "column": 4,
+                                "offset": 453
+                              },
+                              "end": {
+                                "line": 19,
+                                "column": 43,
+                                "offset": 492
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 19,
+                            "column": 4,
+                            "offset": 453
+                          },
+                          "end": {
+                            "line": 19,
+                            "column": 43,
+                            "offset": 492
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 19,
+                        "column": 2,
+                        "offset": 451
+                      },
+                      "end": {
+                        "line": 19,
+                        "column": 43,
+                        "offset": 492
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 18,
+                    "column": 2,
+                    "offset": 426
+                  },
+                  "end": {
+                    "line": 19,
+                    "column": 43,
+                    "offset": 492
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 17,
+                "column": 1,
+                "offset": 392
+              },
+              "end": {
+                "line": 19,
+                "column": 43,
+                "offset": 492
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "他方で定例会議が形骸化の象徴として扱われることもある",
+                    "position": {
+                      "start": {
+                        "line": 20,
+                        "column": 4,
+                        "offset": 496
+                      },
+                      "end": {
+                        "line": 20,
+                        "column": 30,
+                        "offset": 522
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 20,
+                    "column": 4,
+                    "offset": 496
+                  },
+                  "end": {
+                    "line": 20,
+                    "column": 30,
+                    "offset": 522
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "これはミーティングの場が信じる対象としての地位を失っている状況",
+                            "position": {
+                              "start": {
+                                "line": 21,
+                                "column": 4,
+                                "offset": 526
+                              },
+                              "end": {
+                                "line": 21,
+                                "column": 35,
+                                "offset": 557
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 21,
+                            "column": 4,
+                            "offset": 526
+                          },
+                          "end": {
+                            "line": 21,
+                            "column": 35,
+                            "offset": 557
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 21,
+                        "column": 2,
+                        "offset": 524
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 35,
+                        "offset": 557
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "ファシリテーションとは常にこの信頼・信念をかき立てるために存在している",
+                            "position": {
+                              "start": {
+                                "line": 22,
+                                "column": 4,
+                                "offset": 561
+                              },
+                              "end": {
+                                "line": 22,
+                                "column": 39,
+                                "offset": 596
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 22,
+                            "column": 4,
+                            "offset": 561
+                          },
+                          "end": {
+                            "line": 22,
+                            "column": 39,
+                            "offset": 596
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 22,
+                        "column": 2,
+                        "offset": 559
+                      },
+                      "end": {
+                        "line": 22,
+                        "column": 39,
+                        "offset": 596
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 21,
+                    "column": 2,
+                    "offset": 524
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 39,
+                    "offset": 596
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 20,
+                "column": 1,
+                "offset": 493
+              },
+              "end": {
+                "line": 22,
+                "column": 39,
+                "offset": 596
+              }
+            }
+          },
+          {
+            "type": "listItem",
+            "spread": false,
+            "checked": null,
+            "children": [
+              {
+                "type": "paragraph",
+                "children": [
+                  {
+                    "type": "text",
+                    "value": "とはいえ、こういうマインドセットを持つ責任は参加者当人が引き受けなければ始まらない",
+                    "position": {
+                      "start": {
+                        "line": 23,
+                        "column": 3,
+                        "offset": 599
+                      },
+                      "end": {
+                        "line": 23,
+                        "column": 44,
+                        "offset": 640
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 23,
+                    "column": 3,
+                    "offset": 599
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 44,
+                    "offset": 640
+                  }
+                }
+              },
+              {
+                "type": "list",
+                "ordered": false,
+                "start": null,
+                "spread": false,
+                "children": [
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "「心理的安全性がないので……」は半分は正しいが",
+                            "position": {
+                              "start": {
+                                "line": 24,
+                                "column": 4,
+                                "offset": 644
+                              },
+                              "end": {
+                                "line": 24,
+                                "column": 27,
+                                "offset": 667
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 24,
+                            "column": 4,
+                            "offset": 644
+                          },
+                          "end": {
+                            "line": 24,
+                            "column": 27,
+                            "offset": 667
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 24,
+                        "column": 2,
+                        "offset": 642
+                      },
+                      "end": {
+                        "line": 24,
+                        "column": 27,
+                        "offset": 667
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "明確に権威勾配が持ち込まれる",
+                            "position": {
+                              "start": {
+                                "line": 25,
+                                "column": 4,
+                                "offset": 671
+                              },
+                              "end": {
+                                "line": 25,
+                                "column": 18,
+                                "offset": 685
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 25,
+                            "column": 4,
+                            "offset": 671
+                          },
+                          "end": {
+                            "line": 25,
+                            "column": 18,
+                            "offset": 685
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 25,
+                        "column": 2,
+                        "offset": 669
+                      },
+                      "end": {
+                        "line": 25,
+                        "column": 18,
+                        "offset": 685
+                      }
+                    }
+                  },
+                  {
+                    "type": "listItem",
+                    "spread": false,
+                    "checked": null,
+                    "children": [
+                      {
+                        "type": "paragraph",
+                        "children": [
+                          {
+                            "type": "text",
+                            "value": "「なんかうまくいかないなあ」と",
+                            "position": {
+                              "start": {
+                                "line": 26,
+                                "column": 4,
+                                "offset": 689
+                              },
+                              "end": {
+                                "line": 26,
+                                "column": 19,
+                                "offset": 704
+                              }
+                            }
+                          }
+                        ],
+                        "position": {
+                          "start": {
+                            "line": 26,
+                            "column": 4,
+                            "offset": 689
+                          },
+                          "end": {
+                            "line": 26,
+                            "column": 19,
+                            "offset": 704
+                          }
+                        }
+                      }
+                    ],
+                    "position": {
+                      "start": {
+                        "line": 26,
+                        "column": 2,
+                        "offset": 687
+                      },
+                      "end": {
+                        "line": 26,
+                        "column": 19,
+                        "offset": 704
+                      }
+                    }
+                  }
+                ],
+                "position": {
+                  "start": {
+                    "line": 24,
+                    "column": 2,
+                    "offset": 642
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 19,
+                    "offset": 704
+                  }
+                }
+              }
+            ],
+            "position": {
+              "start": {
+                "line": 23,
+                "column": 1,
+                "offset": 597
+              },
+              "end": {
+                "line": 26,
+                "column": 19,
+                "offset": 704
+              }
+            }
+          }
+        ],
+        "position": {
+          "start": {
+            "line": 7,
+            "column": 1,
+            "offset": 101
+          },
+          "end": {
+            "line": 26,
+            "column": 19,
+            "offset": 704
+          }
+        }
+      }
+    ],
+    "position": {
+      "start": {
+        "line": 1,
+        "column": 1,
+        "offset": 0
+      },
+      "end": {
+        "line": 27,
+        "column": 1,
+        "offset": 705
+      }
+    }
+  }
+}
